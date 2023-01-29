@@ -5,12 +5,12 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.logparser.svg)](https://www.npmjs.com/package/iobroker.logparser)
 ![Number of Installations (latest)](http://iobroker.live/badges/logparser-installed.svg)
 ![Number of Installations (stable)](http://iobroker.live/badges/logparser-stable.svg)
-[![Dependency Status](https://img.shields.io/david/Mic-M/iobroker.logparser.svg)](https://david-dm.org/Mic-M/iobroker.logparser)
-[![Known Vulnerabilities](https://snyk.io/test/github/Mic-M/ioBroker.logparser/badge.svg)](https://snyk.io/test/github/Mic-M/ioBroker.logparser)
+[![Dependency Status](https://img.shields.io/david/iobroker-community-adapters/iobroker.logparser.svg)](https://david-dm.org/iobroker-community-adapters/iobroker.logparser)
+[![Known Vulnerabilities](https://snyk.io/test/github/iobroker-community-adapters/ioBroker.logparser/badge.svg)](https://snyk.io/test/github/iobroker-community-adaptersioBroker.logparser)
 
 [![NPM](https://nodei.co/npm/iobroker.logparser.png?downloads=true)](https://nodei.co/npm/iobroker.logparser/)
 
-**Tests:** [![Travis-CI](http://img.shields.io/travis/Mic-M/ioBroker.logparser/master.svg)](https://travis-ci.org/Mic-M/ioBroker.logparser)
+**Tests:** [![Travis-CI](http://img.shields.io/travis/iobroker-community-adapters/ioBroker.logparser/master.svg)](https://travis-ci.org/iobroker-community-adapters/ioBroker.logparser)
 
 ## Log Parser for all ioBroker adapters
 
@@ -29,9 +29,9 @@ Just install the adapter regularly through the ioBroker admin interface. The ada
 I have included all instructions right in the admin settings of this adapter.
 
 Also, you can read most of these instructions here as well:
-* [**Basic Adapter Instructions**](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/start_en.md) - for German [click here (Deutsch)](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/start_de.md)
-* [**Parser Rules (Filters)**](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/table-parser-rules_en.md) - for German [click here (Deutsch)](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/table-parser-rules_de.md)
-* [**Global Blacklist**](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/table-global-blacklist_en.md) - for German [click here (Deutsch)](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/table-global-blacklist_de.md)
+* [**Basic Adapter Instructions**](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/start_en.md) - for German [click here (Deutsch)](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/start_de.md)
+* [**Parser Rules (Filters)**](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/table-parser-rules_en.md) - for German [click here (Deutsch)](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/table-parser-rules_de.md)
+* [**Global Blacklist**](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/table-global-blacklist_en.md) - for German [click here (Deutsch)](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/table-global-blacklist_de.md)
 
 
 ## Visualization Example (animated gif)
