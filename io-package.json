@@ -76,42 +76,6 @@
                 "es": "Sin cambios: solo prepare el versionado para agregar el adaptador al repositorio estable",
                 "pl": "Bez zmian - po prostu przygotuj wersję, aby dodać adapter do stabilnego repozytorium",
                 "zh-cn": "无需更改-只需准备版本控制即可将适配器添加到稳定的存储库"
-            },
-            "0.4.11": {
-                "en": "Removed unused adapter features 'extra tab' and 'custom state options', removed unused subscription to object changes",
-                "de": "Nicht verwendete Adapterfunktionen 'extra tab' und 'custom state options' entfernt, nicht verwendete Subscriptions für Objektänderungen entfernt",
-                "ru": "Удалены неиспользуемые функции адаптера «дополнительная вкладка» и «пользовательские параметры состояния», удалена неиспользуемая подписка на изменения объекта",
-                "pt": "Recursos do adaptador não utilizados removidos 'guia extra' e 'opções de estado personalizadas', assinatura não utilizada removida para alterações de objetos",
-                "nl": "Verwijderde ongebruikte adapter met 'extra tabblad' en 'aangepaste statusopties', verwijderd ongebruikt abonnement op objectwijzigingen",
-                "fr": "Suppression de l'onglet supplémentaire et des options d'état personnalisé des fonctionnalités inutilisées de l'adaptateur, suppression de l'abonnement inutilisé aux modifications d'objet",
-                "it": "La scheda rimossa non utilizzata presenta \"scheda aggiuntiva\" e \"opzioni di stato personalizzate\", rimossa la sottoscrizione non utilizzata per le modifiche agli oggetti",
-                "es": "El adaptador no utilizado elimina las 'pestañas adicionales' y 'opciones de estado personalizadas', elimina la suscripción no utilizada a los cambios de objetos",
-                "pl": "Usunięto nieużywane funkcje karty „dodatkowa karta” i „opcje stanu niestandardowego”, usunięto nieużywaną subskrypcję zmian obiektu",
-                "zh-cn": "删除了未使用的适配器功能“额外选项卡”和“自定义状态选项”，删除了未使用的对象更改订阅"
-            },
-            "0.4.10": {
-                "en": "Fixed reference to 'visualization.table' for adapter instances other than instance 0.",
-                "de": "Verweis auf 'visualization.table' für andere Adapterinstanzen als Instanz 0 behoben.",
-                "ru": "Исправлена ​​ссылка на «visualization.table» для экземпляров адаптера, отличных от экземпляра 0.",
-                "pt": "Corrigida a referência a 'visualization.table' para instâncias do adaptador diferentes da instância 0.",
-                "nl": "Vaste verwijzing naar 'visualization.table' voor andere adapterinstanties dan instantie 0.",
-                "fr": "Correction de la référence à «visualization.table» pour les instances d'adaptateur autres que l'instance 0.",
-                "it": "Risolto il problema con \"visualization.table\" per le istanze dell'adattatore diverse dall'istanza 0.",
-                "es": "Se corrigió la referencia a 'visualización.table' para instancias de adaptador que no sean la instancia 0.",
-                "pl": "Naprawiono odniesienie do „wizualizacji.tabela” dla instancji adaptera innych niż instancja 0.",
-                "zh-cn": "固定引用了实例0以外的适配器实例的“ visualization.table”。"
-            },
-            "0.4.9": {
-                "en": "Add option to remove script.js.Script_Name, update documentation",
-                "de": "Option zum Entfernen von script.js.Script_Name hinzugefügt, Dokumentation aktualisiert",
-                "ru": "Добавить опцию для удаления script.js.Script_Name, обновления документации",
-                "pt": "Adicionar opção para remover script.js.Script_Name, atualizar documentação",
-                "nl": "Optie toevoegen om script.js.Script_Name te verwijderen, documentatie bijwerken",
-                "fr": "Ajouter une option pour supprimer script.js.Script_Name, mettre à jour la documentation",
-                "it": "Aggiungi l'opzione per rimuovere script.js.Script_Name, aggiorna la documentazione",
-                "es": "Agregar opción para eliminar script.js.Script_Name, actualizar documentación",
-                "pl": "Dodaj opcję, aby usunąć skrypt.js.Script_Name, zaktualizuj dokumentację",
-                "zh-cn": "添加选项以删除script.js.Script_Name，更新文档"
             }
         },
         "title": "Log Parser",
