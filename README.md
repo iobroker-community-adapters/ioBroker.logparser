@@ -63,7 +63,14 @@ This is just to provide you an overview of the adapter options.
 ## Notes
 * This adapter uses Sentry libraries to automatically report exceptions and code errors anonymously to the adapter developer(s). For further details and information on how to disable this error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry). Sentry reporting is used starting with js-controller 3.0.
 
+## Credits
+The work of the adapter would not had been possible without the great work of @Mic-M (https://github.com/Mic-M).
+ 
+## How to report issues and feature requests
 
+Please use GitHub issues for this.
+
+Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column Log level). Then please get the logfile from disk (subdirectory "log" in ioBroker installation directory and not from Admin because Admin cuts the lines). If you do not like providing it in GitHub issue you can also send it to me via email (mcm57@gmx.at). Please add a reference to the relevant GitHub issue AND also describe what I see in the log at which time.
 
 ## Changelog
 
