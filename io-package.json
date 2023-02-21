@@ -118,14 +118,15 @@
         "titleLang": {
             "en": "Log Parser",
             "de": "Log Parser",
-            "ru": "Log Parser",
+            "ru": "Вход Parser",
             "pt": "Log Parser",
             "nl": "Log Parser",
             "fr": "Log Parser",
-            "it": "Log Parser",
+            "it": "Per saperne di più",
             "es": "Log Parser",
             "pl": "Log Parser",
-            "zh-cn": "Log Parser"
+            "uk": "Вхід",
+            "zh-cn": "后勤业务处"
         },
         "desc": {
             "en": "Parsing (filtering) the ioBroker log",
@@ -137,10 +138,13 @@
             "it": "Analisi (filtro) del registro ioBroker",
             "es": "Analizar (filtrar) el registro de ioBroker",
             "pl": "Parsowanie (filtrowanie) dziennika ioBroker",
+            "uk": "Парсінг (фільтрування) журнал ioBroker\n",
             "zh-cn": "解析（过滤）ioBroker日志"
         },
         "authors": [
-            "Mic-M <iob.micm@gmail.com>"
+            "Mic-M <iob.micm@gmail.com>",
+            "McM1957 <mcm57@gmx.at>"
+
         ],
         "keywords": [
             "log",
