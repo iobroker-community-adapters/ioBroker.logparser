@@ -3,8 +3,8 @@
   "version": "1.1.0",
   "description": "Parsing (filtering) the ioBroker log",
   "author": {
-    "name": "Mic-M",
-    "email": "iob.micm@gmail.com"
+    "name": "mcm1957",
+    "email": "mcm57@gmx.at"
   },
   "homepage": "https://github.com/iobroker-community-adapters/ioBroker.logparser",
   "license": "MIT",
@@ -41,6 +41,15 @@
     "sinon": "^9.2.4"
   },
   "main": "main.js",
+  "files": [
+    "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).json",
+    "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
+    "lib/",
+    "www/",
+    "io-package.json",
+    "LICENSE",
+    "main.js"
+  ],
   "scripts": {
     "test:js": "mocha --opts test/mocha.custom.opts",
     "test:package": "mocha test/package --exit",
