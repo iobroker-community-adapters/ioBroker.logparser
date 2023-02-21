@@ -4,13 +4,13 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-      time: "04:00"
+      time: "04:15"
       timezone: Europe/Berlin
   - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: monthly
-      time: "04:00"
+      time: "04:30"
       timezone: Europe/Berlin
     open-pull-requests-limit: 20
     versioning-strategy: increase
