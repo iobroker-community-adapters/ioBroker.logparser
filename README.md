@@ -67,6 +67,13 @@ This is just to provide you an overview of the adapter options.
 
 ## Changelog
 
+<!--
+    Placeholder for the next version (at the beginning of the line):
+    ### **WORK IN PROGRESS**
+-->
+### **WORK IN PROGRESS**
+* (McM1957) Adapter has been moved to iobroker-community-adapters
+
 ### 1.1.0
 * (Mic-M) Fixed issue [#15](https://github.com/Mic-M/ioBroker.logparser/issues/15) regarding regex for tab "Parser Rules", column "Blacklist"
 * (Mic-M) Enhancement [#16](https://github.com/Mic-M/ioBroker.logparser/issues/16) - add specific CSS classes to any element of the JSON log per adapter option.
@@ -137,7 +144,7 @@ This is just to provide you an overview of the adapter options.
 ## License
 MIT License
 
-Copyright (c) 2020 Mic-M
+Copyright (c) 2020-2023 Mic-M, McM1957
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
