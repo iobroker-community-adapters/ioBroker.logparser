@@ -76,7 +76,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### 1.2.0 (2023-02-23)
+### **WORK IN PROGRESS**
 * (McM1957) Adapter has been moved to iobroker-community-adapters
 
 ### 1.1.0

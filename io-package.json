@@ -1,21 +1,8 @@
 {
   "common": {
     "name": "logparser",
-    "version": "1.2.0",
+    "version": "1.1.0",
     "news": {
-      "1.2.0": {
-        "en": "Adapter has been moved to iobroker-community-adapters",
-        "de": "Adapter wurde auf iobroker-community-adapters verschoben",
-        "ru": "Адаптер переехал в iobroker-community-adapters",
-        "pt": "Adapter foi movido para iobroker-community-adapters",
-        "nl": "Adapter is verplaatst naar iobroker-community-apters",
-        "fr": "Adaptateur a été déplacé à iobroker-community-adapters",
-        "it": "L'adattatore è stato spostato a iobroker-community-adapters",
-        "es": "Adaptador ha sido trasladado a iobroker-community-adapters",
-        "pl": "Adapter został przeniesiony do iobroker-community-adapter",
-        "uk": "Переміщено перехід на iobroker-community-adapters",
-        "zh-cn": "已经向气勃罗克-community-adapters转移。"
-      },
       "1.1.0": {
         "en": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
         "de": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
