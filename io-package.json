@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "logparser",
-        "version": "2.0.0-alpha.1",
+        "version": "1.1.0",
         "news": {
             "1.1.0": {
                 "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.": {
@@ -107,8 +107,8 @@
         },
         "authors": [
             "Mic-M <iob.micm@gmail.com>",
-            "McM1957 <mcm57@gmx.at>"
-
+            "McM1957 <mcm57@gmx.at>",
+            "ciddi89 <mail@christian-behrends.de>"
         ],
         "keywords": [
             "log",

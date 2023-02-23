@@ -1,6 +1,6 @@
 {
   "name": "iobroker.logparser",
-  "version": "2.0.0-alpha.1",
+  "version": "1.1.0",
   "description": "Parsing (filtering) the ioBroker log",
   "author": {
     "name": "mcm1957",
@@ -46,6 +46,7 @@
     "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
     "lib/",
     "www/",
+    "accessories/",
     "io-package.json",
     "LICENSE",
     "main.js"
