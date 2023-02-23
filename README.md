@@ -76,7 +76,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.2.0 (2023-02-23)
 * (McM1957) Adapter has been moved to iobroker-community-adapters
 
 ### 1.1.0
@@ -84,7 +84,6 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 * (Mic-M) Enhancement [#16](https://github.com/Mic-M/ioBroker.logparser/issues/16) - add specific CSS classes to any element of the JSON log per adapter option.
 * (Mic-M) Major improvement: Implemented entire documentation into adapter itself to significantly improve usability.
 * (Mic-M) A few improvements under the hood.
-
 
 ### 1.0.4
 * (Mic-M) Fixed 'Today/Yesterday' updating issue - https://forum.iobroker.net/post/469757. Thanks to (Kuddel) for reporting and (Glasfaser) for further debugging.
@@ -100,7 +99,6 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 ### 1.0.0
 * (Mic-M) No changes - just prepare versioning to add adapter to stable repository per [Adapter dev docu](https://github.com/ioBroker/ioBroker.docs/blob/master/docs/en/dev/adapterdev.md#versioning)
-
 
 ## License
 MIT License
