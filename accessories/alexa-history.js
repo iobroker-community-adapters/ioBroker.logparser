@@ -7,6 +7,7 @@
  * Autor:   Mic-M (Github) | Mic (ioBroker)
  * --------------------------------------------------------------------------------------
  * Change Log:
+ *  1.0.0  ciddi89 * Added try/catch to fix error
  *  1.0.0  Mic-M   * Adoption to Log Parser Adapter
  *  0.1.0  Mic-M   * Initial release (for Log Script - https://github.com/Mic-M/iobroker.logfile-script).
  ******************************************************************************************************/
@@ -16,10 +17,9 @@
  ******************************************************************************************************/
 
 // **Capitalize First Letters**
-// The spoken command to Alexa is being returned in lowercase, like "turn on kitchen light". 
+// The spoken command to Alexa is being returned in lowercase, like "turn on kitchen light".
 // With this option set to true, the output will be "Turn On Kitchen Light" (so capitalized first letter of each word)
 const g_capFirstLetters = true;
-
 
 /******************************************************************************************************
  * End of Script Settings. Please do not change anything below here.
@@ -27,21 +27,24 @@ const g_capFirstLetters = true;
 
 main();
 function main() {
-    // All Alexa adapter instances, so alexa2.0.History.json, alexa2.1.History.json, alexa2.2.History.json, etc.
-    on({id: /^alexa2\.\d\.History\.json$/, change:'any'}, function(obj) {
+	// All Alexa adapter instances, so alexa2.0.History.json, alexa2.1.History.json, alexa2.2.History.json, etc.
+	on({ id: /^alexa2\.\d\.History\.json$/, change: 'any' }, function (obj) {
+		try {
+			// obj.state.val: JSON string of oject.
+			// Like: {"name":"Alexa Flur","serialNumber":"xxxxxxxxxx","summary":"Wohnlicht an","creationTime":1582843794820, ... }
+			let objHistory = JSON.parse(obj.state.val);
 
-        // obj.state.val: JSON string of oject.
-        // Like: {"name":"Alexa Flur","serialNumber":"xxxxxxxxxx","summary":"Wohnlicht an","creationTime":1582843794820, ... }
-        let objHistory = JSON.parse(obj.state.val); 
-
-        // ignore alexa keywords or empty value.
-        if(! (['', 'alexa','echo','computer'].includes(objHistory['summary']) )) {
-            // ignore "sprich mir nach"
-            if (!(objHistory['summary'].includes('sprich mir nach '))) {
-                log('[Alexa-Log-Script] ##{"message":"' + formatAlexaSummary(objHistory['summary']) + '", "from":"' + objHistory['name'] + '"}##');
-            }
-        }
-    });
+			// ignore alexa keywords or empty value.
+			if (!['', 'alexa', 'echo', 'computer'].includes(objHistory['summary'])) {
+				// ignore "sprich mir nach"
+				if (!objHistory['summary'].includes('sprich mir nach ')) {
+					log('[Alexa-Log-Script] ##{"message":"' + formatAlexaSummary(objHistory['summary']) + '", "from":"' + objHistory['name'] + '"}##');
+				}
+			}
+		} catch (error) {
+			log(error);
+		}
+	});
 }
 
 /**
@@ -50,6 +53,6 @@ function main() {
  * @return {string} the formatted summary
  */
 function formatAlexaSummary(summaryText) {
-    if (g_capFirstLetters) summaryText = summaryText.replace(/(^|\s)\S/g, l => l.toUpperCase()); // Capitalize if set. https://stackoverflow.com/questions/2332811/
-    return summaryText;
+	if (g_capFirstLetters) summaryText = summaryText.replace(/(^|\s)\S/g, (l) => l.toUpperCase()); // Capitalize if set. https://stackoverflow.com/questions/2332811/
+	return summaryText;
 }
