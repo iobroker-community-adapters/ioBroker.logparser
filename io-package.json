@@ -27,7 +27,6 @@
         "es": "Se solucionó el problema n. ° 15 con respecto a la expresión regular de la pestaña 'Reglas del analizador', columna 'Lista negra', Mejora n. ° 16 implementada para agregar clases CSS específicas a cualquier elemento del registro JSON por opción de adaptador, Mejora importante: se implementó toda la documentación en el adaptador para mejorar significativamente usabilidad. Algunas mejoras bajo el capó.",
         "pl": "Naprawiono problem nr 15 dotyczący wyrażenia regularnego dla zakładki „Reguły parsera”, kolumna „Czarna lista”, Ulepszenie nr 16 zaimplementowane w celu dodania określonych klas CSS do dowolnego elementu dziennika JSON dla opcji adaptera, Główne ulepszenie: Zaimplementowano całą dokumentację do samego adaptera, aby znacznie poprawić użyteczność. Kilka ulepszeń pod maską.",
         "zh-cn": "修复了关于选项卡“解析器规则”，“黑名单”列的正则表达式的问题15，已实现增强功能16，以将特定CSS类添加到每个适配器选项的JSON日志的任何元素中，主要改进：在适配器本身中实现了整个文档，从而显着改进可用性。引擎盖下的一些改进。"
-        }
       },
       "1.0.4": {
         "en": "Fixed 'Today/Yesterday' updating issue - https://forum.iobroker.net/post/469757",
