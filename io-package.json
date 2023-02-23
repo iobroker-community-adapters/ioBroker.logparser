@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "logparser",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "news": {
+      "1.2.1": {
+        "en": "Adapter has been moved to iobroker-community-adapters",
+        "de": "Adapter wurde auf iobroker-community-adapters verschoben",
+        "ru": "Адаптер переехал в iobroker-community-adapters",
+        "pt": "Adapter foi movido para iobroker-community-adapters",
+        "nl": "Adapter is verplaatst naar iobroker-community-apters",
+        "fr": "Adaptateur a été déplacé à iobroker-community-adapters",
+        "it": "L'adattatore è stato spostato a iobroker-community-adapters",
+        "es": "Adaptador ha sido trasladado a iobroker-community-adapters",
+        "pl": "Adapter został przeniesiony do iobroker-community-adapter",
+        "uk": "Переміщено перехід на iobroker-community-adapters",
+        "zh-cn": "已经向气勃罗克-community-adapters转移。"
+      },
       "1.2.0": {
         "en": "Adapter has been moved to iobroker-community-adapters",
         "de": "Adapter wurde auf iobroker-community-adapters verschoben",
@@ -75,18 +88,6 @@
         "es": "Dependencia lodash actualizada de 4.17.15 a 4.17.19",
         "pl": "Zaktualizowano zależność lodash z 4.17.15 do 4.17.19",
         "zh-cn": "将lodash依赖性从4.17.15更新为4.17.19"
-      },
-      "1.0.0": {
-        "en": "No changes - just prepare versioning to add adapter to stable repository",
-        "de": "Keinerlei Änderungen - Adapter lediglich für das 'Stable Repository' vorbereitet.",
-        "ru": "Без изменений - просто подготовьте управление версиями, чтобы добавить адаптер в стабильный репозиторий",
-        "pt": "Sem alterações - basta preparar o controle de versão para adicionar o adaptador ao repositório estável",
-        "nl": "Geen wijzigingen - bereid gewoon versiebeheer voor om een adapter toe te voegen aan een stabiele repository",
-        "fr": "Aucune modification - il suffit de préparer le versionnement pour ajouter l'adaptateur au référentiel stable",
-        "it": "Nessuna modifica: basta preparare il controllo delle versioni per aggiungere l'adattatore al repository stabile",
-        "es": "Sin cambios: solo prepare el versionado para agregar el adaptador al repositorio estable",
-        "pl": "Bez zmian - po prostu przygotuj wersję, aby dodać adapter do stabilnego repozytorium",
-        "zh-cn": "无需更改-只需准备版本控制即可将适配器添加到稳定的存储库"
       }
     },
     "title": "Log Parser",
