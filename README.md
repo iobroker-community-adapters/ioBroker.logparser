@@ -105,7 +105,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ## License
 MIT License
 
-Copyright (c) 2020 Mic-M, 2023 McM1957 <mcm57@gmx.at>, ioBroker Community Developers 
+Copyright (c) 2020 - 2023 Mic-M, McM1957 <mcm57@gmx.at>, ciddi89 <mail@christian-behrends.de>,  ioBroker Community Developers 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
