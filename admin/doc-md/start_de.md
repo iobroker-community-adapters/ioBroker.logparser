@@ -5,7 +5,7 @@
 
 <br>
 
-Dieser Adapter parst (filtert) alle Logs von ioBroker-Adaptern und liefert die Ergebnisse als JSON in Datenpunkten für jeden von dir im Reiter "PARSER-REGELN (FILTER)" angelegten Filter. 
+Dieser Adapter parst (filtert) alle Logs von ioBroker-Adaptern und liefert die Ergebnisse als JSON in Datenpunkten für jeden von dir im Reiter "PARSER-REGELN (FILTER)" angelegten Filter.
 
 Das resultierende JSON kann dann im VIS zur Visualisierung verwendet werden. Datenpunkte zum Leeren (Löschen) alter Logs werden ebenfalls bereitgestellt (wie `logparser.0.filters.Homematic.emptyJson` zum Leeren eines spezifischen Filters oder `logparser.0.emptyAllJson` zum Leeren aller Filter).
 
@@ -20,10 +20,9 @@ Das resultierende JSON kann dann im VIS zur Visualisierung verwendet werden. Dat
 
 Im Reiter "PARSER-REGELN (FILTER)" konfigurierst du die entsprechenden Filter-Regeln. Dort kannst du durch klicken auf die "Balkenüberschrift" eine entsprechende weiterführende Erklärung aller Optionen öffnen:
 
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/parser-rules-expand-help-animated.gif?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/parser-rules-expand-help-animated.gif?raw=true)
 
 Danach siehst du dir die weiteren Einstellungen in den anderen Reitern an, die dort entsprechend erklärt sind.
-
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
@@ -34,11 +33,11 @@ Danach siehst du dir die weiteren Einstellungen in den anderen Reitern an, die d
 
 <br>
 
-Hier ist ein VIS-Beispielprojekt, welches in VIS importiert werden kann: [vis-project-ex_logparser-adapter.zip](https://github.com/Mic-M/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip). Diese zip-Datei einfach herunterladen, und in VIS im Menü `Setup > Projekt-Export/Import > Import` auswählen, um dann entsprechend als Projekt zu importieren. 
+Hier ist ein VIS-Beispielprojekt, welches in VIS importiert werden kann: [vis-project-ex_logparser-adapter.zip](https://github.com/iobroker-community-adapters/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip). Diese zip-Datei einfach herunterladen, und in VIS im Menü `Setup > Projekt-Export/Import > Import` auswählen, um dann entsprechend als Projekt zu importieren.
 
 Bitte beachte, dass du die [Material Design Widgets](https://github.com/Scrounger/ioBroker.vis-materialdesign) benötigt, denn sonst wird das nicht richtig dargestellt.
 
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/visintro-animated.gif?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/visintro-animated.gif?raw=true)
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
@@ -54,6 +53,7 @@ Bitte beachte, dass du die [Material Design Widgets](https://github.com/Scrounge
 Es gibt die Möglichkeit, über JavaScript, Blockly, etc. Logs abzusetzen und dabei zu beeinflussen, welcher Inhalt in die Spalten 'date','severity','from','message' der JSON-Tabellen gesetzt wird.
 
 ### Beispiel
+
 Folgender Befehl wird in einem JavaScript ausgeführt:
 `log('[Alexa-Log-Script] ##{"message":"' + 'Befehl [Musik an].' + '", "from":"' + 'Alexa Flur' + '"}##');`
 
@@ -65,14 +65,16 @@ In die Logzeile folgendes aufnehmen: `##{"date":"", "severity":"", "from":"", "m
 Dabei können einzelne Werte entfernt werden, also z.B. nur um den Logtext (message) zu ändern, nimmt man `##{"message":"hier der Text."}##`
 
 ### Use Cases
+
 Da der Adapter umfangreiche Filter bietet, von denen beliebig viele angelegt werden können und dann in Datenpunkten verfügbar sind, können mit dieser Funktion einfach per [log()](https://github.com/ioBroker/ioBroker.javascript/blob/master/docs/en/javascript.md#log---gives-out-the-message-into-log) entsprechend Tabellen gefüllt werden.
 
 ### Script-Beispiel (für JavaScript-Adapter): Alexa History - alle Sprach-Kommandos im VIS ausgeben
 
-Hier ist ein [Beispiel-Script](https://github.com/Mic-M/ioBroker.logparser/blob/master/accessories/alexa-history.js) für den JavaScript-Adapter. 
+Hier ist ein [Beispiel-Script](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/accessories/alexa-history.js) für den JavaScript-Adapter.
 
 **Installation:**
-1. [Script-Code](https://raw.githubusercontent.com/Mic-M/ioBroker.logparser/master/accessories/alexa-history.js) öffnen.
+
+1. [Script-Code](https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/accessories/alexa-history.js) öffnen.
 2. Alles kopieren (Strg + a)
 3. Zur ioBroker-Administration wechseln und dort im linken Menü "Skripte" auswählen.
 4. Mit dem "+"-Menüpunkt ein neues Script hinzufügen, dann "Javascript" auswählen, und einen Namen vergeben (z.B. "Alexa-History") und speichern.
@@ -89,18 +91,17 @@ Hier ist ein [Beispiel-Script](https://github.com/Mic-M/ioBroker.logparser/blob/
 **Einrichtung**
 
 Sobald das Script läuft, in den Admin-Einstellungen des Adapters einen neuen Filter erstellen:
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/alexa-log-filter.png?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/alexa-log-filter.png?raw=true)
 
-Dabei darauf achten, dass in der Spalte "Whitelist UND" `[Alexa-Log-Script]` steht. 
+Dabei darauf achten, dass in der Spalte "Whitelist UND" `[Alexa-Log-Script]` steht.
 
 **Ergebnis**
 
 Damit werden dann nur die Logs vom Alexa-Script in diesem Filter angezeigt.
 
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/alexa-log-filter.vis.png?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/alexa-log-filter.vis.png?raw=true)
 
 Wie zu sehen wird damit also "Quelle" (wäre hier normalerweise `javascript.0`) durch das Alexa-Gerät (hier: `Sonos Küche`) ersetzt. Außerdem wird die Message durch den gesprochenen Befehl (hier: `Licht An`) ersetzt. Genauso können auch noch das Datum (`date`) und das Log-Level (`level`) ersetzt werden.
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
-

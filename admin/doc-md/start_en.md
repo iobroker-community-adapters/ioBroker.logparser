@@ -18,13 +18,12 @@ This adapter parses (filters) all logs of ioBroker adapters and provides the res
 
 In the tab "PARSER RULES (FILTER)" you configure the according filter rules you need. You can expand an explanation of all options by clicking on the blue "bar heading":
 
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/parser-rules-expand-help-animated.gif?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/parser-rules-expand-help-animated.gif?raw=true)
 
 After that you go through the further settings in the other tabs, which are explained there accordingly.
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
-
 
 <details>
   <summary style="font-size:1.3em; border:1px solid #ddd; background-color:#E0EBF3; color:black; padding:10px 0 10px 5px">Visualization (Showing logs in VIS)</summary> <!-- Header -->
@@ -32,12 +31,12 @@ After that you go through the further settings in the other tabs, which are expl
 
 <br>
 
-Here is an example of a VIS project, which you can import in VIS: [vis-project-ex_logparser-adapter.zip](https://github.com/Mic-M/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip). 
+Here is an example of a VIS project, which you can import in VIS: [vis-project-ex_logparser-adapter.zip](https://github.com/iobroker-community-adapters/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip).
 Just download this zip file. Then, in VIS, navigate to menu `Setup > Project Export/Import > Import` and select this zip file accordingly.
 
 Please note that you will also need the [Material Design Widgets](https://github.com/Scrounger/ioBroker.vis-materialdesign) to use this project.
 
-![image](https://github.com/Mic-M/ioBroker.logparser/blob/master/admin/doc-md/img/visintro-animated.gif?raw=true)
+![image](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/admin/doc-md/img/visintro-animated.gif?raw=true)
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
@@ -64,4 +63,3 @@ Individual parameters can be removed, e.g. just to change the log text (message)
 
 </details>
 <!-- Markdown Collapsible Section - We must have an empty line below (per link above)  -->
-
