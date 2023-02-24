@@ -79,6 +79,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ### **WORK IN PROGRESS**
 
 -   (ciddi89) Fixed: Alexa-History script
+-   (ciddi89) Fixed: adjusted links to new repo
 
 ### 1.2.1 (2023-02-23)
 
