@@ -2,13 +2,23 @@
 
 # ioBroker.logparser
 
-![Number of Installations](http://iobroker.live/badges/logparser-installed.svg)
-![Number of Installations](http://iobroker.live/badges/logparser-stable.svg)
-[![NPM version](http://img.shields.io/npm/v/iobroker.logparser.svg)](https://www.npmjs.com/package/iobroker.logparser)
-
-![Test and Release](https://github.com/iobroker-community-adapters/iobroker.logoarser/workflows/Test%20and%20Release/badge.svg)
-[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/logparser/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
+[![GitHub license](https://img.shields.io/github/license/iobroker-community-adapters/ioBroker.logparser)](https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.logparser.svg)](https://www.npmjs.com/package/iobroker.logparser)
+![GitHub repo size](https://img.shields.io/github/repo-size/iobroker-community-adapters/ioBroker.logparser)
+[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/logparser/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)</br>
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/iobroker-community-adapters/ioBroker.logparser)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/iobroker-community-adapters/ioBroker.logparser/latest)
+![GitHub last commit](https://img.shields.io/github/last-commit/iobroker-community-adapters/ioBroker.logparser)
+![GitHub issues](https://img.shields.io/github/issues/iobroker-community-adapters/ioBroker.logparser)
+</br>
+**Version:** </br>
+[![NPM version](http://img.shields.io/npm/v/iobroker.logparser.svg)](https://www.npmjs.com/package/iobroker.logparser)
+![Current version in stable repository](https://iobroker.live/badges/logparser-stable.svg)
+![Number of Installations](https://iobroker.live/badges/logparser-installed.svg)
+</br>
+**Tests:** </br>
+[![Test and Release](https://github.com/iobroker-community-adapters/ioBroker.logparser/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/iobroker-community-adapters/ioBroker.logparser/actions/workflows/test-and-release.yml)
+[![CodeQL](https://github.com/iobroker-community-adapters/ioBroker.logparser/actions/workflows/codeql.yml/badge.svg)](https://github.com/iobroker-community-adapters/ioBroker.logparser/actions/workflows/codeql.yml)
 
 **This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.**
 For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
@@ -84,7 +94,6 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ### 1.2.2 (2023-02-23)
 
 -   (McM1957) sentry integration has been fixed
-
 
 ### 1.2.1 (2023-02-23)
 
