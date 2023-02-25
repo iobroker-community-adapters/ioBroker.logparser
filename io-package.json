@@ -1,314 +1,310 @@
 {
-  "common": {
-    "name": "logparser",
-    "version": "1.2.2",
-    "news": {
-      "1.2.2": {
-        "en": "sentry integration has been fixed",
-        "de": "Die Sentry Anbindung wurde korriert. ",
-        "ru": "интеграция с отправлением была исправлена",
-        "pt": "integração sentinela foi corrigida",
-        "nl": "integratie is gerepareerd",
-        "fr": "l'intégration des sentinelles a été fixe",
-        "it": "l'integrazione delle navi è stata fissata",
-        "es": "la integración centinela ha sido fija",
-        "pl": "integracja została ustalona",
-        "uk": "акредитація відправлень була виправлена",
-        "zh-cn": "发送的合并已经确定。"
-      },
-      "1.2.1": {
-        "en": "Adapter has been moved to iobroker-community-adapters",
-        "de": "Adapter wurde auf iobroker-community-adapters verschoben",
-        "ru": "Адаптер переехал в iobroker-community-adapters",
-        "pt": "Adapter foi movido para iobroker-community-adapters",
-        "nl": "Adapter is verplaatst naar iobroker-community-apters",
-        "fr": "Adaptateur a été déplacé à iobroker-community-adapters",
-        "it": "L'adattatore è stato spostato a iobroker-community-adapters",
-        "es": "Adaptador ha sido trasladado a iobroker-community-adapters",
-        "pl": "Adapter został przeniesiony do iobroker-community-adapter",
-        "uk": "Переміщено перехід на iobroker-community-adapters",
-        "zh-cn": "已经向气勃罗克-community-adapters转移。"
-      },
-      "1.2.0": {
-        "en": "Adapter has been moved to iobroker-community-adapters",
-        "de": "Adapter wurde auf iobroker-community-adapters verschoben",
-        "ru": "Адаптер переехал в iobroker-community-adapters",
-        "pt": "Adapter foi movido para iobroker-community-adapters",
-        "nl": "Adapter is verplaatst naar iobroker-community-apters",
-        "fr": "Adaptateur a été déplacé à iobroker-community-adapters",
-        "it": "L'adattatore è stato spostato a iobroker-community-adapters",
-        "es": "Adaptador ha sido trasladado a iobroker-community-adapters",
-        "pl": "Adapter został przeniesiony do iobroker-community-adapter",
-        "uk": "Переміщено перехід на iobroker-community-adapters",
-        "zh-cn": "已经向气勃罗克-community-adapters转移。"
-      },
-      "1.1.0": {
-        "en": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
-        "de": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
-        "ru": "Исправлена проблема № 15, касающаяся регулярного выражения для вкладки «Правила парсера», столбца «Черный список». Улучшение № 16, реализованное для добавления определенных классов CSS к любому элементу журнала JSON для каждого параметра адаптера. Значительное улучшение: полная документация добавлена в сам адаптер для значительного улучшения. удобство использования. Несколько улучшений под капотом.",
-        "pt": "Corrigido o problema nº 15 com relação ao regex para a guia 'Parser Rules', coluna 'Blacklist', Aprimoramento nº 16 implementado para adicionar classes CSS específicas a qualquer elemento do log JSON por opção de adaptador, Melhoria principal: Implementação de documentação inteira no próprio adaptador para melhorar significativamente usabilidade. Algumas melhorias sob o capô.",
-        "nl": "Probleem # 15 opgelost met betrekking tot regex voor tabblad 'Parser-regels', kolom 'Blacklist', Verbetering # 16 geïmplementeerd om specifieke CSS-klassen toe te voegen aan elk element van het JSON-logboek per adapteroptie, Grote verbetering: Volledige documentatie geïmplementeerd in adapter zelf om aanzienlijk te verbeteren bruikbaarheid. Een paar verbeteringen onder de motorkap.",
-        "fr": "Correction du problème n ° 15 concernant l'expression régulière pour l'onglet `` Règles d'analyse '', colonne `` Liste noire '', Amélioration n ° 16 implémentée pour ajouter des classes CSS spécifiques à n'importe quel élément du journal JSON par option d'adaptateur, Amélioration majeure: Implémentation de toute la documentation dans l'adaptateur lui-même pour améliorer considérablement utilisabilité. Quelques améliorations sous le capot.",
-        "it": "Risolto il problema # 15 relativo all'espressione regolare per la scheda \"Parser Rules\", colonna \"Blacklist\", Miglioramento # 16 implementato per aggiungere classi CSS specifiche a qualsiasi elemento del registro JSON per opzione adattatore, Miglioramento importante: implementata l'intera documentazione nell'adattatore stesso per migliorare significativamente usabilità. Alcuni miglioramenti sotto il cofano.",
-        "es": "Se solucionó el problema n. ° 15 con respecto a la expresión regular de la pestaña 'Reglas del analizador', columna 'Lista negra', Mejora n. ° 16 implementada para agregar clases CSS específicas a cualquier elemento del registro JSON por opción de adaptador, Mejora importante: se implementó toda la documentación en el adaptador para mejorar significativamente usabilidad. Algunas mejoras bajo el capó.",
-        "pl": "Naprawiono problem nr 15 dotyczący wyrażenia regularnego dla zakładki „Reguły parsera”, kolumna „Czarna lista”, Ulepszenie nr 16 zaimplementowane w celu dodania określonych klas CSS do dowolnego elementu dziennika JSON dla opcji adaptera, Główne ulepszenie: Zaimplementowano całą dokumentację do samego adaptera, aby znacznie poprawić użyteczność. Kilka ulepszeń pod maską.",
-        "zh-cn": "修复了关于选项卡“解析器规则”，“黑名单”列的正则表达式的问题15，已实现增强功能16，以将特定CSS类添加到每个适配器选项的JSON日志的任何元素中，主要改进：在适配器本身中实现了整个文档，从而显着改进可用性。引擎盖下的一些改进。"
-      },
-      "1.0.4": {
-        "en": "Fixed 'Today/Yesterday' updating issue - https://forum.iobroker.net/post/469757",
-        "de": "Aktualisierungs-Issue von 'Heute/Gestern' behoben - https://forum.iobroker.net/post/469757",
-        "ru": "Исправлена проблема обновления «Сегодня / Вчера» - https://forum.iobroker.net/post/469757",
-        "pt": "Corrigido o problema de atualização 'Hoje / Ontem' - https://forum.iobroker.net/post/469757",
-        "nl": "Opgelost 'Vandaag / Gisteren' updateprobleem - https://forum.iobroker.net/post/469757",
-        "fr": "Correction du problème de mise à jour 'Aujourd'hui / Hier' - https://forum.iobroker.net/post/469757",
-        "it": "Risolto il problema di aggiornamento \"Oggi / Ieri\" - https://forum.iobroker.net/post/469757",
-        "es": "Se corrigió el problema de actualización 'Hoy / Ayer' - https://forum.iobroker.net/post/469757",
-        "pl": "Naprawiono problem z aktualizacją „Dzisiaj / Wczoraj” - https://forum.iobroker.net/post/469757",
-        "zh-cn": "修复了``今天/昨天''更新问题-https://forum.iobroker.net/post/469757"
-      },
-      "1.0.3": {
-        "en": "Added Sentry support.",
-        "de": "Sentry-Unterstützung hinzugefügt.",
-        "ru": "Добавлена поддержка Sentry.",
-        "pt": "Adicionado suporte Sentry.",
-        "nl": "Sentry-ondersteuning toegevoegd.",
-        "fr": "Ajout du support Sentry.",
-        "it": "Aggiunto supporto Sentry.",
-        "es": "Se agregó soporte de Centinela.",
-        "pl": "Dodano obsługę Wartownika.",
-        "zh-cn": "增加了哨兵支持。"
-      },
-      "1.0.2": {
-        "en": "Added debug logging for 'callAtMidnight()' and 'updateTodayYesterday()'",
-        "de": "Debug-Logging für 'callAtMidnight ()' und 'updateTodayYesterday ()' hinzugefügt",
-        "ru": "Добавлено ведение журнала отладки для callAtMidnight () и updateTodayYesterday ()",
-        "pt": "Adicionado log de depuração para 'callAtMidnight ()' e 'updateTodayYesterday ()'",
-        "nl": "Logboekregistratie voor debuggen toegevoegd voor 'callAtMidnight ()' en 'updateTodayYesterday ()'",
-        "fr": "Ajout de la journalisation du débogage pour 'callAtMidnight ()' et 'updateTodayYesterday ()'",
-        "it": "Aggiunta registrazione debug per 'callAtMidnight ()' e 'updateTodayYesterday ()'",
-        "es": "Se agregó el registro de depuración para 'callAtMidnight ()' y 'updateTodayYesterday ()'",
-        "pl": "Dodano rejestrowanie debugowania dla „callAtMidnight ()” i „updateTodayYesterday ()”",
-        "zh-cn": "为“ callAtMidnight（）”和“ updateTodayYesterday（）”添加了调试日志"
-      }
-    },
-    "title": "Log Parser",
-    "titleLang": {
-      "en": "Log Parser",
-      "de": "Log Parser",
-      "ru": "Вход Parser",
-      "pt": "Log Parser",
-      "nl": "Log Parser",
-      "fr": "Log Parser",
-      "it": "Per saperne di più",
-      "es": "Log Parser",
-      "pl": "Log Parser",
-      "uk": "Вхід",
-      "zh-cn": "后勤业务处"
-    },
-    "desc": {
-      "en": "Parsing (filtering) the ioBroker log",
-      "de": "ioBroker-Logs aller Adapter parsen (filtern)",
-      "ru": "Парсинг (фильтрация) журнала ioBroker",
-      "pt": "Analisando (filtrando) o log do ioBroker",
-      "nl": "Het ioBroker-logboek parseren (filteren)",
-      "fr": "Analyse (filtrage) du journal ioBroker",
-      "it": "Analisi (filtro) del registro ioBroker",
-      "es": "Analizar (filtrar) el registro de ioBroker",
-      "pl": "Parsowanie (filtrowanie) dziennika ioBroker",
-      "uk": "Парсінг (фільтрування) журнал ioBroker\n",
-      "zh-cn": "解析（过滤）ioBroker日志"
-    },
-    "authors": [
-      "Mic-M <iob.micm@gmail.com>",
-      "McM1957 <mcm57@gmx.at>",
-      "ciddi89 <mail@christian-behrends.de>"
-    ],
-    "keywords": [
-      "log",
-      "parser",
-      "filter"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "logparser.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/admin/logparser.png",
-    "readme": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "logic",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "poll",
-    "materialize": true,
-    "dependencies": [
-      {
-        "js-controller": ">=3.3.22"
-      }
-    ],
-    "logTransporter": true,
-    "plugins": {
-      "sentry": {
-        "dsn": "https://fc85aa1722d94bf18588bf8673aa5aef@sentry.iobroker.net/93"
-      }
-    }
-  },
-  "native": {
-    "removePid": true,
-    "txtToday": "Heute",
-    "txtYesterday": "Gestern",
-    "txtMerge": "[# Einträge] ",
-    "jsonColumns": "date,severity,from,message",
-    "sortDescending": true,
-    "removeScriptJs": true,
-    "visTables": 1,
-    "updateInterval": 10,
-    "maxLogs": 100,
-    "cssDate": false,
-    "cssSeverity": true,
-    "cssFrom": false,
-    "cssMessage": false,
-    "globalBlacklist": [
-      {
-        "item": "<==Disconnect system.user.admin from ::ffff:",
-        "comment": "web.0 Adapter",
-        "active": true
-      },
-      {
-        "item": "/registered [0-9]+ subscriptions and [0-9]+ schedules/",
-        "comment": "Beispiel für Regex",
-        "active": true
-      },
-      {
-        "item": "/instance system\\.adapter\\.[^\\s]* terminated with code 0 \\((NO_ERROR|OK)\\)/",
-        "comment": "Weiteres Regex-Beispiel",
-        "active": true
-      },
-      {
-        "item": "/instance system\\.adapter\\.[^\\s]* started with pid [0-9]+/",
-        "comment": "Noch ein Regex",
-        "active": true
-      },
-      {
-        "item": "Start javascript script.js.",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "Stop script script.js.",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "bring.0 Cannot get translations: RequestError",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": " reconnected. Old secret ",
-        "comment": "Sonoff",
-        "active": true
-      },
-      {
-        "item": "Popup-News readed...",
-        "comment": "info.0 Adapter",
-        "active": true
-      },
-      {
-        "item": "[warn] Projects disabled : set editorTheme.projects.enabled=true to enable",
-        "comment": "see https://forum.iobroker.net/topic/12260/",
-        "active": true
-      },
-      {
-        "item": "[warn] Projects disabled : editorTheme.projects.enabled=false",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "Update repository \"latest\" under",
-        "comment": "",
-        "active": true
-      }
-    ],
-    "parserRules": [
-      {
-        "active": true,
-        "name": "Info",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": true,
-        "warn": false,
-        "error": false,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "dateformat": "#DD.MM.# hh:mm"
-      },
-      {
-        "active": true,
-        "name": "Warn",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": true,
-        "error": false,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "dateformat": "#DD.MM.# hh:mm"
-      },
-      {
-        "active": true,
-        "name": "Error",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": false,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "dateformat": "#DD.MM.# hh:mm"
-      },
-      {
-        "active": true,
-        "name": "WarnAndError",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": true,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "dateformat": "#DD.MM.# hh:mm"
-      },
-      {
-        "active": true,
-        "name": "Homematic",
-        "whitelistAnd": "/hm-(rpc|rega)\\.[0-9]/",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": true,
-        "warn": true,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "dateformat": "#DD.MM.# hh:mm"
-      }
-    ]
-  },
-  "objects": [],
-  "instanceObjects": []
+	"common": {
+		"name": "logparser",
+		"version": "1.2.2",
+		"news": {
+			"1.2.2": {
+				"en": "sentry integration has been fixed",
+				"de": "Die Sentry Anbindung wurde korriert. ",
+				"ru": "интеграция с отправлением была исправлена",
+				"pt": "integração sentinela foi corrigida",
+				"nl": "integratie is gerepareerd",
+				"fr": "l'intégration des sentinelles a été fixe",
+				"it": "l'integrazione delle navi è stata fissata",
+				"es": "la integración centinela ha sido fija",
+				"pl": "integracja została ustalona",
+				"uk": "акредитація відправлень була виправлена",
+				"zh-cn": "发送的合并已经确定。"
+			},
+			"1.2.1": {
+				"en": "Adapter has been moved to iobroker-community-adapters",
+				"de": "Adapter wurde auf iobroker-community-adapters verschoben",
+				"ru": "Адаптер переехал в iobroker-community-adapters",
+				"pt": "Adapter foi movido para iobroker-community-adapters",
+				"nl": "Adapter is verplaatst naar iobroker-community-apters",
+				"fr": "Adaptateur a été déplacé à iobroker-community-adapters",
+				"it": "L'adattatore è stato spostato a iobroker-community-adapters",
+				"es": "Adaptador ha sido trasladado a iobroker-community-adapters",
+				"pl": "Adapter został przeniesiony do iobroker-community-adapter",
+				"uk": "Переміщено перехід на iobroker-community-adapters",
+				"zh-cn": "已经向气勃罗克-community-adapters转移。"
+			},
+			"1.2.0": {
+				"en": "Adapter has been moved to iobroker-community-adapters",
+				"de": "Adapter wurde auf iobroker-community-adapters verschoben",
+				"ru": "Адаптер переехал в iobroker-community-adapters",
+				"pt": "Adapter foi movido para iobroker-community-adapters",
+				"nl": "Adapter is verplaatst naar iobroker-community-apters",
+				"fr": "Adaptateur a été déplacé à iobroker-community-adapters",
+				"it": "L'adattatore è stato spostato a iobroker-community-adapters",
+				"es": "Adaptador ha sido trasladado a iobroker-community-adapters",
+				"pl": "Adapter został przeniesiony do iobroker-community-adapter",
+				"uk": "Переміщено перехід на iobroker-community-adapters",
+				"zh-cn": "已经向气勃罗克-community-adapters转移。"
+			},
+			"1.1.0": {
+				"en": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
+				"de": "Fixed issue #15 regarding regex for tab 'Parser Rules', column 'Blacklist', Enhancement #16 implemented to add specific CSS classes to any element of the JSON log per adapter option, Major improvement: Implemented entire documentation into adapter itself to significantly improve usability. A few improvements under the hood.",
+				"ru": "Исправлена проблема № 15, касающаяся регулярного выражения для вкладки «Правила парсера», столбца «Черный список». Улучшение № 16, реализованное для добавления определенных классов CSS к любому элементу журнала JSON для каждого параметра адаптера. Значительное улучшение: полная документация добавлена в сам адаптер для значительного улучшения. удобство использования. Несколько улучшений под капотом.",
+				"pt": "Corrigido o problema nº 15 com relação ao regex para a guia 'Parser Rules', coluna 'Blacklist', Aprimoramento nº 16 implementado para adicionar classes CSS específicas a qualquer elemento do log JSON por opção de adaptador, Melhoria principal: Implementação de documentação inteira no próprio adaptador para melhorar significativamente usabilidade. Algumas melhorias sob o capô.",
+				"nl": "Probleem # 15 opgelost met betrekking tot regex voor tabblad 'Parser-regels', kolom 'Blacklist', Verbetering # 16 geïmplementeerd om specifieke CSS-klassen toe te voegen aan elk element van het JSON-logboek per adapteroptie, Grote verbetering: Volledige documentatie geïmplementeerd in adapter zelf om aanzienlijk te verbeteren bruikbaarheid. Een paar verbeteringen onder de motorkap.",
+				"fr": "Correction du problème n ° 15 concernant l'expression régulière pour l'onglet `` Règles d'analyse '', colonne `` Liste noire '', Amélioration n ° 16 implémentée pour ajouter des classes CSS spécifiques à n'importe quel élément du journal JSON par option d'adaptateur, Amélioration majeure: Implémentation de toute la documentation dans l'adaptateur lui-même pour améliorer considérablement utilisabilité. Quelques améliorations sous le capot.",
+				"it": "Risolto il problema # 15 relativo all'espressione regolare per la scheda \"Parser Rules\", colonna \"Blacklist\", Miglioramento # 16 implementato per aggiungere classi CSS specifiche a qualsiasi elemento del registro JSON per opzione adattatore, Miglioramento importante: implementata l'intera documentazione nell'adattatore stesso per migliorare significativamente usabilità. Alcuni miglioramenti sotto il cofano.",
+				"es": "Se solucionó el problema n. ° 15 con respecto a la expresión regular de la pestaña 'Reglas del analizador', columna 'Lista negra', Mejora n. ° 16 implementada para agregar clases CSS específicas a cualquier elemento del registro JSON por opción de adaptador, Mejora importante: se implementó toda la documentación en el adaptador para mejorar significativamente usabilidad. Algunas mejoras bajo el capó.",
+				"pl": "Naprawiono problem nr 15 dotyczący wyrażenia regularnego dla zakładki „Reguły parsera”, kolumna „Czarna lista”, Ulepszenie nr 16 zaimplementowane w celu dodania określonych klas CSS do dowolnego elementu dziennika JSON dla opcji adaptera, Główne ulepszenie: Zaimplementowano całą dokumentację do samego adaptera, aby znacznie poprawić użyteczność. Kilka ulepszeń pod maską.",
+				"zh-cn": "修复了关于选项卡“解析器规则”，“黑名单”列的正则表达式的问题15，已实现增强功能16，以将特定CSS类添加到每个适配器选项的JSON日志的任何元素中，主要改进：在适配器本身中实现了整个文档，从而显着改进可用性。引擎盖下的一些改进。"
+			},
+			"1.0.4": {
+				"en": "Fixed 'Today/Yesterday' updating issue - https://forum.iobroker.net/post/469757",
+				"de": "Aktualisierungs-Issue von 'Heute/Gestern' behoben - https://forum.iobroker.net/post/469757",
+				"ru": "Исправлена проблема обновления «Сегодня / Вчера» - https://forum.iobroker.net/post/469757",
+				"pt": "Corrigido o problema de atualização 'Hoje / Ontem' - https://forum.iobroker.net/post/469757",
+				"nl": "Opgelost 'Vandaag / Gisteren' updateprobleem - https://forum.iobroker.net/post/469757",
+				"fr": "Correction du problème de mise à jour 'Aujourd'hui / Hier' - https://forum.iobroker.net/post/469757",
+				"it": "Risolto il problema di aggiornamento \"Oggi / Ieri\" - https://forum.iobroker.net/post/469757",
+				"es": "Se corrigió el problema de actualización 'Hoy / Ayer' - https://forum.iobroker.net/post/469757",
+				"pl": "Naprawiono problem z aktualizacją „Dzisiaj / Wczoraj” - https://forum.iobroker.net/post/469757",
+				"zh-cn": "修复了``今天/昨天''更新问题-https://forum.iobroker.net/post/469757"
+			},
+			"1.0.3": {
+				"en": "Added Sentry support.",
+				"de": "Sentry-Unterstützung hinzugefügt.",
+				"ru": "Добавлена поддержка Sentry.",
+				"pt": "Adicionado suporte Sentry.",
+				"nl": "Sentry-ondersteuning toegevoegd.",
+				"fr": "Ajout du support Sentry.",
+				"it": "Aggiunto supporto Sentry.",
+				"es": "Se agregó soporte de Centinela.",
+				"pl": "Dodano obsługę Wartownika.",
+				"zh-cn": "增加了哨兵支持。"
+			},
+			"1.0.2": {
+				"en": "Added debug logging for 'callAtMidnight()' and 'updateTodayYesterday()'",
+				"de": "Debug-Logging für 'callAtMidnight ()' und 'updateTodayYesterday ()' hinzugefügt",
+				"ru": "Добавлено ведение журнала отладки для callAtMidnight () и updateTodayYesterday ()",
+				"pt": "Adicionado log de depuração para 'callAtMidnight ()' e 'updateTodayYesterday ()'",
+				"nl": "Logboekregistratie voor debuggen toegevoegd voor 'callAtMidnight ()' en 'updateTodayYesterday ()'",
+				"fr": "Ajout de la journalisation du débogage pour 'callAtMidnight ()' et 'updateTodayYesterday ()'",
+				"it": "Aggiunta registrazione debug per 'callAtMidnight ()' e 'updateTodayYesterday ()'",
+				"es": "Se agregó el registro de depuración para 'callAtMidnight ()' y 'updateTodayYesterday ()'",
+				"pl": "Dodano rejestrowanie debugowania dla „callAtMidnight ()” i „updateTodayYesterday ()”",
+				"zh-cn": "为“ callAtMidnight（）”和“ updateTodayYesterday（）”添加了调试日志"
+			}
+		},
+		"title": "Log Parser",
+		"titleLang": {
+			"en": "Log Parser",
+			"de": "Log Parser",
+			"ru": "Вход Parser",
+			"pt": "Log Parser",
+			"nl": "Log Parser",
+			"fr": "Log Parser",
+			"it": "Per saperne di più",
+			"es": "Log Parser",
+			"pl": "Log Parser",
+			"uk": "Вхід",
+			"zh-cn": "后勤业务处"
+		},
+		"desc": {
+			"en": "Parsing (filtering) the ioBroker log",
+			"de": "ioBroker-Logs aller Adapter parsen (filtern)",
+			"ru": "Парсинг (фильтрация) журнала ioBroker",
+			"pt": "Analisando (filtrando) o log do ioBroker",
+			"nl": "Het ioBroker-logboek parseren (filteren)",
+			"fr": "Analyse (filtrage) du journal ioBroker",
+			"it": "Analisi (filtro) del registro ioBroker",
+			"es": "Analizar (filtrar) el registro de ioBroker",
+			"pl": "Parsowanie (filtrowanie) dziennika ioBroker",
+			"uk": "Парсінг (фільтрування) журнал ioBroker\n",
+			"zh-cn": "解析（过滤）ioBroker日志"
+		},
+		"authors": ["Mic-M <iob.micm@gmail.com>", "McM1957 <mcm57@gmx.at>", "ciddi89 <mail@christian-behrends.de>"],
+		"keywords": ["log", "parser", "filter"],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "logparser.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/admin/logparser.png",
+		"readme": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "logic",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"logTransporter": true,
+		"plugins": {
+			"sentry": {
+				"dsn": "https://fc85aa1722d94bf18588bf8673aa5aef@sentry.iobroker.net/93"
+			}
+		},
+		"docs": {
+			"en": ["docs/en/logparser.md"],
+			"de": ["docs/de/logparser.md"]
+		}
+	},
+	"native": {
+		"removePid": true,
+		"txtToday": "Heute",
+		"txtYesterday": "Gestern",
+		"txtMerge": "[# Einträge] ",
+		"jsonColumns": "date,severity,from,message",
+		"sortDescending": true,
+		"removeScriptJs": true,
+		"visTables": 1,
+		"updateInterval": 10,
+		"maxLogs": 100,
+		"cssDate": false,
+		"cssSeverity": true,
+		"cssFrom": false,
+		"cssMessage": false,
+		"globalBlacklist": [
+			{
+				"item": "<==Disconnect system.user.admin from ::ffff:",
+				"comment": "web.0 Adapter",
+				"active": true
+			},
+			{
+				"item": "/registered [0-9]+ subscriptions and [0-9]+ schedules/",
+				"comment": "Beispiel für Regex",
+				"active": true
+			},
+			{
+				"item": "/instance system\\.adapter\\.[^\\s]* terminated with code 0 \\((NO_ERROR|OK)\\)/",
+				"comment": "Weiteres Regex-Beispiel",
+				"active": true
+			},
+			{
+				"item": "/instance system\\.adapter\\.[^\\s]* started with pid [0-9]+/",
+				"comment": "Noch ein Regex",
+				"active": true
+			},
+			{
+				"item": "Start javascript script.js.",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "Stop script script.js.",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "bring.0 Cannot get translations: RequestError",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": " reconnected. Old secret ",
+				"comment": "Sonoff",
+				"active": true
+			},
+			{
+				"item": "Popup-News readed...",
+				"comment": "info.0 Adapter",
+				"active": true
+			},
+			{
+				"item": "[warn] Projects disabled : set editorTheme.projects.enabled=true to enable",
+				"comment": "see https://forum.iobroker.net/topic/12260/",
+				"active": true
+			},
+			{
+				"item": "[warn] Projects disabled : editorTheme.projects.enabled=false",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "Update repository \"latest\" under",
+				"comment": "",
+				"active": true
+			}
+		],
+		"parserRules": [
+			{
+				"active": true,
+				"name": "Info",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": true,
+				"warn": false,
+				"error": false,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"dateformat": "#DD.MM.# hh:mm"
+			},
+			{
+				"active": true,
+				"name": "Warn",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": true,
+				"error": false,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"dateformat": "#DD.MM.# hh:mm"
+			},
+			{
+				"active": true,
+				"name": "Error",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": false,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"dateformat": "#DD.MM.# hh:mm"
+			},
+			{
+				"active": true,
+				"name": "WarnAndError",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": true,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"dateformat": "#DD.MM.# hh:mm"
+			},
+			{
+				"active": true,
+				"name": "Homematic",
+				"whitelistAnd": "/hm-(rpc|rega)\\.[0-9]/",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": true,
+				"warn": true,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"dateformat": "#DD.MM.# hh:mm"
+			}
+		]
+	},
+	"objects": [],
+	"instanceObjects": []
 }
