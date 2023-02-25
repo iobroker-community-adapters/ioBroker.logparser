@@ -8,42 +8,39 @@ With this adapter the ioBroker logs of all adapters can be parsed, i.e. filtered
 
 For each set filter (rule), states are created under `logparser.[instance].filters`.
 
-
-| **Column**            | **Description** |
-|-----------------------|-----------------------------------------------------------------------|
-| Active                | Activate/deactivate filters |
-| Name                  | Any name (spaces and special characters are automatically removed), used as state under 'filters' |
-| Whitelist: AND        | All these expressions must be present. If you enter wildcard `*`, or leave it empty, this rule is being skipped. |
-| Whitelist: OR       | At least one of these expressions must occur. If you enter wildcard `*`, or leave it empty, this rule is being skipped. |
-| Blacklist             |  As soon as one of these expressions is present, the log is not taken over, no matter what other filters are defined. |
-| Debug/Info/Warn/Error | Which log levels should be considered? |
-| Clean            | Remove unwanted strings from log line. |
-| Max                   | Maximum number of characters of the log line, everything longer than this will be truncated. Leave empty if not used. |
+| **Column**            | **Description**                                                                                                                                                                                                                                                                                                                           |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Active                | Activate/deactivate filters                                                                                                                                                                                                                                                                                                               |
+| Name                  | Any name (spaces and special characters are automatically removed), used as state under 'filters'                                                                                                                                                                                                                                         |
+| Whitelist: AND        | All these expressions must be present. If you enter wildcard `*`, or leave it empty, this rule is being skipped.                                                                                                                                                                                                                          |
+| Whitelist: OR         | At least one of these expressions must occur. If you enter wildcard `*`, or leave it empty, this rule is being skipped.                                                                                                                                                                                                                   |
+| Blacklist             | As soon as one of these expressions is present, the log is not taken over, no matter what other filters are defined.                                                                                                                                                                                                                      |
+| Debug/Info/Warn/Error | Which log levels should be considered?                                                                                                                                                                                                                                                                                                    |
+| Clean                 | Remove unwanted strings from log line.                                                                                                                                                                                                                                                                                                    |
+| Max                   | Maximum number of characters of the log line, everything longer than this will be truncated. Leave empty if not used.                                                                                                                                                                                                                     |
 | Merge                 | This merges log entries with the same content and precedes them with a counter.<br>Without Merge:<br>`2019-08-17 20:00:00 - Retrieve weather data.`<br>`2019-08-17 20:15:00 - Retrieve weather data.`<br>`2019-08-17 20:30:00 - Retrieve weather data.`<br>Merge activated:<br>`2019-08-17 20:30:00 - [3 Entries] Retrieve weather data.` |
-| Date format          | `YYYY` = year 4-digit, `YY` = year 2-digit, `MM` = month, `DD` = day, `hh` = hour, `mm` = minute, `ss` = second. Parts within `#` characters are replaced by "Today" or "Yesterday". |
+| Date format           | `YYYY` = year 4-digit, `YY` = year 2-digit, `MM` = month, `DD` = day, `hh` = hour, `mm` = minute, `ss` = second. Parts within `#` characters are replaced by "Today" or "Yesterday".                                                                                                                                                      |
 
 #### String / Regex
-In the columns *Whitelist AND*, *Whitelist OR*, *Blacklist*, and *Clean*, both normal text (string) and regex are allowed. Separate multiple expressions with commas. Please place regex between `/` and `/`, so that the adapter recognizes if it is a regexp. If String: it is always checked for partial matches. To ignore/disable: leave empty.
 
+In the columns _Whitelist AND_, _Whitelist OR_, _Blacklist_, and _Clean_, both normal text (string) and regex are allowed. Separate multiple expressions with commas. Please place regex between `/` and `/`, so that the adapter recognizes if it is a regexp. If String: it is always checked for partial matches. To ignore/disable: leave empty.
 
 ## Tab "Further Settings"
 
-* **Remove PID**: JS controller version 2.0 or greater adds the PID in brackets to the front of logs, e.g. `(12234) Terminated: Without reason`. If activated, the PIDs including brackets, like (1234), are removed from the log lines.
+-   **Remove PID**: JS controller version 2.0 or greater adds the PID in brackets to the front of logs, e.g. `(12234) Terminated: Without reason`. If activated, the PIDs including brackets, like (1234), are removed from the log lines.
 
-* **Replace date with "today" / "yesterday"**: In the filters, you can replace today's or yesterday's date with 'Today' or 'Yesterday' in the date format column by using hash characters (#). In these fields, other terms instead of "Today"/"Yesterday" can be defined.
+-   **Replace date with "today" / "yesterday"**: In the filters, you can replace today's or yesterday's date with 'Today' or 'Yesterday' in the date format column by using hash characters (#). In these fields, other terms instead of "Today"/"Yesterday" can be defined.
 
-* **Text for "Merge"** This text is placed in front of each log line if Merge is activated. The # character is then replaced by the number of logs with the same content. Special characters like `[](){}/\` etc. are allowed. Examples (without quotation marks): "`[# entries] `", "`(#) `", "`# entries: `"
-
+-   **Text for "Merge"** This text is placed in front of each log line if Merge is activated. The # character is then replaced by the number of logs with the same content. Special characters like `[](){}/\` etc. are allowed. Examples (without quotation marks): "`[# entries] `", "`(#) `", "`# entries: `"
 
 ## Tab "Visualization"
 
-* **Number of JSON tables used in VIS**: 
-This option adds additional states for better Visualization in VIS. You will then be able to select certain filters, which are then shown accordingly in the JSON table (e.g. 'Homematic', 'Warnings', 'Errors' etc.).<br>Specify the number of different JSON tables you need. The states of these are being created under 'visualization.table0', 'visualization.table1', etc. Enter 0 to deactivate.
+-   **Number of JSON tables used in VIS**:
+    This option adds additional states for better Visualization in VIS. You will then be able to select certain filters, which are then shown accordingly in the JSON table (e.g. 'Homematic', 'Warnings', 'Errors' etc.).<br>Specify the number of different JSON tables you need. The states of these are being created under 'visualization.table0', 'visualization.table1', etc. Enter 0 to deactivate.
 
-* **Column order for JSON table**: Here you can change the order of the columns. As additional column ts (timestamp) is always added. In VIS etc. simply hide it if necessary.<br>If you need less than 4 columns: Simply select one entry of the first columns you need and then hide the rest with the VIS JSON table widget (or similar).
+-   **Column order for JSON table**: Here you can change the order of the columns. As additional column ts (timestamp) is always added. In VIS etc. simply hide it if necessary.<br>If you need less than 4 columns: Simply select one entry of the first columns you need and then hide the rest with the VIS JSON table widget (or similar).
 
-* **Sorting**: If activated: sorts the log entries in descending order, newest at the top. If deactivated: Sorts the log entries in ascending order, i.e. oldest on top. Sorting in descending order is recommended, so activate this option.
-
+-   **Sorting**: If activated: sorts the log entries in descending order, newest at the top. If deactivated: Sorts the log entries in ascending order, i.e. oldest on top. Sorting in descending order is recommended, so activate this option.
 
 ## Tab "Global Blacklist"
 
@@ -54,21 +51,17 @@ In the column "Comment" you can comment/explain the respective entry as you like
 
 ## Tab "Expert Settings"
 
-* **Interval for updating states**: New incoming log entries are collected and regularly written to the data points. Hereby the interval can be defined. Note: The states are only updated if there has been a change. However, from a performance point of view, it does not make sense to set an interval that is too short here. Less than 2 seconds is not allowed.
+-   **Interval for updating states**: New incoming log entries are collected and regularly written to the data points. Hereby the interval can be defined. Note: The states are only updated if there has been a change. However, from a performance point of view, it does not make sense to set an interval that is too short here. Less than 2 seconds is not allowed.
 
-* **Maximum number of log entries**: The maximum number of log entries that are retained in the states (older entries are removed). Please do not set a too large number, the larger the number, the more load for the adapter and thus your ioBroker server. A number of 100 has proven to be good.
-
-
-
+-   **Maximum number of log entries**: The maximum number of log entries that are retained in the states (older entries are removed). Please do not set a too large number, the larger the number, the more load for the adapter and thus your ioBroker server. A number of 100 has proven to be good.
 
 # Visualization (Showing logs in VIS)
 
-This is an example of a VIS project, which you can import in VIS: [vis-project-ex_logparser-adapter.zip](https://github.com/Mic-M/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip). 
+This is an example of a VIS project, which you can import in VIS: [vis-project-ex_logparser-adapter.zip](https://github.com/iobroker-community-adapters/ioBroker.logparser/raw/master/accessories/vis/vis-project-ex_logparser-adapter.zip).
 Just download this zip file. Then, in VIS, navigate to menu `Setup > Projekt-Export/Import > Import` and select this zip file accordingly.
 Please note that you will also need the [Material Design Widgets](https://github.com/Scrounger/ioBroker.vis-materialdesign) to use this project.
 
 ![main.jpg](img/visintro.gif)
-
 
 # Further functions
 
