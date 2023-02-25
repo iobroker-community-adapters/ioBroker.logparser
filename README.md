@@ -87,8 +87,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.2.3 (2023-02-25)
 
 -   (ciddi89) Fixed: Alexa-History script
 -   (ciddi89) Fixed: adjusted links in admin/docs to new repo
