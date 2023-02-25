@@ -63,9 +63,9 @@ class LogParser extends utils.Adapter {
 			g_timerUpdateStates = null;
 		}
 
-		g_timerUpdateStates = setTimeout(() => {
+		g_timerUpdateStates = setTimeout(async () => {
 			this.log.debug('Updating Data');
-			this.refreshData();
+			await this.refreshData();
 		}, nextTimeout);
 	}
 
