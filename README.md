@@ -91,7 +91,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ### **WORK IN PROGRESS**
 
 -   (ciddi89) Fixed: Alexa-History script
--   (ciddi89) Fixed: adjusted links to new repo
+-   (ciddi89) Fixed: adjusted links in admin/docs to new repo
+-   (ciddi89) Rebuilded main.js
 
 ### 1.2.2 (2023-02-23)
 
