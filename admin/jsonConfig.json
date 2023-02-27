@@ -24,7 +24,6 @@
 					"items": [
 						{
 							"type": "checkbox",
-							"title": "Active",
 							"attr": "active",
 							"width": "5%"
 						},
@@ -221,17 +220,160 @@
 		"_visualization": {
 			"type": "panel",
 			"label": "Visualization",
-			"items": {}
+			"items": {
+				"_headervisTables": {
+					"type": "header",
+					"text": "Number of JSON tables used in VIS",
+					"size": 2
+				},
+				"_textVisTables": {
+					"type": "staticText",
+					"text": "This can be used to create additional data points for output as a JSON table in VIS, with which it is possible to switch between the individual filters in a VIS table (e.g. 'Homematic', 'Warnings', 'Errors' etc.), which are then dynamically output in this one table in each case.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"_textVisTablesTwo": {
+					"type": "staticText",
+					"text": "Specify here the number of different JSON tables in which you need this. These will be created under 'visualization.table1', 'visualization.table2', etc. To disable: enter 0 (then these additional data points will not be created).",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"visTables": {
+					"newLine": true,
+					"type": "number",
+					"label": "How many different JSON tables do you need?",
+					"help": "Number (0 = deactivated)",
+					"min": 0,
+					"sm": 6,
+					"md": 6,
+					"lg": 3
+				},
+				"_headerRemovePid": {
+					"type": "header",
+					"text": "Sort descending",
+					"size": 2
+				},
+				"_textRemovePid": {
+					"type": "staticText",
+					"text": "If enabled: sorts the log entries in descending order, i.e. newest on top. If disabled: sorts the log entries ascending, so oldest on top.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"sortDescending": {
+					"newLine": true,
+					"type": "checkbox",
+					"label": "Sort descending (newest on top)"
+				}
+			}
 		},
 		"_globalBlacklist": {
 			"type": "panel",
 			"label": "Global blacklist",
-			"items": {}
+			"items": {
+				"headerGlobalBlacklist": {
+					"type": "header",
+					"text": "Global Blacklist",
+					"size": 2
+				},
+				"globalBlacklist": {
+					"type": "table",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"items": [
+						{
+							"type": "checkbox",
+							"attr": "active",
+							"width": "5%"
+						},
+						{
+							"type": "text",
+							"title": "Blacklist expressions",
+							"attr": "item",
+							"width": "40%"
+						},
+						{
+							"type": "text",
+							"title": "Comment",
+							"attr": "comment",
+							"width": "40%"
+						}
+					]
+				}
+			}
 		},
 		"_expertSettings": {
 			"type": "panel",
 			"label": "Expert settings",
-			"items": {}
+			"items": {
+				"_headerUpdateIntervall": {
+					"type": "header",
+					"text": "Update interval: Update data points",
+					"size": 2
+				},
+				"_textRemovePid": {
+					"type": "staticText",
+					"text": "Here you can define the update interval of the data points. For performance reasons, it is not recommended to select a poll value that is too low. Less than two seconds cannot be selected.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"updateInterval": {
+					"newLine": true,
+					"type": "number",
+					"label": "Update Interval",
+					"help": "in seconds",
+					"min": 2,
+					"sm": 6,
+					"md": 6,
+					"lg": 3
+				},
+				"_headerMaxLogs": {
+					"type": "header",
+					"text": "Maximum number of log entries",
+					"size": 2
+				},
+				"_textMaxLogs": {
+					"type": "staticText",
+					"text": "The maximum number of log entries that will be kept in the datapoints (older ones will be removed). Please do not set too high a number, the larger, the more load for the adapter and thus your ioBroker server. A number of 100 has worked well.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"maxLogs": {
+					"newLine": true,
+					"type": "number",
+					"label": "Maximum number of log entries",
+					"help": "Quantity",
+					"min": 1,
+					"sm": 6,
+					"md": 6,
+					"lg": 3
+				}
+			}
 		}
 	}
 }
