@@ -258,12 +258,107 @@
 					"md": 6,
 					"lg": 3
 				},
-				"_headerRemovePid": {
+				"_headerColumnOrder": {
+					"type": "header",
+					"text": "Column order for JSON table",
+					"size": 2
+				},
+				"_textColumnOrder": {
+					"type": "staticText",
+					"text": "With this you can add additional CSS in the JSON.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"jsonColumns": {
+					"newLine": true,
+					"type": "select",
+					"label": "Columns for JSON table",
+					"options": [
+						{ "label": "date, severity, from, message", "value": "date,severity,from,message" },
+						{ "label": "date, from, severity, message", "value": "date,from,severity,message" },
+						{ "label": "date, from, message, severity", "value": "date,from,message,severity" },
+						{ "label": "date, message, from, severity", "value": "date,message,from,severity" },
+						{ "label": "date, message, severity, from", "value": "date,message,severity,from" },
+						{ "label": "date, severity, message, from", "value": "date,severity,message,from" },
+						{ "label": "from, date, message, severity", "value": "from,date,message,severity" },
+						{ "label": "from, date, severity, message", "value": "from,date,severity,message" },
+						{ "label": "from, message, date, severity", "value": "from,message,date,severity" },
+						{ "label": "from, message, severity, date", "value": "from,message,severity,date" },
+						{ "label": "from, severity, date, message", "value": "from,severity,date,message" },
+						{ "label": "from, severity, message, date", "value": "from,severity,message,date" },
+						{ "label": "message, date, from, severity", "value": "message,date,from,severity" },
+						{ "label": "message, date, severity, from", "value": "message,date,severity,from" },
+						{ "label": "message, from, date, severity", "value": "message,from,date,severity" },
+						{ "label": "message, from, severity, date", "value": "message,from,severity,date" },
+						{ "label": "message, severity, date, from", "value": "message,severity,date,from" },
+						{ "label": "message, severity, from, date", "value": "message,severity,from,date" },
+						{ "label": "severity, date, from, message", "value": "severity,date,from,message" },
+						{ "label": "severity, date, message, from", "value": "severity,date,message,from" },
+						{ "label": "severity, from, date, message", "value": "severity,from,date,message" },
+						{ "label": "severity, from, message, date", "value": "severity,from,message,date" },
+						{ "label": "severity, message, date, from", "value": "severity,message,date,from" },
+						{ "label": "severity, message, from, date", "value": "severity,message,from,date" }
+					],
+					"sm": 6,
+					"md": 6,
+					"lg": 3
+				},
+				"_headerAddCss": {
+					"type": "header",
+					"text": "Add CSS in JSON",
+					"size": 2
+				},
+				"_textAddCss": {
+					"type": "staticText",
+					"text": "With this you can add additional CSS in the JSON.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"cssDate": {
+					"newLine": true,
+					"type": "checkbox",
+					"label": "Date",
+					"sm": 12,
+					"md": 6,
+					"lg": 2
+				},
+				"cssSeverity": {
+					"type": "checkbox",
+					"label": "Severity",
+					"sm": 12,
+					"md": 6,
+					"lg": 2
+				},
+				"cssFrom": {
+					"type": "checkbox",
+					"label": "From",
+					"sm": 12,
+					"md": 6,
+					"lg": 2
+				},
+				"cssMessage": {
+					"type": "checkbox",
+					"label": "Message",
+					"sm": 12,
+					"md": 6,
+					"lg": 2
+				},
+				"_headerSortDescending": {
 					"type": "header",
 					"text": "Sort descending",
 					"size": 2
 				},
-				"_textRemovePid": {
+				"_textSortDescending": {
 					"type": "staticText",
 					"text": "If enabled: sorts the log entries in descending order, i.e. newest on top. If disabled: sorts the log entries ascending, so oldest on top.",
 					"sm": 12,
