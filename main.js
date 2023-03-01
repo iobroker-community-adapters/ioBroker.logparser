@@ -59,11 +59,11 @@ class LogParser extends utils.Adapter {
 
 		// Clear existing timeout
 		if (g_timerUpdateStates) {
-			clearTimeout(g_timerUpdateStates);
+			this.clearTimeout(g_timerUpdateStates);
 			g_timerUpdateStates = null;
 		}
 
-		g_timerUpdateStates = setTimeout(async () => {
+		g_timerUpdateStates = this.setTimeout(async () => {
 			this.log.debug('Updating Data');
 			await this.refreshData();
 		}, nextTimeout);
@@ -160,7 +160,7 @@ class LogParser extends utils.Adapter {
 	 * @param {object}  func   function to call at midnight
 	 */
 	callAtMidnight(func) {
-		if (g_timerMidnight) clearTimeout(g_timerMidnight);
+		if (g_timerMidnight) this.clearTimeout(g_timerMidnight);
 		g_timerMidnight = null;
 		const now = new Date();
 		const night = new Date(
@@ -174,7 +174,7 @@ class LogParser extends utils.Adapter {
 		const offset = 1000; // we add one additional second, just in case.
 		const msToMidnight = night.getTime() - now.getTime() + offset;
 		this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
-		g_timerMidnight = setTimeout(async () => {
+		g_timerMidnight = this.setTimeout(async () => {
 			this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
 			func(); // This is the function being called at midnight.
 			this.callAtMidnight(func); // Set again next midnight.
@@ -1146,11 +1146,11 @@ class LogParser extends utils.Adapter {
 
 		try {
 			if (g_timerUpdateStates) {
-				clearInterval(g_timerUpdateStates);
+				this.clearTimeout(g_timerUpdateStates);
 				g_timerUpdateStates = null;
 			}
 			if (g_timerMidnight) {
-				clearTimeout(g_timerMidnight);
+				this.clearTimeout(g_timerMidnight);
 				g_timerMidnight = null;
 			}
 			this.log.info('cleaned everything up...');
