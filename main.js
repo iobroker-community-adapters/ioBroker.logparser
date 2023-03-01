@@ -10,12 +10,12 @@ const g_forbiddenCharsB = /[\][*,;'"`<>\\\s?]/g; // Several chars and no spaces 
 const g_globalBlacklist = []; // the global blacklist (per admin settings. either type RegExp or string)
 const g_activeFilters = []; // the names of all filters activated per admin settings
 const g_allLogs = {}; // All logs which were coming in, prepared for JSON output to states
-let g_timerUpdateStates = null; // Update states interval timer
-let g_timerMidnight = null; // setInterval timer for callAtMidnight()
-let g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
 const g_tableFilters = []; // for each logparser.0.visualization.tableX, we hold the selection state here. So table0 = array index 0, etc.
 const g_minUpdateInterval = 2; // Minimum update interval in seconds.
 const g_defaultUpdateInterval = 20; // Default update interval in seconds.
+let g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
+let g_timerMidnight = null; // setInterval timer for callAtMidnight()
+let g_timerUpdateStates = null; // Update states interval timer
 
 // indicator if the adapter is running or not (for intervall/shedule)
 let isUnloaded = false;
