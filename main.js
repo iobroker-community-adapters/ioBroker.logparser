@@ -1012,13 +1012,17 @@ class LogParser extends utils.Adapter {
 	 *                           If not found, we return undefined.
 	 */
 	async objArrayGetObjByVal(objects, key, value) {
-		const result = objects.filter((obj) => {
-			return obj[key] === value;
-		});
-		if (result.length == 0) {
-			return undefined;
-		} else {
-			return result[0]; // we return first match, assuming provided value is unique.
+		try {
+			const result = objects.filter((obj) => {
+				return obj[key] === value;
+			});
+			if (result.length == 0) {
+				return undefined;
+			} else {
+				return result[0]; // we return first match, assuming provided value is unique.
+			}
+		} catch (error) {
+			this.log.warn(`Error at [objArrayGetObjByVal]: ${error}`);
 		}
 	}
 
