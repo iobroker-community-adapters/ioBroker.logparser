@@ -742,17 +742,19 @@ class LogParser extends utils.Adapter {
 
 	/**
 	 * Get Adapter config visTables as array.
-	 * @return {Promise<array>}  - if visTables = "3" -> [0, 1, 2], if visTables = "0" or empty -> []
-
 	 */
 	async getConfigVisTableNums() {
 		const visTableNums = [];
-		if (this.config.visTables && this.config.visTables > 0) {
-			for (let i = 0; i < this.config.visTables; i++) {
-				visTableNums.push(i);
+		try {
+			if (this.config.visTables && this.config.visTables > 0) {
+				for (let i = 0; i < this.config.visTables; i++) {
+					visTableNums.push(i);
+				}
 			}
+			return visTableNums;
+		} catch (error) {
+			this.log.warn(`Error at [getConfigVisTableNums] - ${error}`);
 		}
-		return visTableNums;
 	}
 
 	/**
