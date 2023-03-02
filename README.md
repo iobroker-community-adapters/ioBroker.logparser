@@ -89,6 +89,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (ciddi89) Changed: Admin html to jsonConfig
 -   (ciddi89) Fixed: Issue with Midnight function
 -   (ciddi89) Added: Translations of admin ui
+-   (ciddi89) Updated: Readme
 
 ### 1.2.3 (2023-02-25)
 
