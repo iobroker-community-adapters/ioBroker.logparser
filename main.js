@@ -10,12 +10,12 @@ const g_forbiddenCharsB = /[\][*,;'"`<>\\\s?]/g; // Several chars and no spaces 
 const g_globalBlacklist = []; // the global blacklist (per admin settings. either type RegExp or string)
 const g_activeFilters = []; // the names of all filters activated per admin settings
 const g_allLogs = {}; // All logs which were coming in, prepared for JSON output to states
-let g_timerUpdateStates = null; // Update states interval timer
-let g_timerMidnight = null; // setInterval timer for callAtMidnight()
-let g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
 const g_tableFilters = []; // for each logparser.0.visualization.tableX, we hold the selection state here. So table0 = array index 0, etc.
 const g_minUpdateInterval = 2; // Minimum update interval in seconds.
 const g_defaultUpdateInterval = 20; // Default update interval in seconds.
+let g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
+let g_timerMidnight = null; // setInterval timer for callAtMidnight()
+let g_timerUpdateStates = null; // Update states interval timer
 
 // indicator if the adapter is running or not (for intervall/shedule)
 let isUnloaded = false;
@@ -59,11 +59,11 @@ class LogParser extends utils.Adapter {
 
 		// Clear existing timeout
 		if (g_timerUpdateStates) {
-			clearTimeout(g_timerUpdateStates);
+			this.clearTimeout(g_timerUpdateStates);
 			g_timerUpdateStates = null;
 		}
 
-		g_timerUpdateStates = setTimeout(async () => {
+		g_timerUpdateStates = this.setTimeout(async () => {
 			this.log.debug('Updating Data');
 			await this.refreshData();
 		}, nextTimeout);
@@ -160,25 +160,29 @@ class LogParser extends utils.Adapter {
 	 * @param {object}  func   function to call at midnight
 	 */
 	callAtMidnight(func) {
-		if (g_timerMidnight) clearTimeout(g_timerMidnight);
-		g_timerMidnight = null;
-		const now = new Date();
-		const night = new Date(
-			now.getFullYear(),
-			now.getMonth(),
-			now.getDate() + 1, // the next day, ...
-			0,
-			0,
-			0, // ...at 00:00:00 hours
-		);
-		const offset = 1000; // we add one additional second, just in case.
-		const msToMidnight = night.getTime() - now.getTime() + offset;
-		this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
-		g_timerMidnight = setTimeout(async () => {
-			this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
-			func(); // This is the function being called at midnight.
-			this.callAtMidnight(func); // Set again next midnight.
-		}, msToMidnight);
+		try {
+			if (g_timerMidnight) this.clearTimeout(g_timerMidnight);
+			g_timerMidnight = null;
+			const now = new Date();
+			const night = new Date(
+				now.getFullYear(),
+				now.getMonth(),
+				now.getDate() + 1, // the next day, ...
+				0,
+				0,
+				0, // ...at 00:00:00 hours
+			);
+			const offset = 1000; // we add one additional second, just in case.
+			const msToMidnight = night.getTime() - now.getTime() + offset;
+			this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
+			g_timerMidnight = this.setTimeout(async () => {
+				this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
+				await func(); // This is the function being called at midnight.
+				this.callAtMidnight(func); // Set again next midnight.
+			}, msToMidnight);
+		} catch (error) {
+			return;
+		}
 	}
 
 	/**
@@ -186,22 +190,26 @@ class LogParser extends utils.Adapter {
 	 * Typically called every midnight.
 	 */
 	async updateTodayYesterday() {
-		for (const lpFilterName of g_activeFilters) {
-			// First: Update global variable g_allLogs
-			const lpLogObjects = g_allLogs[lpFilterName];
-			let counter = 0;
-			for (let i = 0; i < lpLogObjects.length; i++) {
-				counter++;
-				const lpLogObject = lpLogObjects[i];
-				const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
-				g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+		try {
+			for (const lpFilterName of g_activeFilters) {
+				// First: Update global variable g_allLogs
+				const lpLogObjects = g_allLogs[lpFilterName];
+				let counter = 0;
+				for (let i = 0; i < lpLogObjects.length; i++) {
+					counter++;
+					const lpLogObject = lpLogObjects[i];
+					const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
+					g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+				}
+
+				// Second: Update all JSON States
+				const visTableNums = await this.getConfigVisTableNums();
+				await this.updateJsonStates(lpFilterName, { updateFilters: true, tableNum: visTableNums });
+
+				this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
 			}
-
-			// Second: Update all JSON States
-			const visTableNums = await this.getConfigVisTableNums();
-			await this.updateJsonStates(lpFilterName, { updateFilters: true, tableNum: visTableNums });
-
-			this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
+		} catch (error) {
+			return;
 		}
 	}
 
@@ -734,17 +742,19 @@ class LogParser extends utils.Adapter {
 
 	/**
 	 * Get Adapter config visTables as array.
-	 * @return {Promise<array>}  - if visTables = "3" -> [0, 1, 2], if visTables = "0" or empty -> []
-
 	 */
 	async getConfigVisTableNums() {
 		const visTableNums = [];
-		if (this.config.visTables && this.config.visTables > 0) {
-			for (let i = 0; i < this.config.visTables; i++) {
-				visTableNums.push(i);
+		try {
+			if (this.config.visTables && this.config.visTables > 0) {
+				for (let i = 0; i < this.config.visTables; i++) {
+					visTableNums.push(i);
+				}
 			}
+			return visTableNums;
+		} catch (error) {
+			this.log.warn(`Error at [getConfigVisTableNums] - ${error}`);
 		}
-		return visTableNums;
 	}
 
 	/**
@@ -1006,19 +1016,22 @@ class LogParser extends utils.Adapter {
 	 * @param {array}   objects  Array of objects
 	 * @param {string}  key      Key name
 	 * @param {*}       value    Value of the key we are looking for.
-	 * @return {Promise<*>}               Full object (so: element of array) of which property is matching value.
-
 	 *                           We return first match, assuming provided value is unique.
 	 *                           If not found, we return undefined.
 	 */
 	async objArrayGetObjByVal(objects, key, value) {
-		const result = objects.filter((obj) => {
-			return obj[key] === value;
-		});
-		if (result.length == 0) {
-			return undefined;
-		} else {
-			return result[0]; // we return first match, assuming provided value is unique.
+		try {
+			const result = objects.filter((obj) => {
+				return obj[key] === value;
+			});
+			if (result.length == 0) {
+				this.log.warn('hallo');
+				return undefined;
+			} else {
+				return result[0]; // we return first match, assuming provided value is unique.
+			}
+		} catch (error) {
+			this.log.warn(`Error at [objArrayGetObjByVal]: ${error}`);
 		}
 	}
 
@@ -1142,11 +1155,11 @@ class LogParser extends utils.Adapter {
 
 		try {
 			if (g_timerUpdateStates) {
-				clearInterval(g_timerUpdateStates);
+				this.clearTimeout(g_timerUpdateStates);
 				g_timerUpdateStates = null;
 			}
 			if (g_timerMidnight) {
-				clearTimeout(g_timerMidnight);
+				this.clearTimeout(g_timerMidnight);
 				g_timerMidnight = null;
 			}
 			this.log.info('cleaned everything up...');
