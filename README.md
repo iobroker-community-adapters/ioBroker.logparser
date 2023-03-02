@@ -86,9 +86,9 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ### **WORK IN PROGRESS**
 
 -   (ciddi89) Dropped: Admin 5 support
--   (ciddi89) Changed: Admin html to jsonConfig
+-   (ciddi89) Changed: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)
 -   (ciddi89) Fixed: Issue with Midnight function
--   (ciddi89) Added: Translations of admin ui
+-   (ciddi89) Added: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)
 -   (ciddi89) Updated: Readme
 
 ### 1.2.3 (2023-02-25)
