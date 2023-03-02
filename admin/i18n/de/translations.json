@@ -102,7 +102,7 @@
 	"The maximum number of log entries that will be kept in the datapoints (older ones will be removed). Please do not set too high a number, the larger, the more load for the adapter and thus your ioBroker server. A number of 100 has worked well.": "Die maximale Anzahl von Protokolleinträgen, die in den Datenpunkten aufbewahrt werden (ältere werden entfernt). Bitte stellen Sie keine zu hohe Zahl ein, je größer, desto mehr Last für den Adapter und damit Ihren ioBroker Server. Ein Wert von 100 hat sich als gut bewährt.",
 	"Quantity": "Menge",
 	"Other settings": "Andere Einstellungen",
-	"Global blacklist": "Globale schwarze Liste",
+	"Global blacklist": "Globale Blacklist",
 	"Expert settings": "Experteneinstellungen",
 	"Welcome to Log-Parser adapter": "Willkommen beim Log-Parser-Adapter",
 	"A detailed documentation with explanations and all further information can be found on our GitHub page:": "Eine ausführliche Dokumentation mit Erläuterungen und allen weiteren Informationen finden Sie auf unserer GitHub-Seite:",
