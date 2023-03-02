@@ -82,8 +82,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.0.0 (2023-03-02)
 
 -   (ciddi89) Dropped: Admin 5 support
 -   (ciddi89) Changed: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)
