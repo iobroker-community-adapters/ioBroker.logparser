@@ -5,7 +5,52 @@
 		"_start": {
 			"type": "panel",
 			"label": "Start",
-			"items": {}
+			"items": {
+				"headerStart": {
+					"type": "header",
+					"text": "Welcome to Log-Parser adapter",
+					"size": 2
+				},
+				"_textStart": {
+					"type": "staticText",
+					"text": "A detailed documentation with explanations and all further information can be found on our GitHub page:",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"_germanDocuLink": {
+					"type": "staticLink",
+					"label": "🇩🇪 Deutsche Dokumentation",
+					"text": "🇩🇪 Deutsche Dokumentation",
+					"button": true,
+					"href": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/docs/de/logparser.md",
+					"sm": 12,
+					"md": 12,
+					"lg": 2,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"_englishDocuLink": {
+					"type": "staticLink",
+					"label": "🇬🇧 English Documentation",
+					"text": "🇬🇧 English Documentation",
+					"button": true,
+					"href": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/docs/en/logparser.md",
+					"sm": 12,
+					"md": 12,
+					"lg": 2,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				}
+			}
 		},
 		"_parserRules": {
 			"type": "panel",
@@ -79,7 +124,7 @@
 							"type": "number",
 							"title": "Max",
 							"attr": "maxLength",
-							"width": "7%"
+							"width": "10%"
 						},
 						{
 							"type": "text",
@@ -97,7 +142,7 @@
 							"type": "text",
 							"title": "Dateformat",
 							"attr": "dateformat",
-							"width": "10%"
+							"width": "15%"
 						}
 					]
 				}
@@ -114,7 +159,7 @@
 				},
 				"_textRemovePid": {
 					"type": "staticText",
-					"text": "The js controller as of >= version 2.0 partly adds the PID in brackets to the front of logs, e.g. '(12345) Terminated: Without reason'. Enabling this option removes the PIDs including brackets, e.g. '(12345)', from the log lines.",
+					"text": "The js controller partly adds the PID in brackets to the front of logs, e.g. '(12345) Terminated: Without reason'. Enabling this option removes the PIDs including brackets, e.g. '(12345)', from the log lines.",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
@@ -265,7 +310,7 @@
 				},
 				"_textColumnOrder": {
 					"type": "staticText",
-					"text": "With this you can add additional CSS in the JSON.",
+					"text": "Here you can change the order of the columns. As additional column ts (timestamp) is always added. In VIS etc. simply hide it if necessary.",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
