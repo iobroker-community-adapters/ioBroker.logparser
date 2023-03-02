@@ -69,6 +69,7 @@
 					"items": [
 						{
 							"type": "checkbox",
+							"title": "",
 							"attr": "active",
 							"width": "5%"
 						},
@@ -438,6 +439,7 @@
 					"items": [
 						{
 							"type": "checkbox",
+							"title": "",
 							"attr": "active",
 							"width": "5%"
 						},
