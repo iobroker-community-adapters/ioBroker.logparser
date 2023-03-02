@@ -25,6 +25,15 @@
 **This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.**
 For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
 
+## Documentation
+
+🇬🇧 [Documentation](/docs/en/logparser.md)</br>
+🇩🇪 [Dokumentation](/docs/de/logparser.md)
+
+## Discussion and Questions
+
+[ioBroker Forum](https://forum.iobroker.net/topic/63322/test-adapter-log-parser-1-2-x-latest)</br>
+
 ## Info
 
 This adapter parses (filters) all logs of ioBroker adapters and provides the results as JSON in states for each filter as configured in the settings.
@@ -55,21 +64,7 @@ Also, you can read most of these instructions here as well:
 Please note that these screenshots are a snapshot and do not reflect the latest adapter options.
 This is just to provide you an overview of the adapter options.
 
-![Log Parser Options](admin/img/option-screenshots/tab-start.png)
-
-![Log Parser Options](admin/img/option-screenshots/tab-parser-rules.png)
-
-![Log Parser Options](admin/img/option-screenshots/tab-further-settings.png)
-
-![Log Parser Options](admin/img/option-screenshots/tab-vis.png)
-
-![Log Parser Options](admin/img/option-screenshots/tab-global-blacklist.png)
-
-![Log Parser Options](admin/img/option-screenshots/tab-expert-settings.png)
-
-## Links and resources
-
--   [**Log Parser ioBroker Forum Link (Splash Page)**](https://forum.iobroker.net/topic/37793/log-parser-adapter-splash-page)
+-   Will be add later
 
 ## Credits
 
