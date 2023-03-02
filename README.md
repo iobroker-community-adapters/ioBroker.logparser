@@ -87,6 +87,14 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (ciddi89) Dropped: Admin 5 support
+-   (ciddi89) Changed: Admin html to jsonConfig
+-   (ciddi89) Fixed: Issue with Midnight function
+-   (ciddi89) Added: Translations of admin ui
+
 ### 1.2.3 (2023-02-25)
 
 -   (ciddi89) Fixed: Alexa-History script
