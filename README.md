@@ -82,6 +82,12 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (ciddi89) Added: Option to remove 'COMPACT' in log entries [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24)
+-   (ciddi89) Added: Option to remove only 'script.js' in log entries [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21)
+
 ### 2.0.0 (2023-03-02)
 
 -   (ciddi89) Dropped: Admin 5 support
