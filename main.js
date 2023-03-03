@@ -190,6 +190,7 @@ class LogParser extends utils.Adapter {
 	 * Typically called every midnight.
 	 */
 	async updateTodayYesterday() {
+		//FIXME: Fix call at midnight
 		try {
 			for (const lpFilterName of g_activeFilters) {
 				// First: Update global variable g_allLogs
@@ -501,13 +502,16 @@ class LogParser extends utils.Adapter {
 		if (msg != '' && this.config.removePid) msg = await this.removePid(msg);
 
 		// Remove 'script.js.Script_Name: '
-		if (msg != '' && this.config.removeScriptJs) msg = msg.replace(/script\.js\.[^:]*: /, '');
+		if (msg != '' && msg.includes('script.js', 0) && this.config.removeScriptJs) msg = msg.replace(/script\.js\.[^:]*: /, '');
+
+		// Remove 'script.js.Script_Name: '
+		if (msg != '' && msg.includes('script.js', 0) && this.config.removeOnlyScriptJs) msg = msg.slice(msg.lastIndexOf('.') + 1);
 
 		// Verify source
 		if (msg != '' && (await this.isLikeEmpty(logObject.from))) msg = '';
 
 		// Verify timestamp
-		if (msg != '' && (await this.isLikeEmpty(logObject.ts)) && typeof logObject.ts != 'number') msg = '';
+		//if (msg != '' && (await this.isLikeEmpty(logObject.ts)) && typeof logObject.ts != 'number') msg = '';
 
 		logObject.message = msg;
 

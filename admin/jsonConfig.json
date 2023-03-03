@@ -190,10 +190,22 @@
 						"marginTop": 0
 					}
 				},
-				"removeScriptJs": {
+				"removeOnlyScriptJs": {
 					"newLine": true,
 					"type": "checkbox",
-					"label": "Remove script.js.Script_Name"
+					"label": "Remove only script.js",
+					"disabled": "data.removeScriptJs === true",
+					"sm": 12,
+					"md": 4,
+					"lg": 4
+				},
+				"removeScriptJs": {
+					"type": "checkbox",
+					"label": "Remove script.js.Script_Name",
+					"disabled": "data.removeOnlyScriptJs === true",
+					"sm": 12,
+					"md": 4,
+					"lg": 4
 				},
 				"_headerReplaceDate": {
 					"type": "header",
