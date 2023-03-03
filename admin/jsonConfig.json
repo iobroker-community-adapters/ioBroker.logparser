@@ -155,7 +155,7 @@
 			"items": {
 				"_headerRemovePid": {
 					"type": "header",
-					"text": "Remove PID",
+					"text": "Remove PID:",
 					"size": 2
 				},
 				"_textRemovePid": {
@@ -173,6 +173,27 @@
 					"newLine": true,
 					"type": "checkbox",
 					"label": "Remove PID"
+				},
+				"_headerRemoveCompact": {
+					"type": "header",
+					"text": "Remove (COMPACT):",
+					"size": 2
+				},
+				"_textRemoveCompact": {
+					"type": "staticText",
+					"text": "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"removeCompact": {
+					"newLine": true,
+					"type": "checkbox",
+					"label": "Remove (COMPACT)"
 				},
 				"_headerRemoveScriptName": {
 					"type": "header",

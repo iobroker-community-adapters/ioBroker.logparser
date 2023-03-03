@@ -130,5 +130,9 @@
     "severity, from, message, date": "严重性、发件人、消息、日期",
     "severity, message, date, from": "严重性、消息、日期、自",
     "severity, message, from, date": "严重性、消息、来源、日期",
-    "updateIntTxt": "新进入的记录条目是收集并且经常写入国家。 这是限定的时间间隔。 注：该国仅仅是更新，如果已有所改变。 然而，从业绩的观点，它不是有意义的设定的时间间隔太短，不超过2秒钟是不允许的。"
+    "updateIntTxt": "新进入的记录条目是收集并且经常写入国家。 这是限定的时间间隔。 注：该国仅仅是更新，如果已有所改变。 然而，从业绩的观点，它不是有意义的设定的时间间隔太短，不超过2秒钟是不允许的。",
+    "Remove PID:": "删除 PID：",
+    "Remove (COMPACT):": "删除（压缩）：",
+    "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "如果适配器以紧凑模式运行，它会在日志前面的括号中添加紧凑一词，例如'（紧凑型）handleConnectionInfo'。启用此选项将从日志行中删除“(COMPACT)”。",
+    "Remove (COMPACT)": "删除（压缩）"
 }

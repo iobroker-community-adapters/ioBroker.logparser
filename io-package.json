@@ -182,6 +182,7 @@
         "sortDescending": true,
         "removeScriptJs": false,
         "removeOnlyScriptJs": true,
+        "removeCompact": false,
         "visTables": 1,
         "updateInterval": 10,
         "maxLogs": 100,

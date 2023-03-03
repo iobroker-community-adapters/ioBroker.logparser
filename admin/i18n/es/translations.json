@@ -130,5 +130,9 @@
     "severity, from, message, date": "gravedad, desde, mensaje, fecha",
     "severity, message, date, from": "severidad, mensaje, fecha, desde",
     "severity, message, from, date": "gravedad, mensaje, desde, fecha",
-    "updateIntTxt": "Las nuevas entradas de registro entrantes se recopilan y se escriben regularmente en los estados. "
+    "updateIntTxt": "Las nuevas entradas de registro entrantes se recopilan y se escriben regularmente en los estados. ",
+    "Remove PID:": "Quitar PID:",
+    "Remove (COMPACT):": "Eliminar (COMPACTO):",
+    "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Si un adaptador se ejecuta en modo compacto, agregará la palabra compacto entre paréntesis al frente de los registros, p. '(COMPACTO) handleConnectionInfo'. Habilitar esta opción elimina '(COMPACT)' de las líneas de registro.",
+    "Remove (COMPACT)": "Quitar (COMPACTO)"
 }

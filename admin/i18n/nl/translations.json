@@ -130,5 +130,9 @@
     "severity, from, message, date": "ernst, van, bericht, datum",
     "severity, message, date, from": "ernst, bericht, datum, van",
     "severity, message, from, date": "ernst, bericht, van, datum",
-    "updateIntTxt": "Nieuwe inkomende logboekvermeldingen worden verzameld en regelmatig naar de staten geschreven. "
+    "updateIntTxt": "Nieuwe inkomende logboekvermeldingen worden verzameld en regelmatig naar de staten geschreven. ",
+    "Remove PID:": "PID verwijderen:",
+    "Remove (COMPACT):": "Verwijderen (COMPACT):",
+    "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Als een adapter in compacte modus werkt, wordt het woord compact tussen haakjes toegevoegd aan de voorkant van logboeken, b.v. '(COMPACT) handleConnectionInfo'. Als u deze optie inschakelt, wordt '(COMPACT)' uit de logregels verwijderd.",
+    "Remove (COMPACT)": "Verwijderen (COMPACT)"
 }

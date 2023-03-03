@@ -130,5 +130,9 @@
     "severity, from, message, date": "серьезность, от, сообщение, дата",
     "severity, message, date, from": "серьезность, сообщение, дата, от",
     "severity, message, from, date": "серьезность, сообщение, от, дата",
-    "updateIntTxt": "Новые входящие записи журнала собираются и регулярно записываются в штаты. "
+    "updateIntTxt": "Новые входящие записи журнала собираются и регулярно записываются в штаты. ",
+    "Remove PID:": "Удалить ПИД:",
+    "Remove (COMPACT):": "Удалить (КОМПАКТИВНО):",
+    "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Если адаптер работает в компактном режиме, он добавит слово «компактный» в скобках в начале журнала, например. '(COMPACT) дескрипторConnectionInfo'. Включение этой опции удаляет '(COMPACT)' из строк журнала.",
+    "Remove (COMPACT)": "Удалить (КОМПАКТНЫЙ)"
 }

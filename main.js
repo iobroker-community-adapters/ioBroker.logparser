@@ -501,6 +501,9 @@ class LogParser extends utils.Adapter {
 		// Remove PID
 		if (msg != '' && this.config.removePid) msg = await this.removePid(msg);
 
+		// Remove (COMPACT)
+		if (msg != '' && this.config.removeCompact) msg = msg.replace(/(\(COMPACT)\) /, '');
+
 		// Remove 'script.js.Script_Name: '
 		if (msg != '' && msg.includes('script.js', 0) && this.config.removeScriptJs) msg = msg.replace(/script\.js\.[^:]*: /, '');
 

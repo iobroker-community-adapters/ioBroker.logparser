@@ -130,5 +130,9 @@
 	"severity, from, message, date": "Log-Level, Quelle, Nachricht, Datum",
 	"severity, message, date, from": "Log-Level, Nachricht, Datum, Quelle",
 	"severity, message, from, date": "Log-Level, Nachricht, Quelle, Datum",
-	"updateIntTxt": "Neu reinkommende Logeinträge werden gesammelt und regelmäßig in die Datenpunkte geschrieben. Hiermit kann das Intervall definiert werden. Hinweis: Die Datenpunkte werden nur geschrieben, falls es eine Änderung gab. Dennoch ist es aus Performance-Sicht nicht sinnvoll, hier ein zu kurzes Intervall einzustellen. Kleiner als 2 Sekunden ist nicht erlaubt."
+	"updateIntTxt": "Neu reinkommende Logeinträge werden gesammelt und regelmäßig in die Datenpunkte geschrieben. Hiermit kann das Intervall definiert werden. Hinweis: Die Datenpunkte werden nur geschrieben, falls es eine Änderung gab. Dennoch ist es aus Performance-Sicht nicht sinnvoll, hier ein zu kurzes Intervall einzustellen. Kleiner als 2 Sekunden ist nicht erlaubt.",
+	"Remove PID:": "PID entfernen:",
+	"Remove (COMPACT):": "COMPACT entfernen:",
+	"If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Wenn ein Adapter im Kompaktmodus läuft, fügt er das Wort 'compact' in Klammern an den Anfang der Protokolle, z. '(COMPACT) handleConnectionInfo'. Durch Aktivieren dieser Option wird „(COMPACT)“ aus den Protokollzeilen entfernt.",
+	"Remove (COMPACT)": "Entferne (COMPACT)"
 }

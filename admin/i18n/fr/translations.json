@@ -130,5 +130,9 @@
     "severity, from, message, date": "gravité, de, message, date",
     "severity, message, date, from": "sévérité, message, date, de",
     "severity, message, from, date": "sévérité, message, de, date",
-    "updateIntTxt": "De nouvelles entrées de journal entrantes sont collectées et régulièrement écrites aux États. "
+    "updateIntTxt": "De nouvelles entrées de journal entrantes sont collectées et régulièrement écrites aux États. ",
+    "Remove PID:": "Supprimer le PID :",
+    "Remove (COMPACT):": "Supprimer (COMPACT):",
+    "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Si un adaptateur fonctionne en mode compact, il ajoutera le mot compact entre parenthèses devant les journaux, par ex. '(COMPACT) handleConnectionInfo'. L'activation de cette option supprime '(COMPACT)' des lignes de journal.",
+    "Remove (COMPACT)": "Supprimer (COMPACT)"
 }
