@@ -35,7 +35,7 @@ function main() {
 			let objHistory = JSON.parse(obj.state.val);
 
 			// ignore alexa keywords or empty value.
-			if (!['', 'alexa', 'echo', 'computer'].includes(objHistory['summary'])) {
+			if (!['', 'alexa', 'echo', 'computer', 'ziggy'].includes(objHistory['summary'])) {
 				// ignore "sprich mir nach"
 				if (!objHistory['summary'].includes('sprich mir nach ')) {
 					log('[Alexa-Log-Script] ##{"message":"' + formatAlexaSummary(objHistory['summary']) + '", "from":"' + objHistory['name'] + '"}##');
