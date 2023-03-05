@@ -6,7 +6,7 @@
 
 const utils = require('@iobroker/adapter-core');
 
-// indicator if the adapter is running or not (for intervall/shedule)
+// indicator if the adapter is running or not (for interval/schedule)
 let isUnloaded = false;
 
 class LogParser extends utils.Adapter {
@@ -44,7 +44,6 @@ class LogParser extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		//this.startAdapter();
 		await this.main();
 		await this.refreshData();
 	}
@@ -194,7 +193,6 @@ class LogParser extends utils.Adapter {
 	 */
 	async updateTodayYesterday() {
 		try {
-			this.log.debug('hallo funktion anfang');
 			for (const lpFilterName of this.g_activeFilters) {
 				if (lpFilterName === undefined) continue;
 
@@ -992,11 +990,12 @@ class LogParser extends utils.Adapter {
 	 *                                 If false, one match or more will return true
 	 */
 	async stringMatchesList(stringToCheck, listArray, all) {
-		if (await this.isLikeEmpty(listArray)) return true;
+		if (await this.isLikeEmpty(listArray)) return false;
 		let count = 0;
 		let hit = 0;
+
 		for (const lpListItem of listArray) {
-			if (!(await this.isLikeEmpty(lpListItem))) {
+			if (lpListItem !== undefined) {
 				count = count + 1;
 				if (lpListItem instanceof RegExp) {
 					// https://stackoverflow.com/questions/4339288/typeof-for-regexp
@@ -1037,7 +1036,6 @@ class LogParser extends utils.Adapter {
 				return obj[key] === value;
 			});
 			if (result.length == 0) {
-				this.log.warn('hallo');
 				return undefined;
 			} else {
 				return result[0]; // we return first match, assuming provided value is unique.
