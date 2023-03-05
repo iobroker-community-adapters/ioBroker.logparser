@@ -89,6 +89,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (ciddi89) Added: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option to remove only 'script.js' in log entries
 -   (ciddi89) Fixed: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight function to change today/yesterday
 -   (ciddi89) Fixed: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) When nothing selected in blacklist, adapter didn't work anymore
+-   (ciddi89) Other: Small code and translation improvements
 
 ### 2.0.0 (2023-03-02)
 
