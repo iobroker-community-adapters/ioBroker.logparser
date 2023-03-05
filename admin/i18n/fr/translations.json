@@ -134,5 +134,6 @@
     "Remove PID:": "Supprimer le PID :",
     "Remove (COMPACT):": "Supprimer (COMPACT):",
     "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Si un adaptateur fonctionne en mode compact, il ajoutera le mot compact entre parenthèses devant les journaux, par ex. '(COMPACT) handleConnectionInfo'. L'activation de cette option supprime '(COMPACT)' des lignes de journal.",
-    "Remove (COMPACT)": "Supprimer (COMPACT)"
+    "Remove (COMPACT)": "Supprimer (COMPACT)",
+    "How many different JSON tables do you need?": "De combien de tables JSON différentes avez-vous besoin ?"
 }

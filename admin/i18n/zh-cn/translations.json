@@ -134,5 +134,6 @@
     "Remove PID:": "删除 PID：",
     "Remove (COMPACT):": "删除（压缩）：",
     "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "如果适配器以紧凑模式运行，它会在日志前面的括号中添加紧凑一词，例如'（紧凑型）handleConnectionInfo'。启用此选项将从日志行中删除“(COMPACT)”。",
-    "Remove (COMPACT)": "删除（压缩）"
+    "Remove (COMPACT)": "删除（压缩）",
+    "How many different JSON tables do you need?": "您需要多少个不同的 JSON 表？"
 }
