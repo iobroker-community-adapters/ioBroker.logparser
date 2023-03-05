@@ -5,17 +5,6 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const g_forbiddenCharsA = /[\][*,;'"`<>\\?]/g; // Several chars but allows spaces
-const g_forbiddenCharsB = /[\][*,;'"`<>\\\s?]/g; // Several chars and no spaces allowed
-const g_globalBlacklist = []; // the global blacklist (per admin settings. either type RegExp or string)
-const g_activeFilters = []; // the names of all filters activated per admin settings
-const g_allLogs = {}; // All logs which were coming in, prepared for JSON output to states
-const g_tableFilters = []; // for each logparser.0.visualization.tableX, we hold the selection state here. So table0 = array index 0, etc.
-const g_minUpdateInterval = 2; // Minimum update interval in seconds.
-const g_defaultUpdateInterval = 20; // Default update interval in seconds.
-let g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
-let g_timerMidnight = null; // setInterval timer for callAtMidnight()
-let g_timerUpdateStates = null; // Update states interval timer
 
 // indicator if the adapter is running or not (for intervall/shedule)
 let isUnloaded = false;
@@ -34,6 +23,21 @@ class LogParser extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
+
+		this.g_forbiddenCharsA = /[\][*,;'"`<>\\?]/g; // Several chars but allows spaces
+		this.g_forbiddenCharsB = /[\][*,;'"`<>\\\s?]/g; // Several chars and no spaces allowed
+
+		this.g_globalBlacklist = []; // the global blacklist (per admin settings. either type RegExp or string)
+		this.g_activeFilters = []; // the names of all filters activated per admin settings
+		this.g_tableFilters = []; // for each logparser.0.visualization.tableX, we hold the selection state here. So table0 = array index 0, etc.
+		this.g_jsonKeys = []; // keys for JSON as array. From adapter admin settings, like: "date,severity,from,message". ts is always added.
+
+		this.g_allLogs = {}; // All logs which were coming in, prepared for JSON output to states
+		this.g_minUpdateInterval = 2; // Minimum update interval in seconds.
+		this.g_defaultUpdateInterval = 20; // Default update interval in seconds.
+
+		this.g_timerMidnight = null; // setInterval timer for callAtMidnight()
+		this.g_timerUpdateStates = null; // Update states interval timer
 	}
 
 	/**
@@ -53,17 +57,17 @@ class LogParser extends utils.Adapter {
 		if (isUnloaded) return; // cancel run if unloaded was called.
 
 		const nextTimeout = this.config.updateInterval * 1000;
-		this.log.debug('State updates scheduled... Interval: ' + nextTimeout + ' seconds.');
+		this.log.debug('State updates scheduled... Interval: ' + nextTimeout + ' milliseconds.');
 
 		await this.scheduleUpdateStates();
 
 		// Clear existing timeout
-		if (g_timerUpdateStates) {
-			this.clearTimeout(g_timerUpdateStates);
-			g_timerUpdateStates = null;
+		if (this.g_timerUpdateStates) {
+			this.clearTimeout(this.g_timerUpdateStates);
+			this.g_timerUpdateStates = null;
 		}
 
-		g_timerUpdateStates = this.setTimeout(async () => {
+		this.g_timerUpdateStates = this.setTimeout(async () => {
 			this.log.debug('Updating Data');
 			await this.refreshData();
 		}, nextTimeout);
@@ -103,7 +107,7 @@ class LogParser extends utils.Adapter {
 					this.log.debug('Subscribing to certain adapter states.');
 
 					// Timer for updating Today/Yesterday in Json every midnight
-					this.callAtMidnight(this.updateTodayYesterday);
+					await this.callAtMidnight();
 					this.log.debug('Update of "Today/Yesterday" in JSON scheduled for every midnight.');
 
 					// Update Today/Yesterday now.
@@ -112,9 +116,9 @@ class LogParser extends utils.Adapter {
 					for (let i = 0; i < this.config.visTables; i++) {
 						await this.getStateAsync('visualization.table' + i + '.selection', async (err, state) => {
 							if (!err && state && !(await this.isLikeEmpty(state.val))) {
-								g_tableFilters[i] = state.val;
+								this.g_tableFilters[i] = state.val;
 							} else {
-								g_tableFilters[i] = '';
+								this.g_tableFilters[i] = '';
 							}
 						});
 					}
@@ -130,11 +134,11 @@ class LogParser extends utils.Adapter {
 	 * @return {Promise<object>}             Callback function
 	 */
 	async getJsonStates(callback) {
-		let index = g_activeFilters.length;
+		let index = this.g_activeFilters.length;
 		const help = async () => {
 			index--;
 			if (index >= 0) {
-				await this.getStateAsync('filters.' + g_activeFilters[index] + '.json', async (err, state) => {
+				await this.getStateAsync('filters.' + this.g_activeFilters[index] + '.json', async (err, state) => {
 					// Value = state.val, ack = state.ack, time stamp = state.ts, last changed = state.lc
 					if (!err && state && !(await this.isLikeEmpty(state.val))) {
 						const logArray = JSON.parse(state.val);
@@ -142,7 +146,7 @@ class LogParser extends utils.Adapter {
 						if (logArray.length >= 2) {
 							if (logArray[0].ts < logArray[logArray.length - 1].ts) logArray.reverse();
 						}
-						g_allLogs[g_activeFilters[index]] = logArray;
+						this.g_allLogs[this.g_activeFilters[index]] = logArray;
 					}
 					setImmediate(help); // Call function again. We use node.js setImmediate() to avoid stack overflows.
 				});
@@ -157,12 +161,11 @@ class LogParser extends utils.Adapter {
 	 * Calls a function every midnight.
 	 * This way, we don't need to use node-schedule which would be an overkill for this simple task.
 	 * https://stackoverflow.com/questions/26306090/
-	 * @param {object}  func   function to call at midnight
 	 */
-	callAtMidnight(func) {
+	async callAtMidnight() {
 		try {
-			if (g_timerMidnight) this.clearTimeout(g_timerMidnight);
-			g_timerMidnight = null;
+			if (this.g_timerMidnight) this.clearTimeout(this.g_timerMidnight);
+			this.g_timerMidnight = null;
 			const now = new Date();
 			const night = new Date(
 				now.getFullYear(),
@@ -174,11 +177,11 @@ class LogParser extends utils.Adapter {
 			);
 			const offset = 1000; // we add one additional second, just in case.
 			const msToMidnight = night.getTime() - now.getTime() + offset;
-			this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
-			g_timerMidnight = this.setTimeout(async () => {
-				this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
-				await func(); // This is the function being called at midnight.
-				this.callAtMidnight(func); // Set again next midnight.
+			this.log.debug(`callAtMidnight() called, provided function: '${this.updateTodayYesterday.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
+			this.g_timerMidnight = this.setTimeout(async () => {
+				this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${this.updateTodayYesterday.name}'`);
+				await this.updateTodayYesterday(); // This is the function being called at midnight.
+				await this.callAtMidnight(); // Set again next midnight.
 			}, msToMidnight);
 		} catch (error) {
 			return;
@@ -190,17 +193,20 @@ class LogParser extends utils.Adapter {
 	 * Typically called every midnight.
 	 */
 	async updateTodayYesterday() {
-		//FIXME: Fix call at midnight
 		try {
-			for (const lpFilterName of g_activeFilters) {
+			this.log.debug('hallo funktion anfang');
+			for (const lpFilterName of this.g_activeFilters) {
+				if (lpFilterName === undefined) continue;
+
 				// First: Update global variable g_allLogs
-				const lpLogObjects = g_allLogs[lpFilterName];
+				const lpLogObjects = this.g_allLogs[lpFilterName];
 				let counter = 0;
+
 				for (let i = 0; i < lpLogObjects.length; i++) {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
 					const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
-					g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
 				}
 
 				// Second: Update all JSON States
@@ -210,7 +216,7 @@ class LogParser extends utils.Adapter {
 				this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
 			}
 		} catch (error) {
-			return;
+			this.log.warn(`Error at [updateTodayYesterday] - ${error}`);
 		}
 	}
 
@@ -220,11 +226,11 @@ class LogParser extends utils.Adapter {
 	async scheduleUpdateStates() {
 		this.log.debug('Updating states per schedule...');
 
-		for (const filterName of g_activeFilters) {
-			if (!(await this.isLikeEmpty(g_allLogs[filterName]))) {
+		for (const filterName of this.g_activeFilters) {
+			if (!(await this.isLikeEmpty(this.g_allLogs[filterName]))) {
 				// Update states only if there was/were actually new log(s) coming in.
 				// We add a buffer as offset to make sure we catch new logs.
-				const tsNewest = g_allLogs[filterName][0].ts;
+				const tsNewest = this.g_allLogs[filterName][0].ts;
 				const updateIntMs = this.config.updateInterval * 1000;
 				const buffer = 2000;
 				if (tsNewest + updateIntMs + buffer < Date.now()) {
@@ -259,7 +265,7 @@ class LogParser extends utils.Adapter {
 		this.on('log', async (obj) => {
 			const logObject = await this.prepareNewLogObject(obj);
 			if (logObject.message != '') {
-				for (const filterName of g_activeFilters) {
+				for (const filterName of this.g_activeFilters) {
 					await this.addNewLogToAllLogsVar(filterName, logObject, (result) => {
 						if (result == true) {
 							// We are done at this point.
@@ -285,7 +291,7 @@ class LogParser extends utils.Adapter {
 	 */
 	async updateJsonStates(filterName, visualization = undefined) {
 		let doFilters = true;
-		const helperArray = [...g_allLogs[filterName]]; // We use array spreads '...' to copy array since reverse() changes the original array.
+		const helperArray = [...this.g_allLogs[filterName]]; // We use array spreads '...' to copy array since reverse() changes the original array.
 		let mostRecentLogTime = 0;
 		try {
 			if (!(await this.isLikeEmpty(helperArray))) {
@@ -301,7 +307,7 @@ class LogParser extends utils.Adapter {
 				const finalPaths = []; // all state paths, like logparser.0.visualization.table0, etc.
 				if (!(await this.isLikeEmpty(visualization.tableNum))) {
 					for (const lpTableNum of [visualization.tableNum]) {
-						if (g_tableFilters[lpTableNum] == filterName) {
+						if (this.g_tableFilters[lpTableNum] == filterName) {
 							// The chosen filter in logparser.0.visualization.tableX matches with filterName
 							finalPaths.push('visualization.table' + lpTableNum);
 						}
@@ -419,9 +425,9 @@ class LogParser extends utils.Adapter {
 		// Merge
 		if (f.merge) {
 			// Returns the position where the first former element was found, or -1 if not found -- https://javascript.info/array-methods#filter
-			const foundPosition = g_allLogs[filterName].findIndex((item) => item.message.indexOf(newLogObject.message) >= 0);
+			const foundPosition = this.g_allLogs[filterName].findIndex((item) => item.message.indexOf(newLogObject.message) >= 0);
 			if (foundPosition >= 0) {
-				const foundMsg = g_allLogs[filterName][foundPosition].message;
+				const foundMsg = this.g_allLogs[filterName][foundPosition].message;
 				let mergeNum = await this.getMergeNumber(foundMsg); //number of '[xxx Entries]'
 				if (mergeNum != -1) {
 					// We found '[xxx Entries]', so we increase by 1
@@ -435,13 +441,13 @@ class LogParser extends utils.Adapter {
 				const mergeText = this.config.txtMerge.replace('#', mergeNum);
 				newLogObject.message = mergeText + newLogObject.message;
 				// remove old log objects
-				g_allLogs[filterName].splice(foundPosition, 1);
+				this.g_allLogs[filterName].splice(foundPosition, 1);
 			}
 		}
 
 		// Rebuilding per keys and sort order of g_jsonKeys per adapter admin settings, like ['date', 'from', 'severity', 'message']
 		const logObjJson = {};
-		for (const lpKey of g_jsonKeys) {
+		for (const lpKey of this.g_jsonKeys) {
 			logObjJson[lpKey] = newLogObject[lpKey];
 		}
 		logObjJson.ts = newLogObject.ts; // Always add timestamp as last key (which will also end up in the last column of JSON table)
@@ -454,8 +460,8 @@ class LogParser extends utils.Adapter {
 		if (this.config.cssFrom) logObjJson.from = `<span class='log${severityUcase} logFrom'>${newLogObject.from}</span>`;
 
 		// Finally: add newLogObject to g_allLogs
-		g_allLogs[filterName].unshift(logObjJson); // add element at beginning
-		g_allLogs[filterName] = g_allLogs[filterName].slice(0, this.config.maxLogs); // limit number of items
+		this.g_allLogs[filterName].unshift(logObjJson); // add element at beginning
+		this.g_allLogs[filterName] = this.g_allLogs[filterName].slice(0, this.config.maxLogs); // limit number of items
 
 		return callback(true);
 	}
@@ -488,33 +494,35 @@ class LogParser extends utils.Adapter {
 		// Never handle logs of this LogParser adapter to make sure not having endless loops.
 		if (logObject.from == this.namespace) msg = '';
 
-		// Check if globally blacklisted
-		if (msg != '' && (await this.stringMatchesList(msg, g_globalBlacklist, false))) msg = ''; // If message is blacklisted, we set an empty string.
+		if (msg !== '') {
+			// Check if globally blacklisted
+			if (await this.stringMatchesList(msg, this.g_globalBlacklist, false)) msg = ''; // If message is blacklisted, we set an empty string.
 
-		// Verify log level (severity)
-		if (msg != '' && (await this.isLikeEmpty(logObject.severity))) {
-			msg = '';
-		} else if (msg != '' && !['debug', 'info', 'warn', 'error'].includes(logObject.severity)) {
-			msg = ''; // We expect one of the above log levels
+			// Verify log level (severity)
+			if (await this.isLikeEmpty(logObject.severity)) {
+				msg = '';
+			} else if (!['debug', 'info', 'warn', 'error'].includes(logObject.severity)) {
+				msg = ''; // We expect one of the above log levels
+			}
+
+			// Remove PID
+			if (this.config.removePid) msg = await this.removePid(msg);
+
+			// Remove (COMPACT)
+			if (this.config.removeCompact) msg = msg.replace(/(\(COMPACT)\) /, '');
+
+			// Remove 'script.js.Script_Name: '
+			if (msg.includes('script.js', 0) && this.config.removeScriptJs) msg = msg.replace(/script\.js\.[^:]*: /, '');
+
+			// Remove 'script.js.Script_Name: '
+			if (msg.includes('script.js', 0) && this.config.removeOnlyScriptJs) msg = msg.slice(msg.lastIndexOf('.') + 1);
+
+			// Verify source
+			if (await this.isLikeEmpty(logObject.from)) msg = '';
+
+			// Verify timestamp
+			//if ((await this.isLikeEmpty(logObject.ts)) && typeof logObject.ts != 'number') msg = '';
 		}
-
-		// Remove PID
-		if (msg != '' && this.config.removePid) msg = await this.removePid(msg);
-
-		// Remove (COMPACT)
-		if (msg != '' && this.config.removeCompact) msg = msg.replace(/(\(COMPACT)\) /, '');
-
-		// Remove 'script.js.Script_Name: '
-		if (msg != '' && msg.includes('script.js', 0) && this.config.removeScriptJs) msg = msg.replace(/script\.js\.[^:]*: /, '');
-
-		// Remove 'script.js.Script_Name: '
-		if (msg != '' && msg.includes('script.js', 0) && this.config.removeOnlyScriptJs) msg = msg.slice(msg.lastIndexOf('.') + 1);
-
-		// Verify source
-		if (msg != '' && (await this.isLikeEmpty(logObject.from))) msg = '';
-
-		// Verify timestamp
-		//if (msg != '' && (await this.isLikeEmpty(logObject.ts)) && typeof logObject.ts != 'number') msg = '';
 
 		logObject.message = msg;
 
@@ -535,7 +543,7 @@ class LogParser extends utils.Adapter {
 
 		// Verify "txtToday"
 		if (!(await this.isLikeEmpty(this.config.txtToday))) {
-			this.config.txtToday = this.config.txtToday.replace(g_forbiddenCharsA, '').trim();
+			this.config.txtToday = this.config.txtToday.replace(this.g_forbiddenCharsA, '').trim();
 			if (this.config.txtToday == '') {
 				this.config.txtToday = 'Today';
 				this.log.debug('Corrected txtToday option and set to "Today"');
@@ -547,7 +555,7 @@ class LogParser extends utils.Adapter {
 
 		// Verify "txtYesterday"
 		if (!(await this.isLikeEmpty(this.config.txtYesterday))) {
-			this.config.txtYesterday = this.config.txtYesterday.replace(g_forbiddenCharsA, '').trim();
+			this.config.txtYesterday = this.config.txtYesterday.replace(this.g_forbiddenCharsA, '').trim();
 			if (this.config.txtYesterday == '') {
 				this.config.txtYesterday = 'Yesterday';
 				this.log.debug('Corrected txtYesterday option and set to "Yesterday"');
@@ -564,12 +572,12 @@ class LogParser extends utils.Adapter {
 				// Just some basics. We do further verification when going thru the filters
 				if (!(await this.isLikeEmpty(this.config.parserRules[i].active)) && this.config.parserRules[i].active == true) {
 					anyRuleActive = true;
-					const name = this.config.parserRules[i].name.replace(g_forbiddenCharsB, '');
+					const name = this.config.parserRules[i].name.replace(this.g_forbiddenCharsB, '');
 					if (name.length > 0) {
 						// We need at least one char.
 						this.config.parserRules[i].name = name;
-						g_activeFilters.push(name); // All active filters go here
-						g_allLogs[name] = []; // Prepare g_allLogs variable;
+						this.g_activeFilters.push(name); // All active filters go here
+						this.g_allLogs[name] = []; // Prepare g_allLogs variable;
 					} else {
 						errorMsg.push('Removed forbidden chars of filter name, and name now results in length = 0.');
 					}
@@ -584,9 +592,9 @@ class LogParser extends utils.Adapter {
 
 		// Verify "jsonColumns"
 		if (!(await this.isLikeEmpty(this.config.jsonColumns))) {
-			g_jsonKeys = this.config.jsonColumns.split(',');
+			this.g_jsonKeys = this.config.jsonColumns.split(',');
 		} else {
-			g_jsonKeys = ['date', 'severity', 'from', 'message'];
+			this.g_jsonKeys = ['date', 'severity', 'from', 'message'];
 			this.config.jsonColumns = 'date,severity,from,message';
 			this.log.warn('No column order in adapter configuration chosen, so we set to "date, severity, from, message"');
 		}
@@ -611,14 +619,14 @@ class LogParser extends utils.Adapter {
 		// Verify "updateInterval"
 		if (!(await this.isLikeEmpty(this.config.updateInterval))) {
 			const uInterval = this.config.updateInterval;
-			if (uInterval < g_minUpdateInterval) {
-				this.config.updateInterval = g_minUpdateInterval;
-				this.log.warn('Configuration corrected: Update interval < ' + g_minUpdateInterval + ' seconds is not allowed, so set to ' + g_minUpdateInterval + ' seconds.');
+			if (uInterval < this.g_minUpdateInterval) {
+				this.config.updateInterval = this.g_minUpdateInterval;
+				this.log.warn('Configuration corrected: Update interval < ' + this.g_minUpdateInterval + ' seconds is not allowed, so set to ' + this.g_minUpdateInterval + ' seconds.');
 			} else {
 				this.config.updateInterval = uInterval;
 			}
 		} else {
-			this.config.updateInterval = g_defaultUpdateInterval;
+			this.config.updateInterval = this.g_defaultUpdateInterval;
 			this.log.warn('No update interval was provided in settings, so set to 20 seconds.');
 		}
 
@@ -642,11 +650,10 @@ class LogParser extends utils.Adapter {
 		// Verify and convert "g_globalBlacklist"
 		if (!(await this.isLikeEmpty(this.config.globalBlacklist))) {
 			for (const lpConfBlacklist of this.config.globalBlacklist) {
-				if (lpConfBlacklist.active) {
-					if (!(await this.isLikeEmpty(lpConfBlacklist.item))) {
-						// See description of function convertRegexpString().
-						g_globalBlacklist.push(await this.convertRegexpString(lpConfBlacklist.item));
-					}
+				if (!lpConfBlacklist.active) continue;
+				if (!(await this.isLikeEmpty(lpConfBlacklist.item))) {
+					// See description of function convertRegexpString().
+					this.g_globalBlacklist.push(await this.convertRegexpString(lpConfBlacklist.item));
 				}
 			}
 		}
@@ -679,7 +686,7 @@ class LogParser extends utils.Adapter {
 		 * A: Build all states needed
 		 *********************************/
 		// Regular states for each filter
-		for (const lpFilterName of g_activeFilters) {
+		for (const lpFilterName of this.g_activeFilters) {
 			finalStates.push(['filters.' + lpFilterName + '.name', false, { name: 'Name', type: 'string', read: true, write: false, role: 'text', def: lpFilterName }]);
 			finalStates.push(['filters.' + lpFilterName + '.json', false, { name: 'JSON', type: 'string', read: true, write: false, role: 'json', def: '[]' }]);
 			finalStates.push(['filters.' + lpFilterName + '.jsonCount', false, { name: 'Number of log lines in json', type: 'number', read: true, write: false, role: 'value', def: 0 }]);
@@ -699,7 +706,7 @@ class LogParser extends utils.Adapter {
 		// States for VIS tables
 		if (this.config.visTables > 0) {
 			const dropdown = {};
-			for (const lpFilterName of g_activeFilters) {
+			for (const lpFilterName of this.g_activeFilters) {
 				dropdown[lpFilterName] = lpFilterName;
 			}
 			for (let i = 0; i < this.config.visTables; i++) {
@@ -707,7 +714,7 @@ class LogParser extends utils.Adapter {
 				finalStates.push([
 					lpVisTable + '.selection',
 					true,
-					{ name: 'Selected log filter', type: 'string', read: false, write: true, role: 'value', states: dropdown, def: g_activeFilters[0] },
+					{ name: 'Selected log filter', type: 'string', read: false, write: true, role: 'value', states: dropdown, def: this.g_activeFilters[0] },
 				]);
 				finalStates.push([lpVisTable + '.json', false, { name: 'JSON of selection', type: 'string', read: true, write: false, role: 'json', def: '[]' }]);
 				finalStates.push([lpVisTable + '.jsonCount', false, { name: 'Number of log lines in json of selection', type: 'number', read: true, write: false, role: 'value', def: 0 }]);
@@ -977,15 +984,13 @@ class LogParser extends utils.Adapter {
 	}
 
 	/**
- * Checks a string against an array of strings or regexp.
- * March 2020 | Mic-M
- * @param {string}      stringToCheck   String to check against array
- * @param {array}       listArray       Array of blacklist. Both strings and regexp are allowed.
- * @param {boolean}    all            If true, then ALL items of listArray must match to return true.
-                                        If false, one match or more will return true
- * @return {Promise<boolean>}    true if matching, false if not.
-
- */
+	 * Checks a string against an array of strings or regexp.
+	 * March 2020 | Mic-M
+	 * @param {string}	stringToCheck  String to check against array
+	 * @param {array}	listArray      Array of blacklist. Both strings and regexp are allowed.
+	 * @param {boolean}	all            If true, then ALL items of listArray must match to return true.
+	 *                                 If false, one match or more will return true
+	 */
 	async stringMatchesList(stringToCheck, listArray, all) {
 		if (await this.isLikeEmpty(listArray)) return true;
 		let count = 0;
@@ -1047,7 +1052,6 @@ class LogParser extends utils.Adapter {
 	 * Array or String containing just white spaces or >'< or >"< or >[< or >]< is considered empty
 	 * 08-Sep-2019: added check for [ and ] to also catch arrays with empty strings.
 	 * @param  {any}  inputVar   Input Array or String, Number, etc.
-	 * @return {Promise<boolean>} True if it is undefined/null/empty, false if it contains value(s)
 	 */
 	async isLikeEmpty(inputVar) {
 		if (typeof inputVar !== 'undefined' && inputVar !== null) {
@@ -1077,7 +1081,7 @@ class LogParser extends utils.Adapter {
 			// A subscribed state has changed
 			const emptyJson = async (filterName) => {
 				// in variable
-				g_allLogs[filterName] = [];
+				this.g_allLogs[filterName] = [];
 
 				// in filters states
 				await this.setStateChangedAsync('filters.' + filterName + '.json', { val: '[]', ack: true });
@@ -1087,7 +1091,7 @@ class LogParser extends utils.Adapter {
 				// in visualization states
 				if (this.config.visTables > 0) {
 					for (let i = 0; i < this.config.visTables; i++) {
-						if (g_tableFilters[i] && g_tableFilters[i] == filterName) {
+						if (this.g_tableFilters[i] && this.g_tableFilters[i] == filterName) {
 							await this.setStateChangedAsync('visualization.table' + i + '.json', { val: '[]', ack: true });
 							await this.setStateChangedAsync('visualization.table' + i + '.jsonCount', { val: 0, ack: true });
 							await this.setStateChangedAsync('visualization.table' + i + '.mostRecentLogTime', { val: 0, ack: true });
@@ -1105,7 +1109,7 @@ class LogParser extends utils.Adapter {
 
 			// Empty all JSON
 			if (fromEnd1 == 'emptyAllJson' && state.val && !state.ack) {
-				for (const filterName of g_activeFilters) {
+				for (const filterName of this.g_activeFilters) {
 					emptyJson(filterName);
 				}
 
@@ -1115,7 +1119,7 @@ class LogParser extends utils.Adapter {
 
 				// Force Update
 			} else if (fromEnd1 == 'forceUpdate' && state.val && !state.ack) {
-				for (const filterName of g_activeFilters) {
+				for (const filterName of this.g_activeFilters) {
 					const visTableNums = this.getConfigVisTableNums();
 					this.updateJsonStates(filterName, { updateFilters: true, tableNum: visTableNums });
 					this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
@@ -1124,15 +1128,15 @@ class LogParser extends utils.Adapter {
 
 				// Visualization: Changed selection
 			} else if (fromEnd3 == 'visualization' && fromEnd1 == 'selection' && state.val && !state.ack) {
-				if (g_activeFilters.indexOf(state.val) != -1) {
+				if (this.g_activeFilters.indexOf(state.val) != -1) {
 					// get number from 'visualization.table0', 'visualization.table1', etc.
 					const matches = allExceptLast.match(/\d+$/); // https://stackoverflow.com/questions/6340180/
 					if (matches) {
 						// We have got a number.
 						const number = parseInt(matches[0]);
-						if (g_tableFilters != state.val) {
+						if (this.g_tableFilters != state.val) {
 							// continue only if new selection is different to old
-							g_tableFilters[number] = state.val; // global variable
+							this.g_tableFilters[number] = state.val; // global variable
 							this.updateJsonStates(state.val, { updateFilters: false, tableNum: [number] });
 						}
 					}
@@ -1143,7 +1147,7 @@ class LogParser extends utils.Adapter {
 				this.getStateAsync(allExceptLast + '.selection', async (err, state) => {
 					// Value = state.val, ack = state.ack, time stamp = state.ts, last changed = state.lc
 					if (!err && state && !(await this.isLikeEmpty(state.val))) {
-						if (g_activeFilters.indexOf(state.val) != -1) {
+						if (this.g_activeFilters.indexOf(state.val) != -1) {
 							await emptyJson(state.val);
 							await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 						}
@@ -1161,13 +1165,13 @@ class LogParser extends utils.Adapter {
 		isUnloaded = true;
 
 		try {
-			if (g_timerUpdateStates) {
-				this.clearTimeout(g_timerUpdateStates);
-				g_timerUpdateStates = null;
+			if (this.g_timerUpdateStates) {
+				this.clearTimeout(this.g_timerUpdateStates);
+				this.g_timerUpdateStates = null;
 			}
-			if (g_timerMidnight) {
-				this.clearTimeout(g_timerMidnight);
-				g_timerMidnight = null;
+			if (this.g_timerMidnight) {
+				this.clearTimeout(this.g_timerMidnight);
+				this.g_timerMidnight = null;
 			}
 			this.log.info('cleaned everything up...');
 			callback();
