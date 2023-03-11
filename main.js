@@ -183,6 +183,7 @@ class LogParser extends utils.Adapter {
 				await this.callAtMidnight(); // Set again next midnight.
 			}, msToMidnight);
 		} catch (error) {
+			this.log.warn(`Error at [callAtMidnight]: ${error.message}`);
 			return;
 		}
 	}
@@ -214,7 +215,7 @@ class LogParser extends utils.Adapter {
 				this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
 			}
 		} catch (error) {
-			this.log.warn(`Error at [updateTodayYesterday] - ${error}`);
+			this.log.warn(`Error at [updateTodayYesterday]: ${error.message}`);
 		}
 	}
 
@@ -315,6 +316,7 @@ class LogParser extends utils.Adapter {
 							await this.setStateChangedAsync(lpPath + '.json', { val: JSON.stringify(helperArray), ack: true });
 							await this.setStateChangedAsync(lpPath + '.jsonCount', { val: helperArray.length, ack: true });
 							await this.setStateChangedAsync(lpPath + '.mostRecentLogTime', { val: mostRecentLogTime, ack: true });
+							// TODO: Add here setState for file download
 						}
 					}
 				}
@@ -326,8 +328,8 @@ class LogParser extends utils.Adapter {
 				await this.setStateChangedAsync('filters.' + filterName + '.mostRecentLogTime', { val: mostRecentLogTime, ack: true });
 			}
 		} catch (error) {
+			this.log.warn(`Error at [updateJsonStates]: ${error.message}`);
 			return;
-			//this.log.warn(error);
 		}
 	}
 
@@ -689,6 +691,8 @@ class LogParser extends utils.Adapter {
 			finalStates.push(['filters.' + lpFilterName + '.json', false, { name: 'JSON', type: 'string', read: true, write: false, role: 'json', def: '[]' }]);
 			finalStates.push(['filters.' + lpFilterName + '.jsonCount', false, { name: 'Number of log lines in json', type: 'number', read: true, write: false, role: 'value', def: 0 }]);
 			finalStates.push(['filters.' + lpFilterName + '.emptyJson', false, { name: 'Empty the json state', type: 'boolean', read: false, write: true, role: 'button', def: false }]);
+			//finalStates.push(['filters.' + lpFilterName + '.downloadTXT', false, { name: 'Download log as txt file', type: 'file', read: false, write: true, role: 'state' }]);
+
 			finalStates.push([
 				'filters.' + lpFilterName + '.mostRecentLogTime',
 				false,
@@ -765,7 +769,7 @@ class LogParser extends utils.Adapter {
 			}
 			return visTableNums;
 		} catch (error) {
-			this.log.warn(`Error at [getConfigVisTableNums] - ${error}`);
+			this.log.warn(`Error at [getConfigVisTableNums]: ${error.message}`);
 		}
 	}
 
@@ -1041,7 +1045,7 @@ class LogParser extends utils.Adapter {
 				return result[0]; // we return first match, assuming provided value is unique.
 			}
 		} catch (error) {
-			this.log.warn(`Error at [objArrayGetObjByVal]: ${error}`);
+			this.log.warn(`Error at [objArrayGetObjByVal]: ${error.message}`);
 		}
 	}
 
