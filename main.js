@@ -160,25 +160,29 @@ class LogParser extends utils.Adapter {
 	 * @param {object}  func   function to call at midnight
 	 */
 	callAtMidnight(func) {
-		if (g_timerMidnight) this.clearTimeout(g_timerMidnight);
-		g_timerMidnight = null;
-		const now = new Date();
-		const night = new Date(
-			now.getFullYear(),
-			now.getMonth(),
-			now.getDate() + 1, // the next day, ...
-			0,
-			0,
-			0, // ...at 00:00:00 hours
-		);
-		const offset = 1000; // we add one additional second, just in case.
-		const msToMidnight = night.getTime() - now.getTime() + offset;
-		this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
-		g_timerMidnight = this.setTimeout(async () => {
-			this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
-			func(); // This is the function being called at midnight.
-			this.callAtMidnight(func); // Set again next midnight.
-		}, msToMidnight);
+		try {
+			if (g_timerMidnight) this.clearTimeout(g_timerMidnight);
+			g_timerMidnight = null;
+			const now = new Date();
+			const night = new Date(
+				now.getFullYear(),
+				now.getMonth(),
+				now.getDate() + 1, // the next day, ...
+				0,
+				0,
+				0, // ...at 00:00:00 hours
+			);
+			const offset = 1000; // we add one additional second, just in case.
+			const msToMidnight = night.getTime() - now.getTime() + offset;
+			this.log.debug(`callAtMidnight() called, provided function: '${func.name}'. Timeout at 00:00:01, which is in ${msToMidnight}ms.`);
+			g_timerMidnight = this.setTimeout(async () => {
+				this.log.debug(`callAtMidnight() : timer reached timeout, so we execute function '${func.name}'`);
+				await func(); // This is the function being called at midnight.
+				this.callAtMidnight(func); // Set again next midnight.
+			}, msToMidnight);
+		} catch (error) {
+			return;
+		}
 	}
 
 	/**
@@ -186,22 +190,26 @@ class LogParser extends utils.Adapter {
 	 * Typically called every midnight.
 	 */
 	async updateTodayYesterday() {
-		for (const lpFilterName of g_activeFilters) {
-			// First: Update global variable g_allLogs
-			const lpLogObjects = g_allLogs[lpFilterName];
-			let counter = 0;
-			for (let i = 0; i < lpLogObjects.length; i++) {
-				counter++;
-				const lpLogObject = lpLogObjects[i];
-				const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
-				g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+		try {
+			for (const lpFilterName of g_activeFilters) {
+				// First: Update global variable g_allLogs
+				const lpLogObjects = g_allLogs[lpFilterName];
+				let counter = 0;
+				for (let i = 0; i < lpLogObjects.length; i++) {
+					counter++;
+					const lpLogObject = lpLogObjects[i];
+					const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
+					g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+				}
+
+				// Second: Update all JSON States
+				const visTableNums = await this.getConfigVisTableNums();
+				await this.updateJsonStates(lpFilterName, { updateFilters: true, tableNum: visTableNums });
+
+				this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
 			}
-
-			// Second: Update all JSON States
-			const visTableNums = await this.getConfigVisTableNums();
-			await this.updateJsonStates(lpFilterName, { updateFilters: true, tableNum: visTableNums });
-
-			this.log.debug(`updateTodayYesterday() : Filter '${lpFilterName}', updated ${counter} logs.`);
+		} catch (error) {
+			return;
 		}
 	}
 
@@ -1006,8 +1014,6 @@ class LogParser extends utils.Adapter {
 	 * @param {array}   objects  Array of objects
 	 * @param {string}  key      Key name
 	 * @param {*}       value    Value of the key we are looking for.
-	 * @return {Promise<*>}               Full object (so: element of array) of which property is matching value.
-
 	 *                           We return first match, assuming provided value is unique.
 	 *                           If not found, we return undefined.
 	 */
@@ -1017,6 +1023,7 @@ class LogParser extends utils.Adapter {
 				return obj[key] === value;
 			});
 			if (result.length == 0) {
+				this.log.warn('hallo');
 				return undefined;
 			} else {
 				return result[0]; // we return first match, assuming provided value is unique.
