@@ -206,6 +206,7 @@ class LogParser extends utils.Adapter {
 					const lpLogObject = lpLogObjects[i];
 					const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
 					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+					if (this.config.cssDate) this.g_allLogs[lpFilterName][i].date = `<span class='logInfo logDate'>${this.g_allLogs[lpFilterName][i].date}</span>`;
 				}
 
 				// Second: Update all JSON States
