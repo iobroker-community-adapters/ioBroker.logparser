@@ -135,5 +135,6 @@
     "Remove (COMPACT):": "Verwijderen (COMPACT):",
     "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Als een adapter in compacte modus werkt, wordt het woord compact tussen haakjes toegevoegd aan de voorkant van logboeken, b.v. '(COMPACT) handleConnectionInfo'. Als u deze optie inschakelt, wordt '(COMPACT)' uit de logregels verwijderd.",
     "Remove (COMPACT)": "Verwijderen (COMPACT)",
-    "How many different JSON tables do you need?": "Hoeveel verschillende JSON-tabellen heb je nodig?"
+    "How many different JSON tables do you need?": "Hoeveel verschillende JSON-tabellen heb je nodig?",
+    "Choose the format of the date in the tables (e.g. #DD.MM.# hh:mm)": "Kies het formaat van de datum in de tabellen (bijv. #DD.MM.# hh:mm)"
 }

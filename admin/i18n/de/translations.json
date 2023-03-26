@@ -135,5 +135,6 @@
     "Remove (COMPACT):": "COMPACT entfernen:",
     "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Wenn ein Adapter im Kompaktmodus läuft, fügt er das Wort 'compact' in Klammern an den Anfang der Protokolle, z. '(COMPACT) handleConnectionInfo'. Durch Aktivieren dieser Option wird „(COMPACT)“ aus den Protokollzeilen entfernt.",
     "Remove (COMPACT)": "Entferne (COMPACT)",
-    "How many different JSON tables do you need?": "Wie viele verschiedene JSON-Tabellen benötigen Sie?"
+    "How many different JSON tables do you need?": "Wie viele verschiedene JSON-Tabellen benötigen Sie?",
+    "Choose the format of the date in the tables (e.g. #DD.MM.# hh:mm)": "Wählen Sie das Format des Datums in den Tabellen (z. B. #DD.MM.# hh:mm)"
 }
