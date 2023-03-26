@@ -329,8 +329,7 @@ class LogParser extends utils.Adapter {
 				await this.setStateChangedAsync('filters.' + filterName + '.mostRecentLogTime', { val: mostRecentLogTime, ack: true });
 			}
 		} catch (error) {
-			this.log.warn(`Error at [updateJsonStates]: ${error.message}`);
-			return;
+			return this.log.warn(`Error at [updateJsonStates]: ${error.message}`);
 		}
 	}
 
@@ -1079,7 +1078,7 @@ class LogParser extends utils.Adapter {
 	 * @param {string} id   	State Path
 	 * @param {any}    state	State object
 	 */
-	onStateChange(id, state) {
+	async onStateChange(id, state) {
 		if (state) {
 			// A subscribed state has changed
 			const emptyJson = async (filterName) => {
@@ -1101,7 +1100,7 @@ class LogParser extends utils.Adapter {
 						}
 					}
 				}
-				this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
+				await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 			};
 
 			// Get state parts from like logparser.0.filters.WarnAndError.emptyJson
@@ -1113,21 +1112,21 @@ class LogParser extends utils.Adapter {
 			// Empty all JSON
 			if (fromEnd1 == 'emptyAllJson' && state.val && !state.ack) {
 				for (const filterName of this.g_activeFilters) {
-					emptyJson(filterName);
+					await emptyJson(filterName);
 				}
 
 				// Empty a JSON of a filter
 			} else if (fromEnd3 == 'filters' && fromEnd1 == 'emptyJson' && state.val && !state.ack) {
-				emptyJson(fromEnd2);
+				await emptyJson(fromEnd2);
 
 				// Force Update
 			} else if (fromEnd1 == 'forceUpdate' && state.val && !state.ack) {
 				for (const filterName of this.g_activeFilters) {
-					const visTableNums = this.getConfigVisTableNums();
-					this.updateJsonStates(filterName, { updateFilters: true, tableNum: visTableNums });
-					this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
+					const visTableNums = await this.getConfigVisTableNums();
+					await this.updateJsonStates(filterName, { updateFilters: true, tableNum: visTableNums });
+					await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 				}
-				this.setStateChangedAsync('lastTimeUpdated', { val: Date.now(), ack: true });
+				await this.setStateChangedAsync('lastTimeUpdated', { val: Date.now(), ack: true });
 
 				// Visualization: Changed selection
 			} else if (fromEnd3 == 'visualization' && fromEnd1 == 'selection' && state.val && !state.ack) {
@@ -1140,14 +1139,14 @@ class LogParser extends utils.Adapter {
 						if (this.g_tableFilters != state.val) {
 							// continue only if new selection is different to old
 							this.g_tableFilters[number] = state.val; // global variable
-							this.updateJsonStates(state.val, { updateFilters: false, tableNum: [number] });
+							await this.updateJsonStates(state.val, { updateFilters: false, tableNum: [number] });
 						}
 					}
 				}
 
 				// Visualization: emptyJson
 			} else if (fromEnd3 == 'visualization' && fromEnd1 == 'emptyJson' && state.val && !state.ack) {
-				this.getStateAsync(allExceptLast + '.selection', async (err, state) => {
+				await this.getStateAsync(allExceptLast + '.selection', async (err, state) => {
 					// Value = state.val, ack = state.ack, time stamp = state.ts, last changed = state.lc
 					if (!err && state && !(await this.isLikeEmpty(state.val))) {
 						if (this.g_activeFilters.indexOf(state.val) != -1) {
