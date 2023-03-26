@@ -138,12 +138,6 @@
 							"title": "Merge",
 							"attr": "merge",
 							"width": "5%"
-						},
-						{
-							"type": "text",
-							"title": "Dateformat",
-							"attr": "dateformat",
-							"width": "15%"
 						}
 					]
 				}
@@ -227,6 +221,30 @@
 					"sm": 12,
 					"md": 4,
 					"lg": 4
+				},
+				"_headerDateFormat": {
+					"type": "header",
+					"text": "Date format:",
+					"size": 2
+				},
+				"_textDateFormat": {
+					"type": "staticText",
+					"text": "Choose the format of the date in the tables (e.g. #DD.MM.# hh:mm)",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"style": {
+						"fontSize": 16,
+						"marginTop": 0
+					}
+				},
+				"dateFormat": {
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"type": "text",
+					"label": "Date format"
 				},
 				"_headerReplaceDate": {
 					"type": "header",

@@ -178,6 +178,7 @@
 		"cssSeverity": true,
 		"cssFrom": false,
 		"cssMessage": false,
+		"dateFormat": "#DD.MM.# hh:mm",
 		"globalBlacklist": [
 			{
 				"item": "<==Disconnect system.user.admin from ::ffff:",
@@ -253,8 +254,7 @@
 				"error": false,
 				"maxLength": 100,
 				"clean": "",
-				"merge": true,
-				"dateformat": "#DD.MM.# hh:mm"
+				"merge": true
 			},
 			{
 				"active": true,
@@ -268,8 +268,7 @@
 				"error": false,
 				"maxLength": 100,
 				"clean": "",
-				"merge": true,
-				"dateformat": "#DD.MM.# hh:mm"
+				"merge": true
 			},
 			{
 				"active": true,
@@ -283,8 +282,7 @@
 				"error": true,
 				"maxLength": 100,
 				"clean": "",
-				"merge": true,
-				"dateformat": "#DD.MM.# hh:mm"
+				"merge": true
 			},
 			{
 				"active": true,
@@ -298,8 +296,7 @@
 				"error": true,
 				"maxLength": 100,
 				"clean": "",
-				"merge": true,
-				"dateformat": "#DD.MM.# hh:mm"
+				"merge": true
 			},
 			{
 				"active": true,
@@ -313,8 +310,7 @@
 				"error": true,
 				"maxLength": 100,
 				"clean": "",
-				"merge": true,
-				"dateformat": "#DD.MM.# hh:mm"
+				"merge": true
 			}
 		]
 	},

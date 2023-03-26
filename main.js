@@ -204,8 +204,7 @@ class LogParser extends utils.Adapter {
 				for (let i = 0; i < lpLogObjects.length; i++) {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
-					const f = await this.objArrayGetObjByVal(this.config.parserRules, 'name', lpFilterName); // the filter object
-					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
 					if (this.config.cssDate) this.g_allLogs[lpFilterName][i].date = `<span class='logInfo logDate'>${this.g_allLogs[lpFilterName][i].date}</span>`;
 				}
 
@@ -398,7 +397,7 @@ class LogParser extends utils.Adapter {
 		}
 
 		// Add new key "date" to newLogObject
-		newLogObject.date = await this.tsToDateString(newLogObject.ts, f.dateformat, this.config.txtToday, this.config.txtYesterday);
+		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
 
 		/**
 		 * Support individual items in column provided through log
