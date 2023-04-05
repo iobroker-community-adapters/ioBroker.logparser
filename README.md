@@ -86,6 +86,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 ### **WORK IN PROGRESS**
 
 -   (ciddi89) Fixed: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Missing CSS class in date if it's older than today
+-   (ciddi89) Changed: Moved Dateformat option from table to other settings
+-   (ciddi89) Updated: Dependencies
 
 ### 2.1.0 (2023-03-05)
 
