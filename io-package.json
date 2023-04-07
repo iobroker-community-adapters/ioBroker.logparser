@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "logparser",
-		"version": "2.1.1",
+		"version": "2.1.2",
 		"news": {
+			"2.1.2": {
+				"en": "Fixed: Visualization tables was not working correctly\nFixed: Issue if no dateformat was selected correctly",
+				"de": "Behoben: Visualisierungstabellen funktionierten nicht richtig\nBehoben: Fehler wenn das Datumsformat nicht korrekt/garnicht gewählt wurde",
+				"ru": "Исправлено: таблицы визуализации не работали правильно\nИсправлено: Номер, если датаформат не был выбран правильно",
+				"pt": "Corrigido: tabelas de visualização não estava funcionando corretamente\nCorrigido: Emitir se nenhum formato de data foi selecionado corretamente",
+				"nl": "Visualisatietafels werkten niet goed\nIssue als er geen datum geselecteerd is",
+				"fr": "Correction : Les tableaux de visualisation ne fonctionnaient pas correctement\nCorrection : Question si aucun format de date n'a été sélectionné correctement",
+				"it": "Fisso: le tabelle di visualizzazione non funzionavano correttamente\nRisolto: Problema se non è stato selezionato alcun formato di data correttamente",
+				"es": "Fijo: las tablas de visualización no funcionaban correctamente\nCorregido: Edición si no se selecciona correctamente el formato de fecha",
+				"pl": "Tablice wizualizacji nie zostały poprawnie wykonane\nZagadnienie (ang.)",
+				"uk": "Виправлено: Столи візуалізації не працювали правильно\nВиправлено: Питання, якщо датаформат не вибрано правильно",
+				"zh-cn": "固定:不正确地开展工作\n九. 固定:如无日期可正确选择的问题"
+			},
 			"2.1.1": {
 				"en": "Fixed: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Missing CSS class in date if it's older than today\nChanged: Moved Dateformat option from table to other settings\nUpdated: Dependencies",
 				"de": "Behoben: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Fehlende CSS-Klasse im Datum, wenn es älter als heute ist\nGeändert: Datumsformat-Einstellung von der Tabelle in den Tab anderen Einstellungen verschoben\nAktualisiert: Abhängigkeiten",
@@ -69,19 +82,6 @@
 				"zh-cn": "发送的合并已经确定。"
 			},
 			"1.2.1": {
-				"en": "Adapter has been moved to iobroker-community-adapters",
-				"de": "Adapter wurde auf iobroker-community-adapters verschoben",
-				"ru": "Адаптер переехал в iobroker-community-adapters",
-				"pt": "Adapter foi movido para iobroker-community-adapters",
-				"nl": "Adapter is verplaatst naar iobroker-community-apters",
-				"fr": "Adaptateur a été déplacé à iobroker-community-adapters",
-				"it": "L'adattatore è stato spostato a iobroker-community-adapters",
-				"es": "Adaptador ha sido trasladado a iobroker-community-adapters",
-				"pl": "Adapter został przeniesiony do iobroker-community-adapter",
-				"uk": "Переміщено перехід на iobroker-community-adapters",
-				"zh-cn": "已经向气勃罗克-community-adapters转移。"
-			},
-			"1.2.0": {
 				"en": "Adapter has been moved to iobroker-community-adapters",
 				"de": "Adapter wurde auf iobroker-community-adapters verschoben",
 				"ru": "Адаптер переехал в iobroker-community-adapters",
