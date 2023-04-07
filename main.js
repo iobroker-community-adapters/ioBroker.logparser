@@ -18,12 +18,6 @@ class LogParser extends utils.Adapter {
 			...options,
 			name: 'logparser',
 		});
-		this.on('ready', this.onReady.bind(this));
-		this.on('stateChange', this.onStateChange.bind(this));
-		// this.on('objectChange', this.onObjectChange.bind(this));
-		// this.on('message', this.onMessage.bind(this));
-		this.on('unload', this.onUnload.bind(this));
-
 		this.g_forbiddenCharsA = /[\][*,;'"`<>\\?]/g; // Several chars but allows spaces
 		this.g_forbiddenCharsB = /[\][*,;'"`<>\\\s?]/g; // Several chars and no spaces allowed
 
@@ -36,14 +30,29 @@ class LogParser extends utils.Adapter {
 		this.g_minUpdateInterval = 2; // Minimum update interval in seconds.
 		this.g_defaultUpdateInterval = 20; // Default update interval in seconds.
 
+		this.dateFormat = '';
+
 		this.g_timerMidnight = null; // setInterval timer for callAtMidnight()
 		this.g_timerUpdateStates = null; // Update states interval timer
+
+		this.on('ready', this.onReady.bind(this));
+		this.on('stateChange', this.onStateChange.bind(this));
+		// this.on('objectChange', this.onObjectChange.bind(this));
+		// this.on('message', this.onMessage.bind(this));
+		this.on('unload', this.onUnload.bind(this));
 	}
 
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+		this.dateFormat = this.config.dateFormat;
+
+		if (this.dateFormat === undefined || this.dateFormat === '') {
+			this.log.warn('Configuration corrected: No dateformat selected. Corrected it to #DD.MM.# hh:mm.');
+			this.dateFormat = '#DD.MM.# hh:mm';
+		}
+
 		await this.main();
 		await this.refreshData();
 	}
@@ -204,7 +213,7 @@ class LogParser extends utils.Adapter {
 				for (let i = 0; i < lpLogObjects.length; i++) {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
-					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
+					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
 					if (this.config.cssDate) this.g_allLogs[lpFilterName][i].date = `<span class='logInfo logDate'>${this.g_allLogs[lpFilterName][i].date}</span>`;
 				}
 
@@ -396,7 +405,7 @@ class LogParser extends utils.Adapter {
 		}
 
 		// Add new key "date" to newLogObject
-		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
+		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
 
 		/**
 		 * Support individual items in column provided through log
