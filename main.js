@@ -305,7 +305,7 @@ class LogParser extends utils.Adapter {
 				// We need these in an array.
 				const finalPaths = []; // all state paths, like logparser.0.visualization.table0, etc.
 				if (!(await this.isLikeEmpty(visualization.tableNum))) {
-					for (const lpTableNum of [visualization.tableNum]) {
+					for (const lpTableNum of visualization.tableNum) {
 						if (this.g_tableFilters[lpTableNum] == filterName) {
 							// The chosen filter in logparser.0.visualization.tableX matches with filterName
 							finalPaths.push('visualization.table' + lpTableNum);
@@ -316,7 +316,6 @@ class LogParser extends utils.Adapter {
 							await this.setStateChangedAsync(lpPath + '.json', { val: JSON.stringify(helperArray), ack: true });
 							await this.setStateChangedAsync(lpPath + '.jsonCount', { val: helperArray.length, ack: true });
 							await this.setStateChangedAsync(lpPath + '.mostRecentLogTime', { val: mostRecentLogTime, ack: true });
-							// TODO: Add here setState for file download
 						}
 					}
 				}
@@ -606,7 +605,7 @@ class LogParser extends utils.Adapter {
 				this.log.warn('Configuration corrected: More than 50 VIS views is not allowed, so set to 50.');
 			} else if (numvisTables < 0) {
 				this.config.visTables = 0;
-				this.log.warn('Configuration corrected: More than 50 VIS views is not allowed, so set to 50.');
+				this.log.warn('Configuration corrected: Less than 0 VIS views is not allowed, so set to 0.');
 			} else {
 				this.config.visTables = numvisTables;
 			}
@@ -1106,7 +1105,7 @@ class LogParser extends utils.Adapter {
 			const fromEnd1 = id.split('.')[id.split('.').length - 1]; // [emptyJson]
 			const fromEnd2 = id.split('.')[id.split('.').length - 2]; // [WarnAndError]
 			const fromEnd3 = id.split('.')[id.split('.').length - 3]; // [filters]
-			const allExceptLast = id.substr(0, id.length - fromEnd1.length - 1); // [logparser.0.filters.WarnAndError]
+			const allExceptLast = id.substring(0, id.length - fromEnd1.length - 1); // [logparser.0.filters.WarnAndError]
 
 			// Empty all JSON
 			if (fromEnd1 == 'emptyAllJson' && state.val && !state.ack) {
