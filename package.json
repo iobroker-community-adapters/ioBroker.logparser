@@ -3,8 +3,8 @@
   "version": "2.1.3",
   "description": "Parsing (filtering) the ioBroker log",
   "author": {
-    "name": "mcm1957",
-    "email": "mcm57@gmx.at"
+    "name": "ciddi89",
+    "email": "mail@christian-behrends.de"
   },
   "homepage": "https://github.com/iobroker-community-adapters/ioBroker.logparser",
   "license": "MIT",
