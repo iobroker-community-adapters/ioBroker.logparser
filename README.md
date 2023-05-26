@@ -82,6 +82,11 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (ciddi89) Dropped: Node v14.x support and added: Node v20.x support
+
 ### 2.1.3 (2023-05-19)
 
 -   (ciddi89) Updated: Dependencies
