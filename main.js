@@ -5,6 +5,8 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
+const schedule = require('node-schedule');
+const cronParser = require('cron-parser');
 
 // indicator if the adapter is running or not (for interval/schedule)
 let isUnloaded = false;
