@@ -6,7 +6,6 @@
 
 const utils = require('@iobroker/adapter-core');
 const schedule = require('node-schedule');
-const cronParser = require('cron-parser');
 
 // indicator if the adapter is running or not (for interval/schedule)
 let isUnloaded = false;
@@ -590,6 +589,12 @@ class LogParser extends utils.Adapter {
 					} else {
 						errorMsg.push('Removed forbidden chars of filter name, and name now results in length = 0.');
 					}
+					if (this.config.parserRules[i].schedule !== 0) {
+						const cron = '0 0 */' + this.config.parserRules[i].schedule + ' * *';
+						schedule.scheduleJob(cron, () => {
+							this.deleteLog();
+						});
+					}
 				}
 			}
 			if (!anyRuleActive) {
@@ -1080,6 +1085,10 @@ class LogParser extends utils.Adapter {
 		} else {
 			return true;
 		}
+	}
+
+	deleteLog() {
+		this.log.info('Reach max days delete log now');
 	}
 
 	/**

@@ -138,6 +138,12 @@
 							"title": "Merge",
 							"attr": "merge",
 							"width": "5%"
+						},
+						{
+							"type": "number",
+							"title": "Delete after x Days",
+							"attr": "schedule",
+							"width": "5%"
 						}
 					]
 				}
