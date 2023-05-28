@@ -1096,7 +1096,7 @@ class LogParser extends utils.Adapter {
 		const cron = `0 0 */${time} * *`;
 
 		schedule.scheduleJob(cron, async () => {
-			this.log.info(`Reach ${time} day(s) to delete ${filterName} log`);
+			this.log.info(`Reached ${time} day(s) to delete ${filterName} log`);
 			await this.emptyJson(filterName);
 		});
 	}
