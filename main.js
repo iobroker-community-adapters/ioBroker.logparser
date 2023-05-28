@@ -359,6 +359,7 @@ class LogParser extends utils.Adapter {
 		const whiteListOr = await this.stringConfigListToArray(filterName, 'Whitelist OR', f.whitelistOr);
 		const blacklist = await this.stringConfigListToArray(filterName, 'Blacklist', f.blacklist);
 		const removeList = await this.stringConfigListToArray(filterName, 'Clean', f.clean, true);
+
 		// Check: if no match for filter name or if filter is not active.
 		if (f == undefined || !f.active) return callback(false);
 
@@ -589,11 +590,10 @@ class LogParser extends utils.Adapter {
 					} else {
 						errorMsg.push('Removed forbidden chars of filter name, and name now results in length = 0.');
 					}
-					if (this.config.parserRules[i].schedule !== 0) {
-						const cron = '0 0 */' + this.config.parserRules[i].schedule + ' * *';
-						schedule.scheduleJob(cron, () => {
-							this.deleteLog();
-						});
+					// activating schedule
+					if (this.config.parserRules[i].scheduleDays && this.config.parserRules[i].scheduleDays !== 0) {
+						this.log.debug(`Found time for delete ${name} log after ${this.config.parserRules[i].scheduleDays} day(s). Starting cron job.`);
+						await this.deleteLog(name, this.config.parserRules[i].scheduleDays);
 					}
 				}
 			}
@@ -1087,8 +1087,42 @@ class LogParser extends utils.Adapter {
 		}
 	}
 
-	deleteLog() {
-		this.log.info('Reach max days delete log now');
+	/**
+	 * If user choose days, start cronjob to delete log
+	 * @param {string} filterName
+	 * @param {string | number} time
+	 */
+	async deleteLog(filterName, time) {
+		const cron = `0 0 */${time} * *`;
+
+		schedule.scheduleJob(cron, async () => {
+			this.log.info(`Reach ${time} day(s) to delete ${filterName} log`);
+			await this.emptyJson(filterName);
+		});
+	}
+
+	/**
+	 * @param {string} filterName
+	 */
+	async emptyJson(filterName) {
+		// in variable
+		this.g_allLogs[filterName] = [];
+
+		// in filters states
+		await this.setStateChangedAsync('filters.' + filterName + '.json', { val: '[]', ack: true });
+		await this.setStateChangedAsync('filters.' + filterName + '.jsonCount', { val: 0, ack: true });
+		await this.setStateChangedAsync('filters.' + filterName + '.mostRecentLogTime', { val: 0, ack: true });
+
+		// in visualization states
+		if (this.config.visTables > 0) {
+			for (let i = 0; i < this.config.visTables; i++) {
+				if (this.g_tableFilters[i] && this.g_tableFilters[i] == filterName) {
+					await this.setStateChangedAsync('visualization.table' + i + '.json', { val: '[]', ack: true });
+					await this.setStateChangedAsync('visualization.table' + i + '.jsonCount', { val: 0, ack: true });
+					await this.setStateChangedAsync('visualization.table' + i + '.mostRecentLogTime', { val: 0, ack: true });
+				}
+			}
+		}
 	}
 
 	/**
@@ -1098,29 +1132,6 @@ class LogParser extends utils.Adapter {
 	 */
 	async onStateChange(id, state) {
 		if (state) {
-			// A subscribed state has changed
-			const emptyJson = async (filterName) => {
-				// in variable
-				this.g_allLogs[filterName] = [];
-
-				// in filters states
-				await this.setStateChangedAsync('filters.' + filterName + '.json', { val: '[]', ack: true });
-				await this.setStateChangedAsync('filters.' + filterName + '.jsonCount', { val: 0, ack: true });
-				await this.setStateChangedAsync('filters.' + filterName + '.mostRecentLogTime', { val: 0, ack: true });
-
-				// in visualization states
-				if (this.config.visTables > 0) {
-					for (let i = 0; i < this.config.visTables; i++) {
-						if (this.g_tableFilters[i] && this.g_tableFilters[i] == filterName) {
-							await this.setStateChangedAsync('visualization.table' + i + '.json', { val: '[]', ack: true });
-							await this.setStateChangedAsync('visualization.table' + i + '.jsonCount', { val: 0, ack: true });
-							await this.setStateChangedAsync('visualization.table' + i + '.mostRecentLogTime', { val: 0, ack: true });
-						}
-					}
-				}
-				await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
-			};
-
 			// Get state parts from like logparser.0.filters.WarnAndError.emptyJson
 			const fromEnd1 = id.split('.')[id.split('.').length - 1]; // [emptyJson]
 			const fromEnd2 = id.split('.')[id.split('.').length - 2]; // [WarnAndError]
@@ -1130,12 +1141,14 @@ class LogParser extends utils.Adapter {
 			// Empty all JSON
 			if (fromEnd1 == 'emptyAllJson' && state.val && !state.ack) {
 				for (const filterName of this.g_activeFilters) {
-					await emptyJson(filterName);
+					await this.emptyJson(filterName);
+					await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 				}
 
 				// Empty a JSON of a filter
 			} else if (fromEnd3 == 'filters' && fromEnd1 == 'emptyJson' && state.val && !state.ack) {
-				await emptyJson(fromEnd2);
+				await this.emptyJson(fromEnd2);
+				await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 
 				// Force Update
 			} else if (fromEnd1 == 'forceUpdate' && state.val && !state.ack) {
@@ -1168,7 +1181,7 @@ class LogParser extends utils.Adapter {
 					// Value = state.val, ack = state.ack, time stamp = state.ts, last changed = state.lc
 					if (!err && state && !(await this.isLikeEmpty(state.val))) {
 						if (this.g_activeFilters.indexOf(state.val) != -1) {
-							await emptyJson(state.val);
+							await this.emptyJson(state.val);
 							await this.setStateChangedAsync(id, { val: false, ack: true }); // Acknowledge the positive response
 						}
 					}

@@ -136,5 +136,6 @@
     "If a adapter running in compact mode, it will add the word compact in brackets to the front of logs, e.g. '(COMPACT) handleConnectionInfo'. Enabling this option removes '(COMPACT)' from the log lines.": "Якщо адаптер працює в компактному режимі, він додасть слово compact у дужках на початку журналів, наприклад. '(COMPACT) handleConnectionInfo'. Увімкнення цього параметра видаляє \"(COMPACT)\" із рядків журналу.",
     "Remove (COMPACT)": "Видалити (COMPACT)",
     "How many different JSON tables do you need?": "Скільки різних таблиць JSON вам потрібно?",
-    "Choose the format of the date in the tables (e.g. #DD.MM.# hh:mm)": "Виберіть формат дати в таблицях (наприклад, #ДД.ММ.# год:хх)"
+    "Choose the format of the date in the tables (e.g. #DD.MM.# hh:mm)": "Виберіть формат дати в таблицях (наприклад, #ДД.ММ.# год:хх)",
+    "Empty after days": "Порожньо через дні"
 }

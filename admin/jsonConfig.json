@@ -125,6 +125,7 @@
 							"type": "number",
 							"title": "Max",
 							"attr": "maxLength",
+							"min": 0,
 							"width": "10%"
 						},
 						{
@@ -141,8 +142,9 @@
 						},
 						{
 							"type": "number",
-							"title": "Delete after x Days",
-							"attr": "schedule",
+							"title": "Empty after days",
+							"attr": "scheduleDays",
+							"min": 0,
 							"width": "5%"
 						}
 					]
