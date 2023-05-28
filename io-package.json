@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "logparser",
-		"version": "2.1.3",
+		"version": "2.2.0",
 		"news": {
+			"2.2.0": {
+				"en": "Dropped: Node v14.x support and added: Node v20.x support\nAdded: Option to empty log after days for each parser rule.",
+				"de": "Dropped: Node v14.x Unterstützung und hinzugefügt: Node v20.x Unterstützung\nHinzugefügt: Option zum Protokoll leeren nach Tagen für jede Parser-Regel.",
+				"ru": "Dropped: Поддержка Node v14.x и добавил: Поддержка Node v20.x\nДобавлен: Возможность пустого входа для каждого правила парсера.",
+				"pt": "Dropped: Node v14.x suporte e adicionado: Suporte de Node v20.x\nAdicionado: Opção para log vazio para cada regra do parser.",
+				"nl": "Node v14.x steun en toegevoegd: Node v20\nOptie tot lege logboek voor elke parochieregel.",
+				"fr": "Dropped: Node v14.x support et ajouté: Node v20.x support\nAjouté: Option pour vider le journal pour chaque règle de parser.",
+				"it": "Dropped: Node v14.x supporto e aggiunto: Supporto Node v20.x\nAggiunto: Opzione a vuoto log per ogni regola parser.",
+				"es": "Suprimido: soporte Nodo v14.x y añadido: Soporte Node v20.x\nAñadido: Opción al registro vacío para cada regla del parser.",
+				"pl": "Przewodnik: wsparcie i dodanie. Node v20x (ang.)\nAdded: Option to puste logowanie dla każdej parsery.",
+				"uk": "Dropped: Node v14.x підтримка і додано: Підтримка Node v20.x\nДодано: Варіант порожній журнал для кожного правила парсера.",
+				"zh-cn": "增 编: 无de v20.x 支持\n增删:为每一批规则选择空逻辑。."
+			},
 			"2.1.3": {
 				"en": "Updated: Dependencies",
 				"de": "Aktualisiert: Abhängigkeiten",
@@ -80,19 +93,6 @@
 				"pl": "Aleksy-History (ang.)\nFixed: uzgodnić linki w admin/docs do nowego repowu\nRebuilded mainjs (ang.)",
 				"uk": "Виправлено: Alexa-History скрипт\nВиправлено: виправлено посилання в admin/docs на новий repo\nRebuilded Основний.js",
 				"zh-cn": "固定:Alexa-History 说明\n九. 固定:在专用/docs的调整联系,以进行新的重新组合\n重伤主"
-			},
-			"1.2.2": {
-				"en": "sentry integration has been fixed",
-				"de": "Die Sentry Anbindung wurde korriert. ",
-				"ru": "интеграция с отправлением была исправлена",
-				"pt": "integração sentinela foi corrigida",
-				"nl": "integratie is gerepareerd",
-				"fr": "l'intégration des sentinelles a été fixe",
-				"it": "l'integrazione delle navi è stata fissata",
-				"es": "la integración centinela ha sido fija",
-				"pl": "integracja została ustalona",
-				"uk": "акредитація відправлень була виправлена",
-				"zh-cn": "发送的合并已经确定。"
 			}
 		},
 		"title": "Log Parser",

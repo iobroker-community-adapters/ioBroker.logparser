@@ -82,8 +82,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.2.0 (2023-05-28)
 
 -   (ciddi89) Dropped: Node v14.x support and added: Node v20.x support
 -   (ciddi89) Added: Option to empty log for each parser rule.
