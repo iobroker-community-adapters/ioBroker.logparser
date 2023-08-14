@@ -215,7 +215,22 @@ class LogParser extends utils.Adapter {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
 					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
-					if (this.config.cssDate) this.g_allLogs[lpFilterName][i].date = `<span class='logInfo logDate'>${this.g_allLogs[lpFilterName][i].date}</span>`;
+					if (this.config.cssDate) {
+						const severityType = this.g_allLogs[lpFilterName][i].severity;
+						let severityTypeString;
+						if (severityType.includes('warn')) {
+							severityTypeString = 'Warn';
+						} else if (severityType.includes('info')) {
+							severityTypeString = 'Info';
+						} else if (severityType.includes('error')) {
+							severityTypeString = 'Error';
+						} else if (severityType.includes('silly')) {
+							severityTypeString = 'Silly';
+						} else if (severityType.includes('debug')) {
+							severityTypeString = 'Debug';
+						}
+						this.g_allLogs[lpFilterName][i].date = `<span class='log${severityTypeString} logDate'>${this.g_allLogs[lpFilterName][i].date}</span>`;
+					}
 				}
 
 				// Second: Update all JSON States
