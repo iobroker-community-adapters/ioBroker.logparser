@@ -119,13 +119,15 @@ class LogParser extends utils.Adapter {
 					await this.updateTodayYesterday();
 					// Initially get visualization selection state values
 					for (let i = 0; i < this.config.visTables; i++) {
-						await this.getStateAsync('visualization.table' + i + '.selection', async (err, state) => {
-							if (!err && state && !(await this.isLikeEmpty(state.val))) {
-								this.g_tableFilters[i] = state.val;
+						const selectionState = await this.getStateAsync('visualization.table' + i + '.selection');
+						const getSelectionState = async (/** @type {ioBroker.State | null | undefined} */ state) => {
+							if (state && !(await this.isLikeEmpty(state.val))) {
+								return state.val;
 							} else {
-								this.g_tableFilters[i] = '';
+								return '';
 							}
-						});
+						};
+						this.g_tableFilters[i] = await getSelectionState(selectionState);
 					}
 				});
 			});
