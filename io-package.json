@@ -1,336 +1,323 @@
 {
-  "common": {
-    "name": "logparser",
-    "version": "2.2.1",
-    "news": {
-      "2.2.1": {
-        "en": "Fixed: Visualization tables was not working correctly [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nUpdated: Dependencies",
-        "de": "Behoben: Visualisierungstabellen funktionierten nicht korrekt [#97](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/97)\nAktualisiert: Abhängigkeiten",
-        "ru": "Исправлено: таблицы визуализации не работали правильно [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nОбновлено: зависимости",
-        "pt": "Corrigido: tabelas de visualização não estavam funcionando corretamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nAtualizado: Dependências",
-        "nl": "Visualisatie tafels werkten niet correct\nOpgepast",
-        "fr": "Fixed: Visualization tables was not working correctly [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nActualisé : dépenses",
-        "it": "Risolto: le tabelle di visualizzazione non funzionavano correttamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nAggiornato: Dipendenze",
-        "es": "Fijo: los cuadros de visualización no funcionaban correctamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nActualizado: Dependencias",
-        "pl": "Tablice wizualizacji nie działały poprawnie #97 (https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nZastrzeżenie: Zależność",
-        "uk": "Виправлено: Столи візуалізації не працювали правильно [#97] (https://github.com/iobroker-community-adapters/ioBroker.logparser/products/97)\nОновлено: Залежності",
-        "zh-cn": "Ixed: Visualization表格没有正确地工作[第97号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)。\n更新:属地"
-      },
-      "2.2.0": {
-        "en": "Dropped: Node v14.x support and added: Node v20.x support\nAdded: Option to empty log after days for each parser rule.",
-        "de": "Dropped: Node v14.x Unterstützung und hinzugefügt: Node v20.x Unterstützung\nHinzugefügt: Option zum Protokoll leeren nach Tagen für jede Parser-Regel.",
-        "ru": "Dropped: Поддержка Node v14.x и добавил: Поддержка Node v20.x\nДобавлен: Возможность пустого входа для каждого правила парсера.",
-        "pt": "Dropped: Node v14.x suporte e adicionado: Suporte de Node v20.x\nAdicionado: Opção para log vazio para cada regra do parser.",
-        "nl": "Node v14.x steun en toegevoegd: Node v20\nOptie tot lege logboek voor elke parochieregel.",
-        "fr": "Dropped: Node v14.x support et ajouté: Node v20.x support\nAjouté: Option pour vider le journal pour chaque règle de parser.",
-        "it": "Dropped: Node v14.x supporto e aggiunto: Supporto Node v20.x\nAggiunto: Opzione a vuoto log per ogni regola parser.",
-        "es": "Suprimido: soporte Nodo v14.x y añadido: Soporte Node v20.x\nAñadido: Opción al registro vacío para cada regla del parser.",
-        "pl": "Przewodnik: wsparcie i dodanie. Node v20x (ang.)\nAdded: Option to puste logowanie dla każdej parsery.",
-        "uk": "Dropped: Node v14.x підтримка і додано: Підтримка Node v20.x\nДодано: Варіант порожній журнал для кожного правила парсера.",
-        "zh-cn": "增 编: 无de v20.x 支持\n增删:为每一批规则选择空逻辑。."
-      },
-      "2.1.3": {
-        "en": "Updated: Dependencies",
-        "de": "Aktualisiert: Abhängigkeiten",
-        "ru": "Обновлено: зависимости",
-        "pt": "Atualizado: Dependências",
-        "nl": "Opgepast",
-        "fr": "Actualisé : dépenses",
-        "it": "Aggiornato: Dipendenze",
-        "es": "Actualizado: Dependencias",
-        "pl": "Zastrzeżenie: Zależność",
-        "uk": "Оновлено: Залежності",
-        "zh-cn": "更新:属地"
-      },
-      "2.1.2": {
-        "en": "Fixed: Visualization tables was not working correctly\nFixed: Issue if no dateformat was selected correctly",
-        "de": "Behoben: Visualisierungstabellen funktionierten nicht richtig\nBehoben: Fehler wenn das Datumsformat nicht korrekt/garnicht gewählt wurde",
-        "ru": "Исправлено: таблицы визуализации не работали правильно\nИсправлено: Номер, если датаформат не был выбран правильно",
-        "pt": "Corrigido: tabelas de visualização não estava funcionando corretamente\nCorrigido: Emitir se nenhum formato de data foi selecionado corretamente",
-        "nl": "Visualisatietafels werkten niet goed\nIssue als er geen datum geselecteerd is",
-        "fr": "Correction : Les tableaux de visualisation ne fonctionnaient pas correctement\nCorrection : Question si aucun format de date n'a été sélectionné correctement",
-        "it": "Fisso: le tabelle di visualizzazione non funzionavano correttamente\nRisolto: Problema se non è stato selezionato alcun formato di data correttamente",
-        "es": "Fijo: las tablas de visualización no funcionaban correctamente\nCorregido: Edición si no se selecciona correctamente el formato de fecha",
-        "pl": "Tablice wizualizacji nie zostały poprawnie wykonane\nZagadnienie (ang.)",
-        "uk": "Виправлено: Столи візуалізації не працювали правильно\nВиправлено: Питання, якщо датаформат не вибрано правильно",
-        "zh-cn": "固定:不正确地开展工作\n九. 固定:如无日期可正确选择的问题"
-      },
-      "2.1.1": {
-        "en": "Fixed: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Missing CSS class in date if it's older than today\nChanged: Moved Dateformat option from table to other settings\nUpdated: Dependencies",
-        "de": "Behoben: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Fehlende CSS-Klasse im Datum, wenn es älter als heute ist\nGeändert: Datumsformat-Einstellung von der Tabelle in den Tab anderen Einstellungen verschoben\nAktualisiert: Abhängigkeiten",
-        "ru": "Исправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Отсутствие класса CSS в дате, если он старше, чем сегодня\nИзменен: Перемещённый вариант Dateformat из таблицы в другие настройки\nОбновлено: зависимости",
-        "pt": "Corrigido: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando classe CSS na data se for mais velho do que hoje\nAlterado: Formato de data movido opção da tabela para outras configurações\nAtualizado: Dependências",
-        "nl": "Quality over Quantity (QoQ) Releases Vertaling: Het missen van CSS klas op datum als het ouder is dan vandaag\nVerplaatste Dateformat optie van tafel naar andere instellingen\nOpgepast",
-        "fr": "Correction : [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) La classe de CSS manquante est plus ancienne qu'aujourd'hui\nChanged: Moved Dateformat option de table à d'autres paramètres\nActualisé : dépenses",
-        "it": "Risolto: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Mancanza di classe CSS in data se è più vecchio di oggi\nModificato: Spostato Dataformat opzione dalla tabella alle altre impostazioni\nAggiornato: Dipendenze",
-        "es": "Arreglado: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando la clase CSS en la fecha si es mayor que hoy\nCambio: Opción de formato Fecha en movimiento de la tabla a otros ajustes\nActualizado: Dependencias",
-        "pl": "Fixed: #25 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Klasa CSS jest starsza niż obecnie\nChanged: Moved Dateformat option from table to other settings\nZastrzeżenie: Zależność",
-        "uk": "Виправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/25) Мисливець за класом CSS в день, якщо це старше, ніж сьогодні\nЗмінено: Переведена датаформат варіант з таблиці в інші налаштування\nОновлено: Залежності",
-        "zh-cn": "固定:[第25号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) 2. 如果其年长短于今天,则迄今发行的CSS级\n变化:从表中到其他环境选择的简历\n更新:属地"
-      },
-      "2.1.0": {
-        "en": "Added: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option to remove 'COMPACT' in log entries\nAdded: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option to remove only 'script.js' in log entries\nFixed: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight function to change today/yesterday\nFixed: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) When nothing selected in blacklist, adapter didn't work anymore\nOther: Small code and translation improvements",
-        "de": "Hinzugefügt: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option zum Entfernen von COMPACT in Logeinträgen\nHinzugefügt: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option nur 'script.js' in Logeinträgen zu entfernen\nBehoben: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight-Funktion, um Text heute / gestern in Log-Einträgen zu ändern\nBehoben: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Als nichts in der Blacklist ausgewählt wurde, funktionierte Adapter nicht mehr\nSonstiges: Kleine Code- und Übersetzungsverbesserungen",
-        "ru": "Добавлено: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Возможность удаления COMPACT в записи логов\nДобавлено: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Возможность удаления только скрипта.js в записи\nИсправлено: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight функция, чтобы изменить сегодня / день\nИсправлено: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Когда ничего не выбрано в черный список, адаптер больше не работает\nДругое: Небольшой код и улучшения перевода",
-        "pt": "Adicionado: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opção para remover COMPACT em entradas de log\nAdicionado: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opção para remover apenas script.js em entradas de log\nCorrigido: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Função da meia-noite para mudar hoje / domingo\nCorrigido: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quando nada selecionado na lista negra, o adaptador não funcionou mais\nOutros: Pequeno código e melhorias de tradução",
-        "nl": "Toegevoegd: 'Gitps'.com/iobroker-community-apters/ioBroker. Optie om COMPACT te verwijderen in logboeken\nToegevoegd: 'Gitps'.com/iobroker-community-apters/ioBroker. Optie om alleen scripts te verwijderen\nQuality over Quantity (QoQ) Releases Vertaling: Middernachtfunctie veranderen vandaag/yesterday\nQuality over Quantity (QoQ) Releases Vertaling: Toen er niets geselecteerd werd in zwarte lijst, werkte adapter niet meer\nKleine code en vertaling:",
-        "fr": "Ajouté : [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option pour supprimer COMPACT dans les entrées log\nAjouté : [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option pour supprimer uniquement script.js dans les entrées log\nCorrection : [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Fonction de minuit pour changer aujourd'hui/jour\nCorrection : [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quand rien n'a été sélectionné dans blacklist, l'adaptateur n'a plus fonctionné\nAutres : Amélioration du code et de la traduction",
-        "it": "Aggiunto: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opzione per rimuovere COMPACT nelle voci di registro\nAggiunto: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opzione per rimuovere solo script.js nelle voci di registro\nFisso: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Funzione di mezzanotte per cambiare oggi / giorno d'oggi\nFisso: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quando niente selezionato nella lista nera, l'adattatore non funzionava più\nAltro: Piccoli miglioramenti di codice e traduzione",
-        "es": "Añadido: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opción para eliminar COMPACT en las entradas de registro\nAñadido: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opción para eliminar sólo script.js en las entradas de registro\nCorregido: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Función de medianoche para cambiar hoy/ayer\nArreglado: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Cuando nada seleccionado en la lista negra, el adaptador ya no funcionó\nOtros: Pequeñas mejoras de código y traducción",
-        "pl": "Added: #24 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). W celu usunięcia pliku COMPACT wpis w pliku\nAdded: #21 (https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Wykorzystując jedynie skrypty wpisach logowych\n(#46)(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Funkcja Midnighta zmienia się w dzisiejszych czasach\nFixed: #23 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Gdy nic nie wybrano na czarną listę, dostosowujący się już nie pracował\nInne: kod i poprawa tłumaczenia",
-        "uk": "Додано: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/24) Опція видалення COMPACT в записах журналу\nДодано: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/21) Варіант видалити тільки скрипт.js в записах журналу\nВиправлено: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/46) Функція Midnight для зміни сьогодні / вихідний день\nВиправлено: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/23) Коли нічого вибраного в чорному списку адаптер не працює\nІнше: Невеликий код та вдосконалення перекладу",
-        "zh-cn": "增加:[第24号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) B. 清除入帐中的COMPACT的选择\n增加:[第21号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) 排除在逻辑目中的文字编号的选择\n固定:[第46号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) 今天/半天的改变功能\n固定:[第23号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) 在黑名单中没有任何选择时,适应者没有做任何更多的工作。\n其他:小法典和翻译改进"
-      },
-      "2.0.0": {
-        "en": "Dropped: Admin 5 support\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nFixed: Issue with Midnight function\nAdded: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nUpdated: Readme",
-        "de": "Dropped: Admin 5 Unterstützung\nGeändert: Admin html zu jsonConfig [#36](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/36)\nBehoben: Fehler in der Midnight-Funktion\nHinzugefügt: Übersetzungen von admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAktualisiert: Readme",
-        "ru": "Dropped: Admin 5 поддержка\nИзменено: Admin html на jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nИсправлено: Номер с функцией Midnight\nДобавлена: Переводы админа ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nОбновлено: Readme",
-        "pt": "Dropped: Suporte Admin 5\nAlterado: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrigido: Problema com função da meia-noite\nAdicionado: Traduções de admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAtualizado: Readme",
-        "nl": "Admin 5 steun\nAdmin html tot jsonConfig 36:\nIssue met Midnight functie\nVertaling:\nVertaling:",
-        "fr": "Dropped: Soutien Admin 5\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrection : Question avec la fonction Midnight\nAjouté: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualisé : Readme",
-        "it": "Dropped: supporto di Admin 5\nModificato: Admin html a jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nRisolto: Problema con funzione di mezzanotte\nAggiunto: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAggiornato: Readme",
-        "es": "Suprimido: apoyo de Admin 5\nCambio: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorregido: Edición con función de medianoche\nAñadido: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualizado: Readme",
-        "pl": "Admin 5\nZmiany: Admin html to jsonConfig #36(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issueser/36)\nFix: Problem z funkcją Midnight\nTłumaczenia admin ui #28(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nReadme (ang.)",
-        "uk": "Виправлено: Admin 5 підтримка\nЗмінено: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/36)\nВиправлено: Випуск з функцією Midnight\nДодано: Переклади адміністратора ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/28)\nОновлено: Readme",
-        "zh-cn": "Droed: Admin 5 support\n修改:向 json Config [第36号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)提供捐助\n固定:与中午夜功能有关的问题\n增 编:专注译(第28号) (http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\n最新资料:阅读摘要"
-      }
-    },
-    "title": "Log Parser",
-    "titleLang": {
-      "en": "Log Parser",
-      "de": "Log Parser",
-      "ru": "Вход Parser",
-      "pt": "Log Parser",
-      "nl": "Log Parser",
-      "fr": "Log Parser",
-      "it": "Per saperne di più",
-      "es": "Log Parser",
-      "pl": "Log Parser",
-      "uk": "Вхід",
-      "zh-cn": "后勤业务处"
-    },
-    "desc": {
-      "en": "Parsing (filtering) the ioBroker log",
-      "de": "ioBroker-Logs aller Adapter parsen (filtern)",
-      "ru": "Парсинг (фильтрация) журнала ioBroker",
-      "pt": "Analisando (filtrando) o log do ioBroker",
-      "nl": "Het ioBroker-logboek parseren (filteren)",
-      "fr": "Analyse (filtrage) du journal ioBroker",
-      "it": "Analisi (filtro) del registro ioBroker",
-      "es": "Analizar (filtrar) el registro de ioBroker",
-      "pl": "Parsowanie (filtrowanie) dziennika ioBroker",
-      "uk": "Парсінг (фільтрування) журнал ioBroker\n",
-      "zh-cn": "解析（过滤）ioBroker日志"
-    },
-    "authors": [
-      "Mic-M <iob.micm@gmail.com>",
-      "McM1957 <mcm57@gmx.at>",
-      "ciddi89 <mail@christian-behrends.de>"
-    ],
-    "keywords": [
-      "log",
-      "parser",
-      "filter"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "logparser.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/admin/logparser.png",
-    "readme": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "logic",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.0"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=6.0.0"
-      }
-    ],
-    "logTransporter": true,
-    "plugins": {
-      "sentry": {
-        "dsn": "https://fc85aa1722d94bf18588bf8673aa5aef@sentry.iobroker.net/93"
-      }
-    },
-    "docs": {
-      "en": [
-        "docs/en/logparser.md"
-      ],
-      "de": [
-        "docs/de/logparser.md"
-      ]
-    }
-  },
-  "native": {
-    "removePid": true,
-    "txtToday": "Heute",
-    "txtYesterday": "Gestern",
-    "txtMerge": "[# Einträge] ",
-    "jsonColumns": "date,severity,from,message",
-    "sortDescending": true,
-    "removeScriptJs": false,
-    "removeOnlyScriptJs": false,
-    "removeCompact": false,
-    "visTables": 1,
-    "updateInterval": 10,
-    "maxLogs": 100,
-    "cssDate": false,
-    "cssSeverity": true,
-    "cssFrom": false,
-    "cssMessage": false,
-    "dateFormat": "#DD.MM.# hh:mm",
-    "globalBlacklist": [
-      {
-        "item": "<==Disconnect system.user.admin from ::ffff:",
-        "comment": "web.0 Adapter",
-        "active": true
-      },
-      {
-        "item": "/registered [0-9]+ subscriptions and [0-9]+ schedules/",
-        "comment": "Beispiel für Regex",
-        "active": true
-      },
-      {
-        "item": "/instance system\\.adapter\\.[^\\s]* terminated with code 0 \\((NO_ERROR|OK)\\)/",
-        "comment": "Weiteres Regex-Beispiel",
-        "active": true
-      },
-      {
-        "item": "/instance system\\.adapter\\.[^\\s]* started with pid [0-9]+/",
-        "comment": "Noch ein Regex",
-        "active": true
-      },
-      {
-        "item": "Start javascript script.js.",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "Stop script script.js.",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "bring.0 Cannot get translations: RequestError",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": " reconnected. Old secret ",
-        "comment": "Sonoff",
-        "active": true
-      },
-      {
-        "item": "Popup-News readed...",
-        "comment": "info.0 Adapter",
-        "active": true
-      },
-      {
-        "item": "[warn] Projects disabled : set editorTheme.projects.enabled=true to enable",
-        "comment": "see https://forum.iobroker.net/topic/12260/",
-        "active": true
-      },
-      {
-        "item": "[warn] Projects disabled : editorTheme.projects.enabled=false",
-        "comment": "",
-        "active": true
-      },
-      {
-        "item": "Update repository \"latest\" under",
-        "comment": "",
-        "active": true
-      }
-    ],
-    "parserRules": [
-      {
-        "active": true,
-        "name": "Info",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": true,
-        "warn": false,
-        "error": false,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "scheduleDays": 0
-      },
-      {
-        "active": true,
-        "name": "Warn",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": true,
-        "error": false,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "scheduleDays": 0
-      },
-      {
-        "active": true,
-        "name": "Error",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": false,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "scheduleDays": 0
-      },
-      {
-        "active": true,
-        "name": "WarnAndError",
-        "whitelistAnd": "*",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": false,
-        "warn": true,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "scheduleDays": 0
-      },
-      {
-        "active": true,
-        "name": "Homematic",
-        "whitelistAnd": "/hm-(rpc|rega)\\.[0-9]/",
-        "whitelistOr": "*",
-        "blacklist": "",
-        "debug": false,
-        "info": true,
-        "warn": true,
-        "error": true,
-        "maxLength": 100,
-        "clean": "",
-        "merge": true,
-        "scheduleDays": 0
-      }
-    ]
-  },
-  "objects": [],
-  "instanceObjects": []
+	"common": {
+		"name": "logparser",
+		"version": "2.2.1",
+		"news": {
+			"2.2.1": {
+				"en": "Fixed: Visualization tables was not working correctly [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nUpdated: Dependencies",
+				"de": "Behoben: Visualisierungstabellen funktionierten nicht korrekt [#97](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/97)\nAktualisiert: Abhängigkeiten",
+				"ru": "Исправлено: таблицы визуализации не работали правильно [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nОбновлено: зависимости",
+				"pt": "Corrigido: tabelas de visualização não estavam funcionando corretamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nAtualizado: Dependências",
+				"nl": "Visualisatie tafels werkten niet correct\nOpgepast",
+				"fr": "Fixed: Visualization tables was not working correctly [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nActualisé : dépenses",
+				"it": "Risolto: le tabelle di visualizzazione non funzionavano correttamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nAggiornato: Dipendenze",
+				"es": "Fijo: los cuadros de visualización no funcionaban correctamente [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nActualizado: Dependencias",
+				"pl": "Tablice wizualizacji nie działały poprawnie #97 (https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nZastrzeżenie: Zależność",
+				"uk": "Виправлено: Столи візуалізації не працювали правильно [#97] (https://github.com/iobroker-community-adapters/ioBroker.logparser/products/97)\nОновлено: Залежності",
+				"zh-cn": "Ixed: Visualization表格没有正确地工作[第97号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)。\n更新:属地"
+			},
+			"2.2.0": {
+				"en": "Dropped: Node v14.x support and added: Node v20.x support\nAdded: Option to empty log after days for each parser rule.",
+				"de": "Dropped: Node v14.x Unterstützung und hinzugefügt: Node v20.x Unterstützung\nHinzugefügt: Option zum Protokoll leeren nach Tagen für jede Parser-Regel.",
+				"ru": "Dropped: Поддержка Node v14.x и добавил: Поддержка Node v20.x\nДобавлен: Возможность пустого входа для каждого правила парсера.",
+				"pt": "Dropped: Node v14.x suporte e adicionado: Suporte de Node v20.x\nAdicionado: Opção para log vazio para cada regra do parser.",
+				"nl": "Node v14.x steun en toegevoegd: Node v20\nOptie tot lege logboek voor elke parochieregel.",
+				"fr": "Dropped: Node v14.x support et ajouté: Node v20.x support\nAjouté: Option pour vider le journal pour chaque règle de parser.",
+				"it": "Dropped: Node v14.x supporto e aggiunto: Supporto Node v20.x\nAggiunto: Opzione a vuoto log per ogni regola parser.",
+				"es": "Suprimido: soporte Nodo v14.x y añadido: Soporte Node v20.x\nAñadido: Opción al registro vacío para cada regla del parser.",
+				"pl": "Przewodnik: wsparcie i dodanie. Node v20x (ang.)\nAdded: Option to puste logowanie dla każdej parsery.",
+				"uk": "Dropped: Node v14.x підтримка і додано: Підтримка Node v20.x\nДодано: Варіант порожній журнал для кожного правила парсера.",
+				"zh-cn": "增 编: 无de v20.x 支持\n增删:为每一批规则选择空逻辑。."
+			},
+			"2.1.3": {
+				"en": "Updated: Dependencies",
+				"de": "Aktualisiert: Abhängigkeiten",
+				"ru": "Обновлено: зависимости",
+				"pt": "Atualizado: Dependências",
+				"nl": "Opgepast",
+				"fr": "Actualisé : dépenses",
+				"it": "Aggiornato: Dipendenze",
+				"es": "Actualizado: Dependencias",
+				"pl": "Zastrzeżenie: Zależność",
+				"uk": "Оновлено: Залежності",
+				"zh-cn": "更新:属地"
+			},
+			"2.1.2": {
+				"en": "Fixed: Visualization tables was not working correctly\nFixed: Issue if no dateformat was selected correctly",
+				"de": "Behoben: Visualisierungstabellen funktionierten nicht richtig\nBehoben: Fehler wenn das Datumsformat nicht korrekt/garnicht gewählt wurde",
+				"ru": "Исправлено: таблицы визуализации не работали правильно\nИсправлено: Номер, если датаформат не был выбран правильно",
+				"pt": "Corrigido: tabelas de visualização não estava funcionando corretamente\nCorrigido: Emitir se nenhum formato de data foi selecionado corretamente",
+				"nl": "Visualisatietafels werkten niet goed\nIssue als er geen datum geselecteerd is",
+				"fr": "Correction : Les tableaux de visualisation ne fonctionnaient pas correctement\nCorrection : Question si aucun format de date n'a été sélectionné correctement",
+				"it": "Fisso: le tabelle di visualizzazione non funzionavano correttamente\nRisolto: Problema se non è stato selezionato alcun formato di data correttamente",
+				"es": "Fijo: las tablas de visualización no funcionaban correctamente\nCorregido: Edición si no se selecciona correctamente el formato de fecha",
+				"pl": "Tablice wizualizacji nie zostały poprawnie wykonane\nZagadnienie (ang.)",
+				"uk": "Виправлено: Столи візуалізації не працювали правильно\nВиправлено: Питання, якщо датаформат не вибрано правильно",
+				"zh-cn": "固定:不正确地开展工作\n九. 固定:如无日期可正确选择的问题"
+			},
+			"2.1.1": {
+				"en": "Fixed: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Missing CSS class in date if it's older than today\nChanged: Moved Dateformat option from table to other settings\nUpdated: Dependencies",
+				"de": "Behoben: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Fehlende CSS-Klasse im Datum, wenn es älter als heute ist\nGeändert: Datumsformat-Einstellung von der Tabelle in den Tab anderen Einstellungen verschoben\nAktualisiert: Abhängigkeiten",
+				"ru": "Исправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Отсутствие класса CSS в дате, если он старше, чем сегодня\nИзменен: Перемещённый вариант Dateformat из таблицы в другие настройки\nОбновлено: зависимости",
+				"pt": "Corrigido: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando classe CSS na data se for mais velho do que hoje\nAlterado: Formato de data movido opção da tabela para outras configurações\nAtualizado: Dependências",
+				"nl": "Quality over Quantity (QoQ) Releases Vertaling: Het missen van CSS klas op datum als het ouder is dan vandaag\nVerplaatste Dateformat optie van tafel naar andere instellingen\nOpgepast",
+				"fr": "Correction : [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) La classe de CSS manquante est plus ancienne qu'aujourd'hui\nChanged: Moved Dateformat option de table à d'autres paramètres\nActualisé : dépenses",
+				"it": "Risolto: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Mancanza di classe CSS in data se è più vecchio di oggi\nModificato: Spostato Dataformat opzione dalla tabella alle altre impostazioni\nAggiornato: Dipendenze",
+				"es": "Arreglado: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando la clase CSS en la fecha si es mayor que hoy\nCambio: Opción de formato Fecha en movimiento de la tabla a otros ajustes\nActualizado: Dependencias",
+				"pl": "Fixed: #25 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Klasa CSS jest starsza niż obecnie\nChanged: Moved Dateformat option from table to other settings\nZastrzeżenie: Zależność",
+				"uk": "Виправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/25) Мисливець за класом CSS в день, якщо це старше, ніж сьогодні\nЗмінено: Переведена датаформат варіант з таблиці в інші налаштування\nОновлено: Залежності",
+				"zh-cn": "固定:[第25号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) 2. 如果其年长短于今天,则迄今发行的CSS级\n变化:从表中到其他环境选择的简历\n更新:属地"
+			},
+			"2.1.0": {
+				"en": "Added: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option to remove 'COMPACT' in log entries\nAdded: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option to remove only 'script.js' in log entries\nFixed: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight function to change today/yesterday\nFixed: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) When nothing selected in blacklist, adapter didn't work anymore\nOther: Small code and translation improvements",
+				"de": "Hinzugefügt: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option zum Entfernen von COMPACT in Logeinträgen\nHinzugefügt: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option nur 'script.js' in Logeinträgen zu entfernen\nBehoben: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight-Funktion, um Text heute / gestern in Log-Einträgen zu ändern\nBehoben: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Als nichts in der Blacklist ausgewählt wurde, funktionierte Adapter nicht mehr\nSonstiges: Kleine Code- und Übersetzungsverbesserungen",
+				"ru": "Добавлено: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Возможность удаления COMPACT в записи логов\nДобавлено: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Возможность удаления только скрипта.js в записи\nИсправлено: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Midnight функция, чтобы изменить сегодня / день\nИсправлено: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Когда ничего не выбрано в черный список, адаптер больше не работает\nДругое: Небольшой код и улучшения перевода",
+				"pt": "Adicionado: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opção para remover COMPACT em entradas de log\nAdicionado: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opção para remover apenas script.js em entradas de log\nCorrigido: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Função da meia-noite para mudar hoje / domingo\nCorrigido: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quando nada selecionado na lista negra, o adaptador não funcionou mais\nOutros: Pequeno código e melhorias de tradução",
+				"nl": "Toegevoegd: 'Gitps'.com/iobroker-community-apters/ioBroker. Optie om COMPACT te verwijderen in logboeken\nToegevoegd: 'Gitps'.com/iobroker-community-apters/ioBroker. Optie om alleen scripts te verwijderen\nQuality over Quantity (QoQ) Releases Vertaling: Middernachtfunctie veranderen vandaag/yesterday\nQuality over Quantity (QoQ) Releases Vertaling: Toen er niets geselecteerd werd in zwarte lijst, werkte adapter niet meer\nKleine code en vertaling:",
+				"fr": "Ajouté : [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Option pour supprimer COMPACT dans les entrées log\nAjouté : [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Option pour supprimer uniquement script.js dans les entrées log\nCorrection : [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Fonction de minuit pour changer aujourd'hui/jour\nCorrection : [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quand rien n'a été sélectionné dans blacklist, l'adaptateur n'a plus fonctionné\nAutres : Amélioration du code et de la traduction",
+				"it": "Aggiunto: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opzione per rimuovere COMPACT nelle voci di registro\nAggiunto: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opzione per rimuovere solo script.js nelle voci di registro\nFisso: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Funzione di mezzanotte per cambiare oggi / giorno d'oggi\nFisso: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Quando niente selezionato nella lista nera, l'adattatore non funzionava più\nAltro: Piccoli miglioramenti di codice e traduzione",
+				"es": "Añadido: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) Opción para eliminar COMPACT en las entradas de registro\nAñadido: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Opción para eliminar sólo script.js en las entradas de registro\nCorregido: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Función de medianoche para cambiar hoy/ayer\nArreglado: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) Cuando nada seleccionado en la lista negra, el adaptador ya no funcionó\nOtros: Pequeñas mejoras de código y traducción",
+				"pl": "Added: #24 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). W celu usunięcia pliku COMPACT wpis w pliku\nAdded: #21 (https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Wykorzystując jedynie skrypty wpisach logowych\n(#46)(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Funkcja Midnighta zmienia się w dzisiejszych czasach\nFixed: #23 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Gdy nic nie wybrano na czarną listę, dostosowujący się już nie pracował\nInne: kod i poprawa tłumaczenia",
+				"uk": "Додано: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/24) Опція видалення COMPACT в записах журналу\nДодано: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/21) Варіант видалити тільки скрипт.js в записах журналу\nВиправлено: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/46) Функція Midnight для зміни сьогодні / вихідний день\nВиправлено: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/23) Коли нічого вибраного в чорному списку адаптер не працює\nІнше: Невеликий код та вдосконалення перекладу",
+				"zh-cn": "增加:[第24号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) B. 清除入帐中的COMPACT的选择\n增加:[第21号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) 排除在逻辑目中的文字编号的选择\n固定:[第46号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) 今天/半天的改变功能\n固定:[第23号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) 在黑名单中没有任何选择时,适应者没有做任何更多的工作。\n其他:小法典和翻译改进"
+			},
+			"2.0.0": {
+				"en": "Dropped: Admin 5 support\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nFixed: Issue with Midnight function\nAdded: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nUpdated: Readme",
+				"de": "Dropped: Admin 5 Unterstützung\nGeändert: Admin html zu jsonConfig [#36](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/36)\nBehoben: Fehler in der Midnight-Funktion\nHinzugefügt: Übersetzungen von admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAktualisiert: Readme",
+				"ru": "Dropped: Admin 5 поддержка\nИзменено: Admin html на jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nИсправлено: Номер с функцией Midnight\nДобавлена: Переводы админа ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nОбновлено: Readme",
+				"pt": "Dropped: Suporte Admin 5\nAlterado: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrigido: Problema com função da meia-noite\nAdicionado: Traduções de admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAtualizado: Readme",
+				"nl": "Admin 5 steun\nAdmin html tot jsonConfig 36:\nIssue met Midnight functie\nVertaling:\nVertaling:",
+				"fr": "Dropped: Soutien Admin 5\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrection : Question avec la fonction Midnight\nAjouté: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualisé : Readme",
+				"it": "Dropped: supporto di Admin 5\nModificato: Admin html a jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nRisolto: Problema con funzione di mezzanotte\nAggiunto: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAggiornato: Readme",
+				"es": "Suprimido: apoyo de Admin 5\nCambio: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorregido: Edición con función de medianoche\nAñadido: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualizado: Readme",
+				"pl": "Admin 5\nZmiany: Admin html to jsonConfig #36(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issueser/36)\nFix: Problem z funkcją Midnight\nTłumaczenia admin ui #28(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nReadme (ang.)",
+				"uk": "Виправлено: Admin 5 підтримка\nЗмінено: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/36)\nВиправлено: Випуск з функцією Midnight\nДодано: Переклади адміністратора ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/28)\nОновлено: Readme",
+				"zh-cn": "Droed: Admin 5 support\n修改:向 json Config [第36号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)提供捐助\n固定:与中午夜功能有关的问题\n增 编:专注译(第28号) (http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\n最新资料:阅读摘要"
+			}
+		},
+		"titleLang": {
+			"en": "Log Parser",
+			"de": "Log Parser",
+			"ru": "Вход Parser",
+			"pt": "Log Parser",
+			"nl": "Log Parser",
+			"fr": "Log Parser",
+			"it": "Per saperne di più",
+			"es": "Log Parser",
+			"pl": "Log Parser",
+			"uk": "Вхід",
+			"zh-cn": "后勤业务处"
+		},
+		"desc": {
+			"en": "Parsing (filtering) the ioBroker log",
+			"de": "ioBroker-Logs aller Adapter parsen (filtern)",
+			"ru": "Парсинг (фильтрация) журнала ioBroker",
+			"pt": "Analisando (filtrando) o log do ioBroker",
+			"nl": "Het ioBroker-logboek parseren (filteren)",
+			"fr": "Analyse (filtrage) du journal ioBroker",
+			"it": "Analisi (filtro) del registro ioBroker",
+			"es": "Analizar (filtrar) el registro de ioBroker",
+			"pl": "Parsowanie (filtrowanie) dziennika ioBroker",
+			"uk": "Парсінг (фільтрування) журнал ioBroker\n",
+			"zh-cn": "解析（过滤）ioBroker日志"
+		},
+		"authors": ["Mic-M <iob.micm@gmail.com>", "McM1957 <mcm57@gmx.at>", "ciddi89 <mail@christian-behrends.de>"],
+		"keywords": ["log", "parser", "filter"],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "logparser.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/admin/logparser.png",
+		"readme": "https://github.com/iobroker-community-adapters/ioBroker.logparser/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "logic",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=4.0.0"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=6.0.0"
+			}
+		],
+		"logTransporter": true,
+		"plugins": {
+			"sentry": {
+				"dsn": "https://fc85aa1722d94bf18588bf8673aa5aef@sentry.iobroker.net/93"
+			}
+		},
+		"docs": {
+			"en": ["docs/en/logparser.md"],
+			"de": ["docs/de/logparser.md"]
+		}
+	},
+	"native": {
+		"removePid": true,
+		"txtToday": "Heute",
+		"txtYesterday": "Gestern",
+		"txtMerge": "[# Einträge] ",
+		"jsonColumns": "date,severity,from,message",
+		"sortDescending": true,
+		"removeScriptJs": false,
+		"removeOnlyScriptJs": false,
+		"removeCompact": false,
+		"visTables": 1,
+		"updateInterval": 10,
+		"maxLogs": 100,
+		"cssDate": false,
+		"cssSeverity": true,
+		"cssFrom": false,
+		"cssMessage": false,
+		"dateFormat": "#DD.MM.# hh:mm",
+		"globalBlacklist": [
+			{
+				"item": "<==Disconnect system.user.admin from ::ffff:",
+				"comment": "web.0 Adapter",
+				"active": true
+			},
+			{
+				"item": "/registered [0-9]+ subscriptions and [0-9]+ schedules/",
+				"comment": "Beispiel für Regex",
+				"active": true
+			},
+			{
+				"item": "/instance system\\.adapter\\.[^\\s]* terminated with code 0 \\((NO_ERROR|OK)\\)/",
+				"comment": "Weiteres Regex-Beispiel",
+				"active": true
+			},
+			{
+				"item": "/instance system\\.adapter\\.[^\\s]* started with pid [0-9]+/",
+				"comment": "Noch ein Regex",
+				"active": true
+			},
+			{
+				"item": "Start javascript script.js.",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "Stop script script.js.",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "bring.0 Cannot get translations: RequestError",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": " reconnected. Old secret ",
+				"comment": "Sonoff",
+				"active": true
+			},
+			{
+				"item": "Popup-News readed...",
+				"comment": "info.0 Adapter",
+				"active": true
+			},
+			{
+				"item": "[warn] Projects disabled : set editorTheme.projects.enabled=true to enable",
+				"comment": "see https://forum.iobroker.net/topic/12260/",
+				"active": true
+			},
+			{
+				"item": "[warn] Projects disabled : editorTheme.projects.enabled=false",
+				"comment": "",
+				"active": true
+			},
+			{
+				"item": "Update repository \"latest\" under",
+				"comment": "",
+				"active": true
+			}
+		],
+		"parserRules": [
+			{
+				"active": true,
+				"name": "Info",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": true,
+				"warn": false,
+				"error": false,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"scheduleDays": 0
+			},
+			{
+				"active": true,
+				"name": "Warn",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": true,
+				"error": false,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"scheduleDays": 0
+			},
+			{
+				"active": true,
+				"name": "Error",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": false,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"scheduleDays": 0
+			},
+			{
+				"active": true,
+				"name": "WarnAndError",
+				"whitelistAnd": "*",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": false,
+				"warn": true,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"scheduleDays": 0
+			},
+			{
+				"active": true,
+				"name": "Homematic",
+				"whitelistAnd": "/hm-(rpc|rega)\\.[0-9]/",
+				"whitelistOr": "*",
+				"blacklist": "",
+				"debug": false,
+				"info": true,
+				"warn": true,
+				"error": true,
+				"maxLength": 100,
+				"clean": "",
+				"merge": true,
+				"scheduleDays": 0
+			}
+		]
+	},
+	"objects": [],
+	"instanceObjects": []
 }
