@@ -180,7 +180,7 @@
 		"dateFormat": "#DD.MM.# hh:mm",
 		"globalBlacklist": [
 			{
-				"item": "<==Disconnect system.user.admin from ::ffff:",
+				"item": "<== Disconnect system.user.admin from ::ffff:",
 				"comment": "web.0 Adapter",
 				"active": true
 			},
