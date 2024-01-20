@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "logparser",
-		"version": "2.2.1",
+		"version": "2.2.2",
 		"news": {
+			"2.2.2": {
+				"en": "Fixed: missing space in one entry of global blacklist [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"de": "Behoben: fehlendes Leerzeichen in einem Eintrag der globalen Blacklist [#145](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/145)",
+				"ru": "Исправлено: недостающее место в одной записи глобального черного списка [#145] (https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"pt": "Corrigido: falta de espaço em uma entrada da lista negra global [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"nl": "Vaste: ontbrekende ruimte in één vermelding van de globale zwarte lijst [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"fr": "Correction : espace manquant dans une entrée de la liste noire globale [#145] (https://github.com/iobroker-community-adaptations/ioBroker.logparser/issues/145)",
+				"it": "Risolto: spazio mancante in una voce della lista nera globale [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"es": "Fijo: falta de espacio en una entrada de la lista negra mundial [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)",
+				"pl": "Poprawiono: brak miejsca w jednym wpisie czarnej listy globalnej [# 145] (https: / / github.com / iobroker- community- adapters / iBroker.logparser / issues / 145)",
+				"uk": "Виправлено: відсутні місця в одному записі глобального шантажу [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/145)",
+				"zh-cn": "固定:全球黑名单[#145]的一个条目中缺失空间(https://github.com/iobroster-community-adapters/ioBroker.logparser/issues/145)"
+			},
 			"2.2.1": {
 				"en": "Fixed: Visualization tables was not working correctly [#97](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/97)\nUpdated: Dependencies",
 				"de": "Behoben: Visualisierungstabellen funktionierten nicht korrekt [#97](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/97)\nAktualisiert: Abhängigkeiten",
@@ -80,19 +93,6 @@
 				"pl": "Added: #24 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). W celu usunięcia pliku COMPACT wpis w pliku\nAdded: #21 (https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) Wykorzystując jedynie skrypty wpisach logowych\n(#46)(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) Funkcja Midnighta zmienia się w dzisiejszych czasach\nFixed: #23 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Gdy nic nie wybrano na czarną listę, dostosowujący się już nie pracował\nInne: kod i poprawa tłumaczenia",
 				"uk": "Додано: [#24](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/24) Опція видалення COMPACT в записах журналу\nДодано: [#21](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/21) Варіант видалити тільки скрипт.js в записах журналу\nВиправлено: [#46](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/46) Функція Midnight для зміни сьогодні / вихідний день\nВиправлено: [#23](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/23) Коли нічого вибраного в чорному списку адаптер не працює\nІнше: Невеликий код та вдосконалення перекладу",
 				"zh-cn": "增加:[第24号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/24) B. 清除入帐中的COMPACT的选择\n增加:[第21号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/21) 排除在逻辑目中的文字编号的选择\n固定:[第46号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/46) 今天/半天的改变功能\n固定:[第23号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/23) 在黑名单中没有任何选择时,适应者没有做任何更多的工作。\n其他:小法典和翻译改进"
-			},
-			"2.0.0": {
-				"en": "Dropped: Admin 5 support\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nFixed: Issue with Midnight function\nAdded: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nUpdated: Readme",
-				"de": "Dropped: Admin 5 Unterstützung\nGeändert: Admin html zu jsonConfig [#36](https://github.com/iobroker-community-adapter/ioBroker.logparser/issues/36)\nBehoben: Fehler in der Midnight-Funktion\nHinzugefügt: Übersetzungen von admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAktualisiert: Readme",
-				"ru": "Dropped: Admin 5 поддержка\nИзменено: Admin html на jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nИсправлено: Номер с функцией Midnight\nДобавлена: Переводы админа ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nОбновлено: Readme",
-				"pt": "Dropped: Suporte Admin 5\nAlterado: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrigido: Problema com função da meia-noite\nAdicionado: Traduções de admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAtualizado: Readme",
-				"nl": "Admin 5 steun\nAdmin html tot jsonConfig 36:\nIssue met Midnight functie\nVertaling:\nVertaling:",
-				"fr": "Dropped: Soutien Admin 5\nChanged: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorrection : Question avec la fonction Midnight\nAjouté: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualisé : Readme",
-				"it": "Dropped: supporto di Admin 5\nModificato: Admin html a jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nRisolto: Problema con funzione di mezzanotte\nAggiunto: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nAggiornato: Readme",
-				"es": "Suprimido: apoyo de Admin 5\nCambio: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)\nCorregido: Edición con función de medianoche\nAñadido: Translations of admin ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nActualizado: Readme",
-				"pl": "Admin 5\nZmiany: Admin html to jsonConfig #36(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issueser/36)\nFix: Problem z funkcją Midnight\nTłumaczenia admin ui #28(https:/github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\nReadme (ang.)",
-				"uk": "Виправлено: Admin 5 підтримка\nЗмінено: Admin html to jsonConfig [#36](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/36)\nВиправлено: Випуск з функцією Midnight\nДодано: Переклади адміністратора ui [#28](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/28)\nОновлено: Readme",
-				"zh-cn": "Droed: Admin 5 support\n修改:向 json Config [第36号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/36)提供捐助\n固定:与中午夜功能有关的问题\n增 编:专注译(第28号) (http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/28)\n最新资料:阅读摘要"
 			}
 		},
 		"titleLang": {

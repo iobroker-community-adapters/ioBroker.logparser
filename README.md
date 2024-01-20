@@ -82,8 +82,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.2.2 (2024-01-20)
 
 -   (ciddi89) Fixed: missing space in one entry of global blacklist [#145](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/145)
 
