@@ -874,12 +874,18 @@ class LogParser extends utils.Adapter {
 		const todayStr = !(await this.isLikeEmpty(today)) ? today : 'Today';
 		const yesterdayStr = !(await this.isLikeEmpty(yesterday)) ? yesterday : 'Yesterday';
 
+		this.log.info(`todayStr ${todayStr} yesterdayStr ${yesterdayStr} `);
+
 		let strResult = format;
+
+		this.log.info(`strResult ${strResult} `);
 
 		// 1. Replace today's date and yesterday's date with adapter.config.txtToday / adapter.config.txtYesterday
 		const hashMatch = strResult.match(/#(.*)#/);
 		if (hashMatch != null) {
 			const todayYesterdayTxt = todayYesterday(dateObj);
+
+			this.log.info(`todayYesterdayTxt ${todayYesterdayTxt} `);
 			if (todayYesterdayTxt != '') {
 				// We have either today or yesterday, so set according txt
 				strResult = strResult.replace('#' + hashMatch[1] + '#', todayYesterdayTxt);
@@ -887,6 +893,8 @@ class LogParser extends utils.Adapter {
 				// Neither today nor yesterday, so remove all ##
 				strResult = strResult.replace(/#/g, '');
 			}
+
+			this.log.info(`strResult ${strResult} `);
 		}
 
 		// 2. Replace all the rest.
@@ -899,6 +907,8 @@ class LogParser extends utils.Adapter {
 		strResult = strResult.replace('ss', isoDateStrHelper.substr(17, 2));
 		strResult = strResult.replace('ms', isoDateStrHelper.substr(20, 3));
 
+		this.log.info(`strResult2 ${strResult} `);
+		
 		return strResult;
 
 		/**
