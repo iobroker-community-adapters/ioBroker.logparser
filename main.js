@@ -878,8 +878,8 @@ class LogParser extends utils.Adapter {
 
 		let strResult = format;
 
-		this.log.info(`strResult ${strResult} `);
-
+		this.log.info(`format ${format} - ${this.config.dateFormat}`);   
+		
 		// 1. Replace today's date and yesterday's date with adapter.config.txtToday / adapter.config.txtYesterday
 		const hashMatch = strResult.match(/#(.*)#/);
 		if (hashMatch != null) {
