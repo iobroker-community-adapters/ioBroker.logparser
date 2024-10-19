@@ -212,6 +212,9 @@ class LogParser extends utils.Adapter {
 				for (let i = 0; i < lpLogObjects.length; i++) {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
+
+					this.log.info(`tsToDateString1 ${this.dateFormat} - ${this.config.dateFormat}`);   
+					
 					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
 					if (this.config.cssDate) {
 						const severityType = this.g_allLogs[lpFilterName][i].severity;
@@ -420,6 +423,7 @@ class LogParser extends utils.Adapter {
 		}
 
 		// Add new key "date" to newLogObject
+		this.log.info(`tsToDateString2 ${this.dateFormat} - ${this.config.dateFormat}`);   
 		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
 
 		/**
