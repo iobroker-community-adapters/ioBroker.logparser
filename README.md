@@ -83,7 +83,11 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+
+- (mcm1957) Adapter requires node.js 20, js-controller 5 and admin 6 now.
+- (mcm1957) Missing dependencies for node-schedule has been added.
 - (simatec) Admin-UI has been adapted for small displays.
+- (mcm1957) Dependencies have been updated.
 
 ### 2.2.2 (2024-01-20)
 
