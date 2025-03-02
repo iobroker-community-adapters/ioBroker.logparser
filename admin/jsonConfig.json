@@ -586,7 +586,7 @@
 					"sm": 12,
 					"md": 6,
 					"lg": 3,
-					"xl": 43
+					"xl": 3
 				},
 				"cssMessage": {
 					"type": "checkbox",
