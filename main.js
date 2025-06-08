@@ -876,17 +876,18 @@ class LogParser extends utils.Adapter {
 
 		let strResult = format;
 
-		// 1. Replace today's date and yesterday's date with adapter.config.txtToday / adapter.config.txtYesterday
-		const hashMatch = strResult.match(/#(.*)#/);
-		if (hashMatch != null) {
+		if (this.config.textReplaceDate) {
+
 			const todayYesterdayTxt = todayYesterday(dateObj);
 			if (todayYesterdayTxt != '') {
 				// We have either today or yesterday, so set according txt
-				strResult = strResult.replace('#' + hashMatch[1] + '#', todayYesterdayTxt);
+				strResult = strResult.replace(/#.*?#/, todayYesterdayTxt);
 			} else {
 				// Neither today nor yesterday, so remove all ##
 				strResult = strResult.replace(/#/g, '');
 			}
+		} else {
+			strResult = strResult.replace(/#/g, '');
 		}
 
 		// 2. Replace all the rest.
