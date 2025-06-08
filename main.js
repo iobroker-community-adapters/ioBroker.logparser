@@ -27,8 +27,6 @@ class LogParser extends utils.Adapter {
 		this.g_minUpdateInterval = 2; // Minimum update interval in seconds.
 		this.g_defaultUpdateInterval = 20; // Default update interval in seconds.
 
-		this.dateFormat = '';
-
 		this.g_timerMidnight = null; // setInterval timer for callAtMidnight()
 		this.g_timerUpdateStates = null; // Update states interval timer
 
@@ -43,11 +41,9 @@ class LogParser extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		this.dateFormat = this.config.dateFormat;
-
-		if (this.dateFormat === undefined || this.dateFormat === '') {
+		if (this.config.dateFormat === undefined || this.config.dateFormat === '') {
 			this.log.warn('Configuration corrected: No dateformat selected. Corrected it to #DD.MM.# hh:mm.');
-			this.dateFormat = '#DD.MM.# hh:mm';
+			this.config.dateFormat = '#DD.MM.# hh:mm';
 		}
 
 		await this.main();
@@ -212,7 +208,7 @@ class LogParser extends utils.Adapter {
 				for (let i = 0; i < lpLogObjects.length; i++) {
 					counter++;
 					const lpLogObject = lpLogObjects[i];
-					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
+					this.g_allLogs[lpFilterName][i].date = await this.tsToDateString(lpLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
 					if (this.config.cssDate) {
 						const severityType = this.g_allLogs[lpFilterName][i].severity;
 						let severityTypeString;
@@ -420,7 +416,7 @@ class LogParser extends utils.Adapter {
 		}
 
 		// Add new key "date" to newLogObject
-		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.dateFormat, this.config.txtToday, this.config.txtYesterday);
+		newLogObject.date = await this.tsToDateString(newLogObject.ts, this.config.dateFormat, this.config.txtToday, this.config.txtYesterday);
 
 		/**
 		 * Support individual items in column provided through log
