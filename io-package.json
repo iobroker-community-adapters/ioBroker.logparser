@@ -173,8 +173,7 @@
       "de": [
         "docs/de/logparser.md"
       ]
-    },
-    "installedFrom": "iobroker-community-adapters/ioBroker.logparser#fb28087e5566e135f53693dad6d4c8e76341858c"
+    }
   },
   "native": {
     "removePid": true,
