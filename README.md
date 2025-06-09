@@ -83,8 +83,10 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     ### **WORK IN PROGRESS**
 -->
 ### 2.4.0 (2025-06-09)
-- (arteck) fix today/yesterday problem (check new settings)
-- (arteck) switch to ESLint 9
+- (arteck) Adapter requires admin 7 now.
+- (arteck) Today/yesterday problem has been fixed (check new settings)
+- (arteck) Switched to ESLint 9
+- (arteck) Dependencies have been updated.
 
 ### 2.3.0 (2025-03-02)
 
