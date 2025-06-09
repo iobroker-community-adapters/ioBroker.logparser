@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "logparser",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "news": {
+      "2.4.0": {
+        "en": "fix today/yesterday problem (check new settings)\nswitch to ESLint 9",
+        "de": "problem heute/yesterday beheben (neue einstellungen überprüfen)\neSLint 9 wechseln",
+        "ru": "исправить сегодняшнюю / вчерашнюю проблему (проверить новые настройки)\nпереход на ESLint 9",
+        "pt": "corrigir o problema de hoje/ontem (verifique novas configurações)\nmudar para ESLint 9",
+        "nl": "vandaag/gisteren probleem oplossen (controleer nieuwe instellingen)\nschakelen naar ESLint 9",
+        "fr": "correction du problème d'aujourd'hui/hier (vérifiez les nouveaux paramètres)\npasser à ESLint 9",
+        "it": "risolvere oggi / problema di ieri (controllare nuove impostazioni)\npassare a ESLint 9",
+        "es": "solucionar el problema de hoy/ayer (ver nuevas configuraciones)\nconmutación a ESLint 9",
+        "pl": "naprawić dzisiaj / wczoraj problem (sprawdź nowe ustawienia)\nprzełącz na ESLint 9",
+        "uk": "виправлено проблему сьогодні / вихідний день\nвимикач до ESLint 9",
+        "zh-cn": "修复今天/月日的问题( 请检查新设置)\n切换到 ESLint 9"
+      },
       "2.3.0": {
         "en": "Adapter requires node.js 20, js-controller 5 and admin 6 now.\nMissing dependencies for node-schedule has been added.\nAdmin-UI has been adapted for small displays.\nDependencies have been updated.",
         "de": "Adapter benötigt jetzt node.js 20, js-controller 5 und admin 6.\nFehlende Abhängigkeiten für node-schedule wurden hinzugefügt.\nAdmin-UI wurde für kleine Displays angepasst.\nAbhängigkeiten wurden aktualisiert.",
@@ -80,19 +93,6 @@
         "pl": "Tablice wizualizacji nie zostały poprawnie wykonane\nZagadnienie (ang.)",
         "uk": "Виправлено: Столи візуалізації не працювали правильно\nВиправлено: Питання, якщо датаформат не вибрано правильно",
         "zh-cn": "固定:不正确地开展工作\n九. 固定:如无日期可正确选择的问题"
-      },
-      "2.1.1": {
-        "en": "Fixed: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Missing CSS class in date if it's older than today\nChanged: Moved Dateformat option from table to other settings\nUpdated: Dependencies",
-        "de": "Behoben: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Fehlende CSS-Klasse im Datum, wenn es älter als heute ist\nGeändert: Datumsformat-Einstellung von der Tabelle in den Tab anderen Einstellungen verschoben\nAktualisiert: Abhängigkeiten",
-        "ru": "Исправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Отсутствие класса CSS в дате, если он старше, чем сегодня\nИзменен: Перемещённый вариант Dateformat из таблицы в другие настройки\nОбновлено: зависимости",
-        "pt": "Corrigido: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando classe CSS na data se for mais velho do que hoje\nAlterado: Formato de data movido opção da tabela para outras configurações\nAtualizado: Dependências",
-        "nl": "Quality over Quantity (QoQ) Releases Vertaling: Het missen van CSS klas op datum als het ouder is dan vandaag\nVerplaatste Dateformat optie van tafel naar andere instellingen\nOpgepast",
-        "fr": "Correction : [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) La classe de CSS manquante est plus ancienne qu'aujourd'hui\nChanged: Moved Dateformat option de table à d'autres paramètres\nActualisé : dépenses",
-        "it": "Risolto: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Mancanza di classe CSS in data se è più vecchio di oggi\nModificato: Spostato Dataformat opzione dalla tabella alle altre impostazioni\nAggiornato: Dipendenze",
-        "es": "Arreglado: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) Faltando la clase CSS en la fecha si es mayor que hoy\nCambio: Opción de formato Fecha en movimiento de la tabla a otros ajustes\nActualizado: Dependencias",
-        "pl": "Fixed: #25 (https:/github.com/iobroker-community-adapters/ioBroker) (ang.). Klasa CSS jest starsza niż obecnie\nChanged: Moved Dateformat option from table to other settings\nZastrzeżenie: Zależność",
-        "uk": "Виправлено: [#25](https://github.com/iobroker-community-adapters/ioBroker.logparser/products/25) Мисливець за класом CSS в день, якщо це старше, ніж сьогодні\nЗмінено: Переведена датаформат варіант з таблиці в інші налаштування\nОновлено: Залежності",
-        "zh-cn": "固定:[第25号](http://github.com/iobroker-community-adapters/ioBroker.logparser/issues/25) 2. 如果其年长短于今天,则迄今发行的CSS级\n变化:从表中到其他环境选择的简历\n更新:属地"
       }
     },
     "titleLang": {
@@ -131,9 +131,11 @@
       "parser",
       "filter"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "logparser.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.logparser/master/admin/logparser.png",
@@ -142,6 +144,7 @@
     "mode": "daemon",
     "type": "logic",
     "compact": true,
+    "tier": 2,
     "connectionType": "local",
     "dataSource": "poll",
     "adminUI": {
@@ -154,7 +157,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=6.17.14"
+        "admin": ">=7.4.10"
       }
     ],
     "logTransporter": true,

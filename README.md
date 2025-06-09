@@ -82,8 +82,9 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2025-06-09)
 - (arteck) fix today/yesterday problem (check new settings)
+- (arteck) switch to ESLint 9
 
 ### 2.3.0 (2025-03-02)
 
@@ -105,10 +106,6 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 -   (ciddi89) Dropped: Node v14.x support and added: Node v20.x support
 -   (ciddi89) Added: Option to empty log for each parser rule.
-
-### 2.1.3 (2023-05-19)
-
--   (ciddi89) Updated: Dependencies
 
 ## License
 

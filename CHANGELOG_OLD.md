@@ -1,4 +1,8 @@
 # Older Changelogs
+## 2.1.3 (2023-05-19)
+
+-   (ciddi89) Updated: Dependencies
+
 ## 2.1.2 (2023-04-07)
 
 -   (ciddi89) Fixed: Visualization tables was not working correctly

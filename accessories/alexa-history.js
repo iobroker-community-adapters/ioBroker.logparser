@@ -27,24 +27,24 @@ const g_capFirstLetters = true;
 
 main();
 function main() {
-	// All Alexa adapter instances, so alexa2.0.History.json, alexa2.1.History.json, alexa2.2.History.json, etc.
-	on({ id: /^alexa2\.\d\.History\.json$/, change: 'any' }, function (obj) {
-		try {
-			// obj.state.val: JSON string of oject.
-			// Like: {"name":"Alexa Flur","serialNumber":"xxxxxxxxxx","summary":"Wohnlicht an","creationTime":1582843794820, ... }
-			let objHistory = JSON.parse(obj.state.val);
+    // All Alexa adapter instances, so alexa2.0.History.json, alexa2.1.History.json, alexa2.2.History.json, etc.
+    on({ id: /^alexa2\.\d\.History\.json$/, change: 'any' }, function (obj) {
+        try {
+            // obj.state.val: JSON string of oject.
+            // Like: {"name":"Alexa Flur","serialNumber":"xxxxxxxxxx","summary":"Wohnlicht an","creationTime":1582843794820, ... }
+            const objHistory = JSON.parse(obj.state.val);
 
-			// ignore alexa keywords or empty value.
-			if (!['', 'alexa', 'echo', 'computer', 'ziggy'].includes(objHistory['summary'])) {
-				// ignore "sprich mir nach"
-				if (!objHistory['summary'].includes('sprich mir nach ')) {
-					log('[Alexa-Log-Script] ##{"message":"' + formatAlexaSummary(objHistory['summary']) + '", "from":"' + objHistory['name'] + '"}##');
-				}
-			}
-		} catch (error) {
-			log(error);
-		}
-	});
+            // ignore alexa keywords or empty value.
+            if (!['', 'alexa', 'echo', 'computer', 'ziggy'].includes(objHistory['summary'])) {
+                // ignore "sprich mir nach"
+                if (!objHistory['summary'].includes('sprich mir nach ')) {
+                    log('[Alexa-Log-Script] ##{"message":"' + formatAlexaSummary(objHistory['summary']) + '", "from":"' + objHistory['name'] + '"}##');
+                }
+            }
+        } catch (error) {
+            log(error);
+        }
+    });
 }
 
 /**
@@ -53,6 +53,6 @@ function main() {
  * @return {string} the formatted summary
  */
 function formatAlexaSummary(summaryText) {
-	if (g_capFirstLetters) summaryText = summaryText.replace(/(^|\s)\S/g, (l) => l.toUpperCase()); // Capitalize if set. https://stackoverflow.com/questions/2332811/
-	return summaryText;
+    if (g_capFirstLetters) summaryText = summaryText.replace(/(^|\s)\S/g, (l) => l.toUpperCase()); // Capitalize if set. https://stackoverflow.com/questions/2332811/
+    return summaryText;
 }

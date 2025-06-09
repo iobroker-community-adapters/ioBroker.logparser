@@ -1,6 +1,6 @@
 {
   "name": "iobroker.logparser",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Parsing (filtering) the ioBroker log",
   "author": {
     "name": "ciddi89",
@@ -34,7 +34,6 @@
     "@iobroker/testing": "^5.0.4",
     "@types/chai": "^4.3.11",
     "@types/chai-as-promised": "^7.1.8",
-    "@types/gulp": "^4.0.17",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.15.29",
     "@types/node-schedule": "^2.1.7",
