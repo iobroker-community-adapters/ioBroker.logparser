@@ -170,7 +170,8 @@
       "de": [
         "docs/de/logparser.md"
       ]
-    }
+    },
+    "installedFrom": "iobroker-community-adapters/ioBroker.logparser#fb28087e5566e135f53693dad6d4c8e76341858c"
   },
   "native": {
     "removePid": true,
@@ -189,7 +190,8 @@
     "cssSeverity": true,
     "cssFrom": false,
     "cssMessage": false,
-    "dateFormat": "#DD.MM.# hh:mm",
+    "dateFormat": "#DD.MM.YYYY# hh:mm",
+    "textReplaceDate": false,
     "globalBlacklist": [
       {
         "item": "<== Disconnect system.user.admin from ::ffff:",
