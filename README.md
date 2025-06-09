@@ -82,6 +82,9 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (arteck) fix today/yesterday problem (check new settings)
+
 ### 2.3.0 (2025-03-02)
 
 - (mcm1957) Adapter requires node.js 20, js-controller 5 and admin 6 now.

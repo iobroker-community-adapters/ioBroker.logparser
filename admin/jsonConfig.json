@@ -294,9 +294,11 @@
 					"text": "Replace date with 'Today' / 'Yesterday':",
 					"size": 2
 				},
-				"_textReplaceDate": {
-					"type": "staticText",
-					"text": "In the filters, today's or yesterday's date can be replaced by 'Today' or 'Yesterday' in the date format for using hash character (#). Other terms can be defined here instead of 'Today'/'Yesterday'.",
+
+
+				"textReplaceDate": {
+					"type": "checkbox",
+					"label": "In the filters, today's or yesterday's date can be replaced by 'Today' or 'Yesterday' in the date format for using hash character (#). Other terms can be defined here instead of 'Today'/'Yesterday'.",
 					"xs": 12,
 					"sm": 12,
 					"md": 12,
@@ -307,6 +309,8 @@
 						"marginTop": 0
 					}
 				},
+
+
 				"txtYesterday": {
 					"newLine": true,
 					"xs": 12,
