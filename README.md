@@ -83,7 +83,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-- (arteck) fix today/yesterday problem
+- (arteck) fix today/yesterday problem (check new settings)
 
 ### 2.3.0 (2025-03-02)
 
