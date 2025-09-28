@@ -1,0 +1,118 @@
+name: Check Copilot Template Version
+
+on:
+  schedule:
+    # Run every Sunday at 3:23 AM UTC (optimized timing to avoid GitHub peak hours)
+    - cron: '23 3 * * 0'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if versions match'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-template-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Check Copilot Template Version
+      id: version-check
+      run: |
+        # Fetch current metadata version
+        REMOTE_VERSION=$(curl -s https://raw.githubusercontent.com/DrozmotiX/ioBroker-Copilot-Instructions/main/config/metadata.json | grep -o '"version": "[^"]*"' | cut -d'"' -f4)
+        echo "Remote version: $REMOTE_VERSION"
+        
+        # Check local version in copilot-instructions.md
+        if [ -f ".github/copilot-instructions.md" ]; then
+          LOCAL_VERSION=$(grep -o '\*\*Version:\*\* [0-9]\+\.[0-9]\+\.[0-9]\+' .github/copilot-instructions.md | cut -d' ' -f2)
+          echo "Local version: $LOCAL_VERSION"
+        else
+          LOCAL_VERSION=""
+          echo "No local copilot-instructions.md found"
+        fi
+        
+        # Set output variables
+        echo "remote_version=$REMOTE_VERSION" >> $GITHUB_OUTPUT
+        echo "local_version=$LOCAL_VERSION" >> $GITHUB_OUTPUT
+        
+        # Determine if update is needed
+        if [ "${{ github.event.inputs.force_update }}" == "true" ]; then
+          echo "needs_update=true" >> $GITHUB_OUTPUT
+          echo "Force update requested"
+        elif [ -z "$LOCAL_VERSION" ]; then
+          echo "needs_update=true" >> $GITHUB_OUTPUT
+          echo "Initial setup needed - no local version found"
+        elif [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
+          echo "needs_update=true" >> $GITHUB_OUTPUT
+          echo "Update needed - versions differ"
+        else
+          echo "needs_update=false" >> $GITHUB_OUTPUT
+          echo "Versions match - no update needed"
+        fi
+        
+    - name: Check for existing update issue
+      id: check-issue
+      if: steps.version-check.outputs.needs_update == 'true'
+      run: |
+        # Check for existing open issues about template updates
+        EXISTING_ISSUE=$(gh issue list --label "copilot-setup" --label "automation" --state open --json title,number --jq '.[] | select(.title | contains("Setup ioBroker GitHub Copilot Instructions") or contains("Update ioBroker GitHub Copilot Instructions")) | .number' | head -n1)
+        echo "existing_issue=$EXISTING_ISSUE" >> $GITHUB_OUTPUT
+        if [ -n "$EXISTING_ISSUE" ]; then
+          echo "Found existing issue: #$EXISTING_ISSUE"
+        else
+          echo "No existing update issue found"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create update issue
+      if: steps.version-check.outputs.needs_update == 'true' && steps.check-issue.outputs.existing_issue == ''
+      run: |
+        LOCAL_VERSION="${{ steps.version-check.outputs.local_version }}"
+        REMOTE_VERSION="${{ steps.version-check.outputs.remote_version }}"
+        
+        if [ -z "$LOCAL_VERSION" ]; then
+          ISSUE_TITLE="🤖 Setup ioBroker GitHub Copilot Instructions"
+          ISSUE_BODY="$(curl -s https://raw.githubusercontent.com/DrozmotiX/ioBroker-Copilot-Instructions/main/templates/initial-setup-automation.md)"
+        else
+          ISSUE_TITLE="🚀 Update ioBroker GitHub Copilot Instructions (v$LOCAL_VERSION → v$REMOTE_VERSION)"
+          ISSUE_BODY="$(curl -s https://raw.githubusercontent.com/DrozmotiX/ioBroker-Copilot-Instructions/main/templates/update-automation.md)"
+          # Replace version placeholders in the template
+          ISSUE_BODY=$(echo "$ISSUE_BODY" | sed "s/\[CURRENT_VERSION\]/$LOCAL_VERSION/g" | sed "s/\[NEW_VERSION\]/$REMOTE_VERSION/g")
+        fi
+        
+        gh issue create \
+          --title "$ISSUE_TITLE" \
+          --body "$ISSUE_BODY" \
+          --label "copilot-setup" \
+          --label "automation" \
+          --assignee "copilot"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Update existing issue
+      if: steps.version-check.outputs.needs_update == 'true' && steps.check-issue.outputs.existing_issue != ''
+      run: |
+        ISSUE_NUMBER="${{ steps.check-issue.outputs.existing_issue }}"
+        LOCAL_VERSION="${{ steps.version-check.outputs.local_version }}"
+        REMOTE_VERSION="${{ steps.version-check.outputs.remote_version }}"
+        
+        COMMENT="🤖 **Automated Update Check**\n\n"
+        COMMENT="${COMMENT}**Current Status**: Template version check completed\n"
+        COMMENT="${COMMENT}**Local Version**: ${LOCAL_VERSION:-'Not found'}\n"
+        COMMENT="${COMMENT}**Remote Version**: $REMOTE_VERSION\n"
+        COMMENT="${COMMENT}**Action Required**: Update needed\n\n"
+        COMMENT="${COMMENT}_This is an automated comment from the template version check workflow._"
+        
+        gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
