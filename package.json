@@ -2,10 +2,10 @@
   "name": "iobroker.logparser",
   "version": "2.4.0",
   "description": "Parsing (filtering) the ioBroker log",
-  "author": {
-    "name": "ciddi89",
-    "email": "mail@christian-behrends.de"
-  },
+  "author": "ciddi89 <mail@christian-behrends.de>",
+  "contributors": [
+    "iobroker-community-adapters <iobroker-community-adapters@gmx.de>"
+  ],
   "homepage": "https://github.com/iobroker-community-adapters/ioBroker.logparser",
   "license": "MIT",
   "keywords": [
