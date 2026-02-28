@@ -1,6 +1,6 @@
 # ioBroker Adapter Development with GitHub Copilot
 
-**Version:** 0.5.6
+**Version:** 0.5.7
 **Template Source:** https://github.com/DrozmotiX/ioBroker-Copilot-Instructions
 
 This file contains instructions and best practices for GitHub Copilot when working on ioBroker adapter development.
@@ -138,11 +138,11 @@ npm install --save-dev eslint @iobroker/eslint-config
 ## Testing
 
 ### Unit Testing
-- Use Jest as the primary testing framework for ioBroker adapters
+- Use Jest as the primary testing framework
 - Create tests for all adapter main functions and helper methods
 - Test error handling scenarios and edge cases
 - Mock external API calls and hardware dependencies
-- For adapters connecting to APIs/devices not reachable by internet, provide example data files to allow testing of functionality without live connections
+- For adapters connecting to APIs/devices not reachable by internet, provide example data files
 
 **Example Structure:**
 ```javascript
@@ -362,7 +362,7 @@ it("Should connect to API with demo credentials", async () => {
 - Use `npm ci` for installing existing dependencies (respects package-lock.json)
 - Use `npm install` only when adding or updating dependencies
 - Keep dependencies minimal and focused
-- Only update dependencies to latest stable versions when necessary or in separate Pull Requests
+- Only update dependencies in separate Pull Requests
 
 **When modifying package.json:**
 1. Run `npm install` to sync package-lock.json
@@ -376,8 +376,8 @@ it("Should connect to API with demo credentials", async () => {
 
 ### HTTP Client Libraries
 
-- **Preferred:** Use native `fetch` API (Node.js 20+ required for adapters; built-in since Node.js 18)
-- **Avoid:** `axios` unless specific features are required (reduces bundle size)
+- **Preferred:** Use native `fetch` API (Node.js 20+ required)
+- **Avoid:** `axios` unless specific features are required
 
 **Example with fetch:**
 ```javascript
@@ -395,17 +395,17 @@ try {
 **Other Recommendations:**
 - **Logging:** Use adapter built-in logging (`this.log.*`)
 - **Scheduling:** Use adapter built-in timers and intervals
-- **File operations:** Use Node.js `fs/promises` for async file operations
-- **Configuration:** Use adapter config system rather than external config libraries
+- **File operations:** Use Node.js `fs/promises`
+- **Configuration:** Use adapter config system
 
 ### Error Handling
 
 - Always catch and log errors appropriately
 - Use adapter log levels (error, warn, info, debug)
-- Provide meaningful, user-friendly error messages that help users understand what went wrong
+- Provide meaningful, user-friendly error messages
 - Handle network failures gracefully
 - Implement retry mechanisms where appropriate
-- Always clean up timers, intervals, and other resources in the `unload()` method
+- Always clean up timers, intervals, and resources in `unload()` method
 
 **Example:**
 ```javascript
@@ -444,9 +444,9 @@ Use JSON-Config format for modern ioBroker admin interfaces.
 - ✅ Use consistent naming conventions
 - ✅ Provide sensible default values
 - ✅ Include validation for required fields
-- ✅ Add tooltips for complex configuration options
+- ✅ Add tooltips for complex options
 - ✅ Ensure translations for all supported languages (minimum English and German)
-- ✅ Write end-user friendly labels, avoiding technical jargon where possible
+- ✅ Write end-user friendly labels, avoid technical jargon
 
 ### Translation Management
 
@@ -564,8 +564,7 @@ Before committing changes to admin UI or translations:
 - Include code examples for configuration
 - Add screenshots for admin interface when applicable
 - Maintain multilingual support (at minimum English and German)
-- When creating PRs, add entries to README under "## **WORK IN PROGRESS**" section following ioBroker release script standard
-- Always reference related issues in commits and PR descriptions (e.g., "solves #xx" or "fixes #xx")
+- Always reference issues in commits and PRs (e.g., "fixes #xx")
 
 #### Mandatory README Updates for PRs
 
@@ -580,8 +579,8 @@ For **every PR or new feature**, always add a user-friendly entry to README.md:
 ```markdown
 ## **WORK IN PROGRESS**
 
-* (DutchmanNL) **FIXED**: Adapter now properly validates login credentials instead of always showing "credentials missing" (fixes #25)
-* (DutchmanNL) **NEW**: Added support for device discovery to simplify initial setup
+* (DutchmanNL) **FIXED**: Adapter now properly validates login credentials (fixes #25)
+* (DutchmanNL) **NEW**: Added device discovery to simplify initial setup
 ```
 
 ### Changelog Management
