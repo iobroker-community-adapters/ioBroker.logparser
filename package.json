@@ -34,9 +34,8 @@
     "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/testing": "^5.2.2",
     "@types/node": "^24.12.2",
-    "@types/node-schedule": "^2.1.8",
-    "eslint": "^9.39.2"
- },
+    "@types/node-schedule": "^2.1.8"
+  },
   "main": "main.js",
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).json",
@@ -54,7 +53,7 @@
     "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:js && npm run test:package",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "eslint -c eslint.config.mjs .",
     "release": "release-script",
     "translate": "translate-adapter"
   },
