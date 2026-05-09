@@ -1,4 +1,10 @@
 # Older Changelogs
+## 2.2.0 (2023-05-28)
+
+-   (ciddi89) Dropped: Node v14.x support and added: Node v20.x support
+-   (ciddi89) Added: Option to empty log for each parser rule.
+
+
 ## 2.1.3 (2023-05-19)
 
 -   (ciddi89) Updated: Dependencies

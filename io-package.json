@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "logparser",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "news": {
+      "2.5.0": {
+        "en": "**ENHANCED**: Migrated linting to shared `@iobroker/eslint-config` base configuration\nAdapter requires node.js >= 22 now\nAdapter requires admin >= 7.7.22 now\nAdapter requires js-controller >= 6.0.11 now\nAdapter requires admin >= 7.6.17 now",
+        "de": "**ENHANCED**: Migrated lining to Shared `@iobroker/eslint-config` Basiskonfiguration\nAdapter benötigt node.js >= 22 jetzt\nAdapter benötigt admin >= 7.7.22 jetzt\nAdapter benötigt jetzt js-controller >= 6.0.11\nAdapter benötigt admin >= 7.6.17 jetzt",
+        "ru": "** УВЕДОМЛЕН**: Миграционная подкладка для общей базовой конфигурации \"@iobroker/eslint-config\"\nАдаптер требует node.js >= 22 сейчас\nАдаптер требует администратора >= 7.7.22\nАдаптер требует js-контроллер >= 6.0.11\nАдаптер требует администратора >= 7.6.17",
+        "pt": "**ENHANCED**: Migrated linting to shared `@iobroker/eslint-config` base configuration\nAdaptador requer nod.js >= 22 agora\nAdaptador requer admin >= 7.7.22 agora\nAdaptador requer js-controlador >= 6.0.11 agora\nAdaptador requer admin >= 7.6.17 agora",
+        "nl": "**ENHANCED**: Migrated linting to share \nVoor de adapter zijn node.js < 22 nu nodig\nAdapter vereist admin < 7.7.22 nu\nAdapter vereist js-controller < 6,0.11 nu\nAdapter vereist admin < 7.6.17 nu",
+        "fr": "**ENHANCED**: Migration du linage vers la configuration de base `@iobroker/eslint-config` partagée\nAdaptateur nécessite node.js >= 22 maintenant\nAdaptateur nécessite admin >= 7.7.22 maintenant\nAdaptateur nécessite js-controller >= 6.0.11 maintenant\nAdaptateur nécessite admin >= 7.6.17 maintenant",
+        "it": "**ENHANCED**: Migrated linting alla configurazione base condivisa `@iobroker/eslint-config`\nAdattatore richiede node.js >= 22 ora\nAdattatore richiede admin >= 7.7.22 ora\nAdattatore richiede js-controller >= 6.0.11 ora\nAdattatore richiede admin >= 7.6.17 ora",
+        "es": "**ENHANCED**: Forro migrado a la configuración de base compartida `@iobroker/eslint-config`\nAdaptador requiere node.js ю= 22 ahora\nEl adaptador requiere administrador= 7.7.22 ahora\nAdaptador requiere js-controller >= 6.0.11\nAdaptador requiere administración= 7.6.17 ahora",
+        "pl": "* *ENHANCED* *: Migrated linting to shared '@ iobroker / eslint- config' base configuration \nAdapter wymaga node.js > = 22\nAdapter wymaga admin > = 7.7.22\nAdapter wymaga sterownika js- > = 6.0.11\nAdapter wymaga admin > = 7.6.17",
+        "uk": "**ENHANCED**: Мігратний лінінг для спільної конфігурації бази `@iobroker/eslint-config`\nАдаптер вимагає node.js >= 22 тепер\nАдаптер вимагає адмін >= 7.7.22 тепер\nАдаптер вимагає js-controller >=6.0.11 тепер\nАдаптер вимагає адмін >= 7.6.17 тепер",
+        "zh-cn": "** ENHANCED**: 调整为共享的“io经纪人/slint-config”基础配置\n适配器需要节点.js 现在22\n适任者需要管理员 \\ 7.7.22 现在\n适配器需要js控制器 现在6.0.11\n适任者需要行政主管 现在7.6.17"
+      },
       "2.4.0": {
         "en": "fix today/yesterday problem (check new settings)\nswitch to ESLint 9",
         "de": "problem heute/yesterday beheben (neue einstellungen überprüfen)\neSLint 9 wechseln",
@@ -80,19 +93,6 @@
         "pl": "Zastrzeżenie: Zależność",
         "uk": "Оновлено: Залежності",
         "zh-cn": "更新:属地"
-      },
-      "2.1.2": {
-        "en": "Fixed: Visualization tables was not working correctly\nFixed: Issue if no dateformat was selected correctly",
-        "de": "Behoben: Visualisierungstabellen funktionierten nicht richtig\nBehoben: Fehler wenn das Datumsformat nicht korrekt/garnicht gewählt wurde",
-        "ru": "Исправлено: таблицы визуализации не работали правильно\nИсправлено: Номер, если датаформат не был выбран правильно",
-        "pt": "Corrigido: tabelas de visualização não estava funcionando corretamente\nCorrigido: Emitir se nenhum formato de data foi selecionado corretamente",
-        "nl": "Visualisatietafels werkten niet goed\nIssue als er geen datum geselecteerd is",
-        "fr": "Correction : Les tableaux de visualisation ne fonctionnaient pas correctement\nCorrection : Question si aucun format de date n'a été sélectionné correctement",
-        "it": "Fisso: le tabelle di visualizzazione non funzionavano correttamente\nRisolto: Problema se non è stato selezionato alcun formato di data correttamente",
-        "es": "Fijo: las tablas de visualización no funcionaban correctamente\nCorregido: Edición si no se selecciona correctamente el formato de fecha",
-        "pl": "Tablice wizualizacji nie zostały poprawnie wykonane\nZagadnienie (ang.)",
-        "uk": "Виправлено: Столи візуалізації не працювали правильно\nВиправлено: Питання, якщо датаформат не вибрано правильно",
-        "zh-cn": "固定:不正确地开展工作\n九. 固定:如无日期可正确选择的问题"
       }
     },
     "titleLang": {
