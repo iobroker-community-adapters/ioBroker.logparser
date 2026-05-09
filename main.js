@@ -277,9 +277,7 @@ class LogParser extends utils.Adapter {
 	 * {from:'test.0', message: 'test.0 (12504) adapter disabled', severity: 'error', ts:1585413238439}
 	 */
     async subscribeToAdapterLogs() {
-        // @ts-ignore
         this.requireLog(true);
-        // @ts-ignore
         this.on('log', async (obj) => {
             const logObject = await this.prepareNewLogObject(obj);
             if (logObject.message != '') {
@@ -455,7 +453,6 @@ class LogParser extends utils.Adapter {
                     mergeNum = 2;
                 }
                 // Add merge number to log message
-                // @ts-ignore
                 const mergeText = this.config.txtMerge.replace('#', mergeNum);
                 newLogObject.message = mergeText + newLogObject.message;
                 // remove old log objects
@@ -1218,7 +1215,7 @@ class LogParser extends utils.Adapter {
             }
             this.log.info('cleaned everything up...');
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }

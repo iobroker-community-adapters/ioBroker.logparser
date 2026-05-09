@@ -7,8 +7,19 @@ export default [
             '.dev-server/',
             'admin/*.min.js',
             'admin/words.js',
-            'admin/admin.d.ts',
+            '**/*.d.ts',
         ],
+    },
+    {
+        files: [
+            'accessories/alexa-history.js',
+        ],
+        languageOptions: {
+            globals: {
+                log: 'readonly',
+                on: 'readonly',
+            },
+        },
     },
     {
         files: [
@@ -24,11 +35,9 @@ export default [
     },
     {
         rules: {
-            '@typescript-eslint/ban-ts-comment': 'off',
-            '@typescript-eslint/consistent-type-imports': 'off',
-            '@typescript-eslint/no-empty-object-type': 'off',
-            '@typescript-eslint/no-unused-vars': 'off',
+            // Keep legacy adapter code style for now; avoid broad behavior-neutral rewrites in this migration PR.
             curly: 'off',
+            // Existing JSDoc blocks are legacy-formatted; keep checks disabled until docs are refactored.
             'jsdoc/check-alignment': 'off',
             'jsdoc/check-tag-names': 'off',
             'jsdoc/check-types': 'off',
@@ -38,9 +47,9 @@ export default [
             'jsdoc/require-param-description': 'off',
             'jsdoc/tag-lines': 'off',
             'no-else-return': 'off',
-            'no-undef': 'warn',
-            'no-unused-vars': 'off',
-            'no-var': 'warn',
+            '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+            'no-unused-vars': ['error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+            // Keep existing string-concat and formatting style; migration goal is shared base adoption.
             'prefer-template': 'off',
             'prettier/prettier': 'off',
         },

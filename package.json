@@ -54,7 +54,7 @@
     "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:js && npm run test:package",
-    "lint": "eslint -c eslint.config.mjs .",
+    "lint": "eslint --max-warnings 0 .",
     "release": "release-script",
     "translate": "translate-adapter"
   },
